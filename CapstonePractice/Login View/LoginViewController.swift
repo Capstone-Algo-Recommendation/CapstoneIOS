@@ -32,7 +32,8 @@ final class LoginViewController: UIViewController {
         mainView.registerButton
             .rx.tap
             .bind {
-                print("register Button Clicked")
+                let vc = RegisterViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
             }.disposed(by: disposeBag)
     
         mainView.idTextField
@@ -48,17 +49,11 @@ final class LoginViewController: UIViewController {
             }.disposed(by: disposeBag)
         
         
-//        mainView.idTextField
-//            .rx.controlEvent([.editingDidEnd])
-//            .bind
-//
-        
         mainView.passWordTextField
             .rx.value
             .subscribe { text in
                 print("pass \(text)")
             }.disposed(by: disposeBag)
-        
         
     }
     

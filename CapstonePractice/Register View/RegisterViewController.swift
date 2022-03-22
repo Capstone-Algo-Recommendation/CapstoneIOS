@@ -16,9 +16,10 @@ class RegisterViewController: UIViewController {
     override func loadView() {
         self.view = mainView
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "회원가입"
     }
     
     override func viewDidLayoutSubviews() {
