@@ -17,6 +17,9 @@
 		880BCA1E27E87A0A00C5235A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 880BCA1D27E87A0A00C5235A /* RxSwift */; };
 		880BCA2027E87AA200C5235A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BCA1F27E87AA100C5235A /* LoginViewController.swift */; };
 		880BCA2327E87AC300C5235A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BCA2227E87AC300C5235A /* LoginView.swift */; };
+		88604CB227E984DB0025BE04 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 88604CB127E984DB0025BE04 /* TextFieldEffects */; };
+		887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */; };
+		887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085F127E8AAF400B5BC82 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,8 @@
 		880BCA1127E879C800C5235A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		880BCA1F27E87AA100C5235A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		880BCA2227E87AC300C5235A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		887085F127E8AAF400B5BC82 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				880BCA1E27E87A0A00C5235A /* RxSwift in Frameworks */,
+				88604CB227E984DB0025BE04 /* TextFieldEffects in Frameworks */,
 				880BCA1C27E87A0A00C5235A /* RxCocoa in Frameworks */,
 				880BCA1927E879EF00C5235A /* SnapKit in Frameworks */,
 			);
@@ -71,6 +77,7 @@
 				880BCA0E27E879C800C5235A /* LaunchScreen.storyboard */,
 				880BCA1127E879C800C5235A /* Info.plist */,
 				880BCA2127E87AB300C5235A /* Login View */,
+				887085F027E8AAE300B5BC82 /* Register View */,
 			);
 			path = CapstonePractice;
 			sourceTree = "<group>";
@@ -82,6 +89,15 @@
 				880BCA2227E87AC300C5235A /* LoginView.swift */,
 			);
 			path = "Login View";
+			sourceTree = "<group>";
+		};
+		887085F027E8AAE300B5BC82 /* Register View */ = {
+			isa = PBXGroup;
+			children = (
+				887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */,
+				887085F127E8AAF400B5BC82 /* RegisterView.swift */,
+			);
+			path = "Register View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +120,7 @@
 				880BCA1827E879EF00C5235A /* SnapKit */,
 				880BCA1B27E87A0A00C5235A /* RxCocoa */,
 				880BCA1D27E87A0A00C5235A /* RxSwift */,
+				88604CB127E984DB0025BE04 /* TextFieldEffects */,
 			);
 			productName = CapstonePractice;
 			productReference = 880BCA0027E879C500C5235A /* CapstonePractice.app */;
@@ -136,6 +153,7 @@
 			packageReferences = (
 				880BCA1727E879EF00C5235A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				880BCA1A27E87A0A00C5235A /* XCRemoteSwiftPackageReference "RxSwift" */,
+				88604CB027E984DB0025BE04 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = 880BCA0127E879C500C5235A /* Products */;
 			projectDirPath = "";
@@ -166,6 +184,8 @@
 				880BCA2027E87AA200C5235A /* LoginViewController.swift in Sources */,
 				880BCA0827E879C500C5235A /* ViewController.swift in Sources */,
 				880BCA0427E879C500C5235A /* AppDelegate.swift in Sources */,
+				887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */,
+				887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */,
 				880BCA2327E87AC300C5235A /* LoginView.swift in Sources */,
 				880BCA0627E879C500C5235A /* SceneDelegate.swift in Sources */,
 			);
@@ -395,6 +415,14 @@
 				kind = branch;
 			};
 		};
+		88604CB027E984DB0025BE04 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -412,6 +440,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 880BCA1A27E87A0A00C5235A /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		88604CB127E984DB0025BE04 /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88604CB027E984DB0025BE04 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
