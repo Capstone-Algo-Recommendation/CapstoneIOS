@@ -12,14 +12,10 @@ import RxCocoa
 class RegisterViewController: UIViewController {
     
     let mainView = RegisterView()
+    let disposBag = DisposeBag()
     
     override func loadView() {
         self.view = mainView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "회원가입"
     }
     
     override func viewDidLayoutSubviews() {
@@ -27,4 +23,51 @@ class RegisterViewController: UIViewController {
         mainView.backJoonInfoLabel.sizeToFit()
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "회원가입"
+        
+        mainView.idTextField
+            .rx.text.bind { text in
+                guard let text = text else { return }
+                print(text,"from txt")
+            }.disposed(by: disposBag)
+        
+        
+        mainView.idTextField
+            .rx.value.bind { text in
+                print(text)
+            }.disposed(by: disposBag)
+        
+        
+        mainView.firstPassTextField
+            .rx.value.bind { text in
+                print(text)
+            }.disposed(by: disposBag)
+        
+        
+        
+        mainView.secondPassTextField
+            .rx.value.bind { text in
+                print(text)
+            }.disposed(by: disposBag)
+        
+        
+        
+        mainView.backJoonIdTextField
+            .rx.value.bind { text in
+                print(text)
+            }.disposed(by: disposBag)
+        
+        
+        mainView.nextButton
+            .rx.tap
+            .bind {
+                print("회원가입 버튼 눌림")
+            }
+            .disposed(by: disposBag)
+    }
+    
+   
 }
