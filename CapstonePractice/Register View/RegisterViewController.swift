@@ -28,38 +28,36 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         title = "회원가입"
         
+        
         mainView.idTextField
-            .rx.text.bind { text in
-                guard let text = text else { return }
+            .rx.controlEvent([.editingDidEnd])
+            .bind { text in
+                print(text, " from end")
+            }.disposed(by: disposBag)
+        
+        mainView.idTextField
+            .rx.text.orEmpty
+            .bind { text in
                 print(text,"from txt")
             }.disposed(by: disposBag)
-        
-        
-        mainView.idTextField
-            .rx.value.bind { text in
-                print(text)
-            }.disposed(by: disposBag)
-        
-        
+
         mainView.firstPassTextField
-            .rx.value.bind { text in
+            .rx.value.orEmpty
+            .bind { text in
                 print(text)
             }.disposed(by: disposBag)
-        
-        
         
         mainView.secondPassTextField
-            .rx.value.bind { text in
+            .rx.value.orEmpty
+            .bind { text in
                 print(text)
             }.disposed(by: disposBag)
-        
-        
-        
+
         mainView.backJoonIdTextField
-            .rx.value.bind { text in
+            .rx.value.orEmpty
+            .bind { text in
                 print(text)
             }.disposed(by: disposBag)
-        
         
         mainView.nextButton
             .rx.tap
