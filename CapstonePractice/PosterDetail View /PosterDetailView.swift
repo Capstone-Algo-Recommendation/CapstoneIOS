@@ -8,14 +8,28 @@
 import UIKit
 import SnapKit
 
-class PosterDetailView: UIView {
+class PosterDetailView: UIView, SetUpView {
+    
+    let tableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setUp()
+        setUpConstraints()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    func setUp() {
+        addSubview(tableView)
+        tableView.register(PosterDetailMainCell.self, forCellReuseIdentifier: PosterDetailMainCell.identifier)
+    }
+    
+    func setUpConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
 }

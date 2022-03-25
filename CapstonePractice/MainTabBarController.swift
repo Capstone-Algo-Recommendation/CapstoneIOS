@@ -9,12 +9,11 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let mainVC = MainViewController()
-        let posterVC = PostBoardViewController()
+        let posterVC = UINavigationController(rootViewController: PostBoardViewController())
         let myInfoVC = MyInfoViewController()
         
         view.backgroundColor = .white
@@ -25,6 +24,4 @@ class MainTabBarController: UITabBarController {
         
         viewControllers = [mainVC, posterVC, myInfoVC]
     }
-    
-    
 }

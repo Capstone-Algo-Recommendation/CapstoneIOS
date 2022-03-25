@@ -49,5 +49,11 @@ class PostBoardViewController: UIViewController {
 extension PostBoardViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 80
-        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Hell")
+        let vc = PosterDetailViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
