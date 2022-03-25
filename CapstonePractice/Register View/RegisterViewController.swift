@@ -28,7 +28,6 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         title = "회원가입"
         
-        
         mainView.idTextField
             .rx.controlEvent([.editingDidEnd])
             .bind { text in
