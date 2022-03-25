@@ -24,6 +24,9 @@
 		883A412B27EDA24B0002B909 /* PosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412A27EDA24B0002B909 /* PosterView.swift */; };
 		883A412D27EDA2980002B909 /* UIView + Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412C27EDA2980002B909 /* UIView + Protocols.swift */; };
 		883A412F27EDA4970002B909 /* PosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412E27EDA4970002B909 /* PosterTableViewCell.swift */; };
+		883A413127EDA92F0002B909 /* PosterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A413027EDA92F0002B909 /* PosterViewModel.swift */; };
+		883A413327EDB4980002B909 /* PosterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A413227EDB4980002B909 /* PosterDetailViewController.swift */; };
+		883A413627EDB4BB0002B909 /* PosterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A413527EDB4BB0002B909 /* PosterDetailView.swift */; };
 		88604CB227E984DB0025BE04 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 88604CB127E984DB0025BE04 /* TextFieldEffects */; };
 		887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */; };
 		887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085F127E8AAF400B5BC82 /* RegisterView.swift */; };
@@ -46,6 +49,9 @@
 		883A412A27EDA24B0002B909 /* PosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterView.swift; sourceTree = "<group>"; };
 		883A412C27EDA2980002B909 /* UIView + Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Protocols.swift"; sourceTree = "<group>"; };
 		883A412E27EDA4970002B909 /* PosterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterTableViewCell.swift; sourceTree = "<group>"; };
+		883A413027EDA92F0002B909 /* PosterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterViewModel.swift; sourceTree = "<group>"; };
+		883A413227EDB4980002B909 /* PosterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterDetailViewController.swift; sourceTree = "<group>"; };
+		883A413527EDB4BB0002B909 /* PosterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterDetailView.swift; sourceTree = "<group>"; };
 		887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		887085F127E8AAF400B5BC82 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +103,7 @@
 				883A412627EDA05D0002B909 /* PostBoard View */,
 				883A412927EDA0A60002B909 /* MyInfo View */,
 				883A412C27EDA2980002B909 /* UIView + Protocols.swift */,
+				883A413427EDB4AB0002B909 /* PosterDetail View  */,
 			);
 			path = CapstonePractice;
 			sourceTree = "<group>";
@@ -124,6 +131,7 @@
 				883A412427EDA0480002B909 /* PostBoardViewController.swift */,
 				883A412A27EDA24B0002B909 /* PosterView.swift */,
 				883A412E27EDA4970002B909 /* PosterTableViewCell.swift */,
+				883A413027EDA92F0002B909 /* PosterViewModel.swift */,
 			);
 			path = "PostBoard View";
 			sourceTree = "<group>";
@@ -134,6 +142,15 @@
 				883A412727EDA0A20002B909 /* MyInfoViewController.swift */,
 			);
 			path = "MyInfo View";
+			sourceTree = "<group>";
+		};
+		883A413427EDB4AB0002B909 /* PosterDetail View  */ = {
+			isa = PBXGroup;
+			children = (
+				883A413227EDB4980002B909 /* PosterDetailViewController.swift */,
+				883A413527EDB4BB0002B909 /* PosterDetailView.swift */,
+			);
+			path = "PosterDetail View ";
 			sourceTree = "<group>";
 		};
 		887085F027E8AAE300B5BC82 /* Register View */ = {
@@ -226,14 +243,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				883A413127EDA92F0002B909 /* PosterViewModel.swift in Sources */,
 				880BCA2027E87AA200C5235A /* LoginViewController.swift in Sources */,
 				880BCA0827E879C500C5235A /* ViewController.swift in Sources */,
 				883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */,
+				883A413327EDB4980002B909 /* PosterDetailViewController.swift in Sources */,
 				880BCA0427E879C500C5235A /* AppDelegate.swift in Sources */,
 				883A412F27EDA4970002B909 /* PosterTableViewCell.swift in Sources */,
 				887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */,
 				887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */,
 				883A412227EDA0020002B909 /* MainViewController.swift in Sources */,
+				883A413627EDB4BB0002B909 /* PosterDetailView.swift in Sources */,
 				883A412527EDA0480002B909 /* PostBoardViewController.swift in Sources */,
 				883A412827EDA0A20002B909 /* MyInfoViewController.swift in Sources */,
 				880BCA2327E87AC300C5235A /* LoginView.swift in Sources */,

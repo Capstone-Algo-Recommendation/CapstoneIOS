@@ -38,35 +38,48 @@ class PosterTableViewCell: UITableViewCell, SetUpView {
         titleLabel.text = "This is title"
         contentLabel.text = "this is content of this poster"
         dateIdLabel.text = "03.24"
-        likeLabel.text = "5likes"
+        likeLabel.text = "👍 5 💬 3"
+        
+        titleLabel.font = .systemFont(ofSize: 20)
+        contentLabel.font = .systemFont(ofSize: 15)
+        dateIdLabel.font = .systemFont(ofSize: 15)
+        likeLabel.font = .systemFont(ofSize: 15)
+        
+        contentLabel.textColor = .gray
+        dateIdLabel.textColor = .gray
+        likeLabel.textColor = .gray
+        
+        likeLabel.textAlignment = .right
+        
+        
     }
     
     func setUpConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(5)
+            make.top.equalToSuperview().offset(8)
             make.height.equalTo(25)
-            make.leading.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-8)
         }
         
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.height.equalTo(15)
-            make.leading.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-8)
         }
         
         dateIdLabel.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(5)
             make.height.equalTo(15)
-            make.leading.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(20)
             make.width.equalTo(100)
         }
         
         likeLabel.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(5)
             make.height.equalTo(15)
-            make.trailing.equalToSuperview().offset(-8)
+            make.trailing.equalToSuperview().offset(-20)
             make.width.equalTo(100)
         }
     }

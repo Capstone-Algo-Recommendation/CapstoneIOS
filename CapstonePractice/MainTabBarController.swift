@@ -23,7 +23,6 @@ class MainTabBarController: UITabBarController {
         posterVC.tabBarItem.title = "게시판"
         myInfoVC.tabBarItem.title = "내 정보"
         
-        
         viewControllers = [mainVC, posterVC, myInfoVC]
     }
     
