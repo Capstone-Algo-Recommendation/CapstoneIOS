@@ -25,6 +25,7 @@ class PosterDetailView: UIView, SetUpView {
     func setUp() {
         addSubview(tableView)
         tableView.register(PosterDetailMainCell.self, forCellReuseIdentifier: PosterDetailMainCell.identifier)
+        tableView.register(PosterDetailCommentCell.self, forCellReuseIdentifier: PosterDetailCommentCell.identeifier)
     }
     
     func setUpConstraints() {
