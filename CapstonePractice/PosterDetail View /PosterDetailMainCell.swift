@@ -44,6 +44,7 @@ final class PosterDetailMainCell: UITableViewCell, SetUpView {
         posterTitleLabel.font = .systemFont(ofSize: 20)
         likeLabel.text = "5 likes"
         likeLabel.font = .systemFont(ofSize: 15)
+        posterContentLabel.text = "aa fakdsmf kmsdakmfkmd skfmk mfklamsdk fmkdsm fkmdkm kdsmfk mdksmf kdm fkmsdak mfkasdm kfm ksdmfkm dskf mkldm dsfkjn djfnsdj nfjndsj nfjn sjdnf jnsdjf njd nfjnd jsfn jsdnf jsdn fjsdn fjsdn fjsdnfjn jsdfnjsdnjf kldsmfklsdm fkmd kfmadsk flm"
         posterContentLabel.numberOfLines = 0
     }
     

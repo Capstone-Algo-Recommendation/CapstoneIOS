@@ -40,12 +40,16 @@ final class PosterDetailCommentCell: UITableViewCell, SetUpView {
         userIdLabel.text = "Yundong"
         createdLabel.text = "2017/01/12"
         contentLablel.text = "안녕하세요"
+        contentLablel.numberOfLines = 0
+        
+        createdLabel.textColor = .gray
+        userIdLabel.textColor = .systemBlue
         
     }
     
     func setUpConstraints() {
         userIdLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(25)
@@ -62,6 +66,7 @@ final class PosterDetailCommentCell: UITableViewCell, SetUpView {
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(15)
+            make.bottom.equalToSuperview().offset(-10)
         }
         
     }
