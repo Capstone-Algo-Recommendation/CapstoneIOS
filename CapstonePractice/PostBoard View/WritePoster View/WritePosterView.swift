@@ -28,18 +28,20 @@ final class WritePosterView: UIView, SetUpView {
         backgroundColor = .white
         addSubview(textView)
         addSubview(someLabel)
+        
+        textView.textColor = .lightGray
+        textView.text = "내용을 입력해주세요."
+        
+        textView.font = .systemFont(ofSize: 15)
     }
     
     func setUpConstraints() {
         textView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-20)
             
-        }
-        
-        someLabel.snp.makeConstraints { make in
-            <#code#>
         }
     }
     
