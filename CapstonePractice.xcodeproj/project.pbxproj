@@ -17,6 +17,13 @@
 		880BCA2327E87AC300C5235A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BCA2227E87AC300C5235A /* LoginView.swift */; };
 		8824E7AA27EED94500125C8C /* WritePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7A927EED94500125C8C /* WritePostViewController.swift */; };
 		8824E7AC27EEDAE900125C8C /* WritePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7AB27EEDAE900125C8C /* WritePosterView.swift */; };
+		8824E7AF27EEE61C00125C8C /* SolvedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7AE27EEE61C00125C8C /* SolvedData.swift */; };
+		8824E7B127EEE68700125C8C /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7B027EEE68700125C8C /* MyInfoView.swift */; };
+		8824E7B327EEE70100125C8C /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7B227EEE70100125C8C /* ApiService.swift */; };
+		8824E7B627EEE71C00125C8C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8824E7B527EEE71C00125C8C /* Alamofire */; };
+		8824E7B827EEE9A200125C8C /* SolvedProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7B727EEE9A200125C8C /* SolvedProblemViewController.swift */; };
+		8824E7BC27EEE9D200125C8C /* SolvedProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7BB27EEE9D200125C8C /* SolvedProblemView.swift */; };
+		8824E7BE27EEEA3000125C8C /* ProblemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7BD27EEEA3000125C8C /* ProblemTableViewCell.swift */; };
 		883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A411F27ED9FB60002B909 /* MainTabBarController.swift */; };
 		883A412227EDA0020002B909 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412127EDA0020002B909 /* MainViewController.swift */; };
 		883A412527EDA0480002B909 /* PostBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412427EDA0480002B909 /* PostBoardViewController.swift */; };
@@ -49,6 +56,12 @@
 		880BCA2227E87AC300C5235A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8824E7A927EED94500125C8C /* WritePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostViewController.swift; sourceTree = "<group>"; };
 		8824E7AB27EEDAE900125C8C /* WritePosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePosterView.swift; sourceTree = "<group>"; };
+		8824E7AE27EEE61C00125C8C /* SolvedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvedData.swift; sourceTree = "<group>"; };
+		8824E7B027EEE68700125C8C /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
+		8824E7B227EEE70100125C8C /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		8824E7B727EEE9A200125C8C /* SolvedProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvedProblemViewController.swift; sourceTree = "<group>"; };
+		8824E7BB27EEE9D200125C8C /* SolvedProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvedProblemView.swift; sourceTree = "<group>"; };
+		8824E7BD27EEEA3000125C8C /* ProblemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTableViewCell.swift; sourceTree = "<group>"; };
 		883A411F27ED9FB60002B909 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		883A412127EDA0020002B909 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		883A412427EDA0480002B909 /* PostBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBoardViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8824E7B627EEE71C00125C8C /* Alamofire in Frameworks */,
 				883A413F27EDC9370002B909 /* RxCocoa in Frameworks */,
 				883A414127EDC9370002B909 /* RxSwift in Frameworks */,
 				883A414427EDC9D30002B909 /* RxDataSources in Frameworks */,
@@ -114,6 +128,8 @@
 				883A412927EDA0A60002B909 /* MyInfo View */,
 				883A412C27EDA2980002B909 /* UIView + Protocols.swift */,
 				883A413427EDB4AB0002B909 /* PosterDetail View  */,
+				8824E7AE27EEE61C00125C8C /* SolvedData.swift */,
+				8824E7B227EEE70100125C8C /* ApiService.swift */,
 			);
 			path = CapstonePractice;
 			sourceTree = "<group>";
@@ -134,6 +150,15 @@
 				8824E7AB27EEDAE900125C8C /* WritePosterView.swift */,
 			);
 			path = "WritePoster View";
+			sourceTree = "<group>";
+		};
+		8824E7B927EEE9BA00125C8C /* SolvedProblem View */ = {
+			isa = PBXGroup;
+			children = (
+				8824E7B727EEE9A200125C8C /* SolvedProblemViewController.swift */,
+				8824E7BB27EEE9D200125C8C /* SolvedProblemView.swift */,
+			);
+			path = "SolvedProblem View";
 			sourceTree = "<group>";
 		};
 		883A412327EDA0280002B909 /* Main View */ = {
@@ -160,6 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				883A412727EDA0A20002B909 /* MyInfoViewController.swift */,
+				8824E7B027EEE68700125C8C /* MyInfoView.swift */,
+				8824E7B927EEE9BA00125C8C /* SolvedProblem View */,
+				8824E7BD27EEEA3000125C8C /* ProblemTableViewCell.swift */,
 			);
 			path = "MyInfo View";
 			sourceTree = "<group>";
@@ -206,6 +234,7 @@
 				883A413E27EDC9370002B909 /* RxCocoa */,
 				883A414027EDC9370002B909 /* RxSwift */,
 				883A414327EDC9D30002B909 /* RxDataSources */,
+				8824E7B527EEE71C00125C8C /* Alamofire */,
 			);
 			productName = CapstonePractice;
 			productReference = 880BCA0027E879C500C5235A /* CapstonePractice.app */;
@@ -239,6 +268,7 @@
 				880BCA1727E879EF00C5235A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				883A413D27EDC9370002B909 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				883A414227EDC9D30002B909 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				8824E7B427EEE71C00125C8C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 880BCA0127E879C500C5235A /* Products */;
 			projectDirPath = "";
@@ -273,18 +303,24 @@
 				883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */,
 				883A413327EDB4980002B909 /* PosterDetailViewController.swift in Sources */,
 				880BCA0427E879C500C5235A /* AppDelegate.swift in Sources */,
+				8824E7B827EEE9A200125C8C /* SolvedProblemViewController.swift in Sources */,
 				883A412F27EDA4970002B909 /* PosterTableViewCell.swift in Sources */,
 				883A413C27EDC5E60002B909 /* PosterDetailCommentCell.swift in Sources */,
 				887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */,
 				887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */,
 				8824E7AC27EEDAE900125C8C /* WritePosterView.swift in Sources */,
+				8824E7BE27EEEA3000125C8C /* ProblemTableViewCell.swift in Sources */,
+				8824E7AF27EEE61C00125C8C /* SolvedData.swift in Sources */,
 				883A412227EDA0020002B909 /* MainViewController.swift in Sources */,
 				883A413827EDB62D0002B909 /* PosterDetailMainCell.swift in Sources */,
 				883A413627EDB4BB0002B909 /* PosterDetailView.swift in Sources */,
+				8824E7B327EEE70100125C8C /* ApiService.swift in Sources */,
+				8824E7B127EEE68700125C8C /* MyInfoView.swift in Sources */,
 				883A413A27EDBBA60002B909 /* PosterDetailViewModel.swift in Sources */,
 				883A412527EDA0480002B909 /* PostBoardViewController.swift in Sources */,
 				883A412827EDA0A20002B909 /* MyInfoViewController.swift in Sources */,
 				880BCA2327E87AC300C5235A /* LoginView.swift in Sources */,
+				8824E7BC27EEE9D200125C8C /* SolvedProblemView.swift in Sources */,
 				880BCA0627E879C500C5235A /* SceneDelegate.swift in Sources */,
 				883A412D27EDA2980002B909 /* UIView + Protocols.swift in Sources */,
 				883A412B27EDA24B0002B909 /* PosterView.swift in Sources */,
@@ -507,6 +543,14 @@
 				kind = branch;
 			};
 		};
+		8824E7B427EEE71C00125C8C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		883A413D27EDC9370002B909 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -530,6 +574,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 880BCA1727E879EF00C5235A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		8824E7B527EEE71C00125C8C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8824E7B427EEE71C00125C8C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		883A413E27EDC9370002B909 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;

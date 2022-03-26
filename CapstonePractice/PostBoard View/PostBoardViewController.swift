@@ -58,7 +58,6 @@ extension PostBoardViewController {
             self.present(vc, animated: true, completion: nil)
         }
     
-        
         let cancelButton = UIAlertAction(title: "취소", style: .cancel)
     
         alertVC.addAction(fromGallaryButton)
