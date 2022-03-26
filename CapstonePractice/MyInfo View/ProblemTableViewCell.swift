@@ -31,12 +31,37 @@ final class ProblemTableViewCell: UITableViewCell, SetUpView {
         addSubview(titleLabel)
         addSubview(numberLabel)
         addSubview(keyLabel)
+        
+        keyLabel.textAlignment = .right
+        
+        numberLabel.font = .systemFont(ofSize: 16)
+        titleLabel.font = .boldSystemFont(ofSize: 20)
+        
+        numberLabel.textColor = .gray
+        
     }
     
     func setUpConstraints() {
         
+        numberLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(20)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(numberLabel.snp.bottom).offset(5)
+            make.leading.equalToSuperview().offset(10)
+            make.height.equalTo(30)
+            make.trailing.equalToSuperview().offset(-150)
+        }
+        
+        keyLabel.snp.makeConstraints { make in
+            make.top.equalTo(numberLabel.snp.bottom).offset(5)
+            make.centerY.equalTo(titleLabel)
+            make.trailing.equalToSuperview().offset(-5)
+            make.width.equalTo(150)
         }
     }
     

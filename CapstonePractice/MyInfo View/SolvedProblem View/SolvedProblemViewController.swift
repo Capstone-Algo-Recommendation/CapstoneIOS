@@ -20,14 +20,14 @@ class SolvedProblemViewController: UIViewController {
     }
 
     @objc func moreButtonTapped() {
-        print(items)
-        
         items
         .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier) as? ProblemTableViewCell else { return UITableViewCell()
-                
             }
+                    
             cell.titleLabel.text = element.titleKo
+            cell.numberLabel.text = "문제 번호: \(element.problemID)"
+            cell.keyLabel.text = element.tags[0].key
             return cell
         }.disposed(by: disposeBag)
     }
@@ -35,16 +35,23 @@ class SolvedProblemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "hl"
+        title = "성공한 문제"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))
         
         ApiService.getUserSolvedProblems { problems in
             self.items = Observable.just(problems.items)
         }
         
-      
-        
-        
+        mainView.tableView
+            .rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
     
+}
+
+
+extension SolvedProblemViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
 }
