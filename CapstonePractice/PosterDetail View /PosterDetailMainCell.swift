@@ -74,7 +74,7 @@ final class PosterDetailMainCell: UITableViewCell, SetUpView {
             make.top.equalTo(posterTitleLabel.snp.bottom).offset(5)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height
+            
         }
         
         likeLabel.snp.makeConstraints { make in

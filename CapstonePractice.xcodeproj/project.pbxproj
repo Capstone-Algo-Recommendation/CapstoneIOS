@@ -15,6 +15,8 @@
 		880BCA1927E879EF00C5235A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 880BCA1827E879EF00C5235A /* SnapKit */; };
 		880BCA2027E87AA200C5235A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BCA1F27E87AA100C5235A /* LoginViewController.swift */; };
 		880BCA2327E87AC300C5235A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BCA2227E87AC300C5235A /* LoginView.swift */; };
+		8824E7AA27EED94500125C8C /* WritePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7A927EED94500125C8C /* WritePostViewController.swift */; };
+		8824E7AC27EEDAE900125C8C /* WritePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7AB27EEDAE900125C8C /* WritePosterView.swift */; };
 		883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A411F27ED9FB60002B909 /* MainTabBarController.swift */; };
 		883A412227EDA0020002B909 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412127EDA0020002B909 /* MainViewController.swift */; };
 		883A412527EDA0480002B909 /* PostBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412427EDA0480002B909 /* PostBoardViewController.swift */; };
@@ -45,6 +47,8 @@
 		880BCA1127E879C800C5235A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		880BCA1F27E87AA100C5235A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		880BCA2227E87AC300C5235A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8824E7A927EED94500125C8C /* WritePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostViewController.swift; sourceTree = "<group>"; };
+		8824E7AB27EEDAE900125C8C /* WritePosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePosterView.swift; sourceTree = "<group>"; };
 		883A411F27ED9FB60002B909 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		883A412127EDA0020002B909 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		883A412427EDA0480002B909 /* PostBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBoardViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +127,15 @@
 			path = "Login View";
 			sourceTree = "<group>";
 		};
+		8824E7AD27EEDDB400125C8C /* WritePoster View */ = {
+			isa = PBXGroup;
+			children = (
+				8824E7A927EED94500125C8C /* WritePostViewController.swift */,
+				8824E7AB27EEDAE900125C8C /* WritePosterView.swift */,
+			);
+			path = "WritePoster View";
+			sourceTree = "<group>";
+		};
 		883A412327EDA0280002B909 /* Main View */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +151,7 @@
 				883A412A27EDA24B0002B909 /* PosterView.swift */,
 				883A412E27EDA4970002B909 /* PosterTableViewCell.swift */,
 				883A413027EDA92F0002B909 /* PosterViewModel.swift */,
+				8824E7AD27EEDDB400125C8C /* WritePoster View */,
 			);
 			path = "PostBoard View";
 			sourceTree = "<group>";
@@ -255,6 +269,7 @@
 				883A413127EDA92F0002B909 /* PosterViewModel.swift in Sources */,
 				880BCA2027E87AA200C5235A /* LoginViewController.swift in Sources */,
 				880BCA0827E879C500C5235A /* ViewController.swift in Sources */,
+				8824E7AA27EED94500125C8C /* WritePostViewController.swift in Sources */,
 				883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */,
 				883A413327EDB4980002B909 /* PosterDetailViewController.swift in Sources */,
 				880BCA0427E879C500C5235A /* AppDelegate.swift in Sources */,
@@ -262,6 +277,7 @@
 				883A413C27EDC5E60002B909 /* PosterDetailCommentCell.swift in Sources */,
 				887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */,
 				887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */,
+				8824E7AC27EEDAE900125C8C /* WritePosterView.swift in Sources */,
 				883A412227EDA0020002B909 /* MainViewController.swift in Sources */,
 				883A413827EDB62D0002B909 /* PosterDetailMainCell.swift in Sources */,
 				883A413627EDB4BB0002B909 /* PosterDetailView.swift in Sources */,
