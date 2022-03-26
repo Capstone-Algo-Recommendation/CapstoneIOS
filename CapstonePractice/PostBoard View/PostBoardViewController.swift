@@ -19,6 +19,36 @@ class PostBoardViewController: UIViewController {
         self.view = mainView
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "게시판"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))
+        
+        viewModel.items
+        .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterTableViewCell.identifier) as? PosterTableViewCell else { return UITableViewCell()
+                
+            }
+            
+            cell.titleLabel.text = element.title
+            cell.contentLabel.text = element.content
+            cell.dateIdLabel.text = element.writtenDate
+             
+            return cell
+        }
+        .disposed(by: disposeBag)
+        
+        mainView.tableView
+            .rx.setDelegate(self)
+            .disposed(by: disposeBag)
+    }
+    
+}
+
+// Add Targets
+extension PostBoardViewController {
     @objc func moreButtonTapped() {
         let alertVC = UIAlertController(title: "", message: "게시판 메뉴", preferredStyle: .actionSheet)
         
@@ -37,40 +67,6 @@ class PostBoardViewController: UIViewController {
         present(alertVC, animated: true, completion: nil)
         
     }
-    
-    
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))
-        
-        
-        
-       
-
-        viewModel.items
-        .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterTableViewCell.identifier) as? PosterTableViewCell else { return UITableViewCell()
-                
-            }
-            
-            cell.titleLabel.text = element.title
-            cell.contentLabel.text = element.content
-            cell.dateIdLabel.text = element.writtenDate
-             
-            return cell
-        }
-        .disposed(by: disposeBag)
-        
-        mainView.tableView
-            .rx.setDelegate(self)
-            .disposed(by: disposeBag)
-        
-        
-    }
-    
 }
 
 extension PostBoardViewController: UITableViewDelegate {
