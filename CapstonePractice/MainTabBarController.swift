@@ -14,7 +14,7 @@ class MainTabBarController: UITabBarController {
         
         let mainVC = MainViewController()
         let posterVC = UINavigationController(rootViewController: PostBoardViewController())
-        let myInfoVC = MyInfoViewController()
+        let myInfoVC = UINavigationController(rootViewController: MyInfoViewController())
         
         view.backgroundColor = .white
         

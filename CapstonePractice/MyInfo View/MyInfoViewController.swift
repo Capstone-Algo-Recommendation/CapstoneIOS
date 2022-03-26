@@ -21,23 +21,32 @@ class MyInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let items = Observable.just(["푼 문제", "실패한 문제"])
+        title = "내 정보"
+        
+        let items = Observable.just(["성공한 문제", "실패한 문제"])
         
         
         items
         .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterTableViewCell.identifier) as? PosterTableViewCell else { return UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MyInfoTableViewCell.identifier) as? MyInfoTableViewCell else { return UITableViewCell()
                 
             }
-            cell.titleLabel.text = element
+            cell.menuTitle.text = element
+            
+            if row == 0 {
+                cell.menuImage.image = UIImage(named: "checked")
+            }else if row == 1 {
+                cell.menuImage.image = UIImage(named: "cancel")
+            }
+            
+            
             return cell
         }.disposed(by: disposeBag)
         
         mainView.tableView
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
-        
-//        ApiService.getUserSolvedProblems()
+
     }
     
 }
@@ -46,9 +55,10 @@ class MyInfoViewController: UIViewController {
 extension MyInfoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = UINavigationController(rootViewController: SolvedProblemViewController())
-
-        present(vc, animated: true, completion: nil)
-        
+        self.navigationController?.pushViewController(SolvedProblemViewController(), animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        55
     }
 }

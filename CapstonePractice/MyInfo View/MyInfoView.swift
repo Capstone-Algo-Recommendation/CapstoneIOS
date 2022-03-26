@@ -26,7 +26,7 @@ class MyInfoView: UIView, SetUpView {
     func setUp() {
         backgroundColor = .systemMint
         addSubview(tableView)
-        tableView.register(PosterTableViewCell.self, forCellReuseIdentifier: PosterTableViewCell.identifier)
+        tableView.register(MyInfoTableViewCell.self, forCellReuseIdentifier: MyInfoTableViewCell.identifier)
     }
     
     func setUpConstraints() {

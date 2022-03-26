@@ -24,6 +24,7 @@
 		8824E7B827EEE9A200125C8C /* SolvedProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7B727EEE9A200125C8C /* SolvedProblemViewController.swift */; };
 		8824E7BC27EEE9D200125C8C /* SolvedProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7BB27EEE9D200125C8C /* SolvedProblemView.swift */; };
 		8824E7BE27EEEA3000125C8C /* ProblemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7BD27EEEA3000125C8C /* ProblemTableViewCell.swift */; };
+		8824E7C027EEFC4100125C8C /* MyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7BF27EEFC4100125C8C /* MyInfoTableViewCell.swift */; };
 		883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A411F27ED9FB60002B909 /* MainTabBarController.swift */; };
 		883A412227EDA0020002B909 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412127EDA0020002B909 /* MainViewController.swift */; };
 		883A412527EDA0480002B909 /* PostBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412427EDA0480002B909 /* PostBoardViewController.swift */; };
@@ -62,6 +63,7 @@
 		8824E7B727EEE9A200125C8C /* SolvedProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvedProblemViewController.swift; sourceTree = "<group>"; };
 		8824E7BB27EEE9D200125C8C /* SolvedProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvedProblemView.swift; sourceTree = "<group>"; };
 		8824E7BD27EEEA3000125C8C /* ProblemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTableViewCell.swift; sourceTree = "<group>"; };
+		8824E7BF27EEFC4100125C8C /* MyInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoTableViewCell.swift; sourceTree = "<group>"; };
 		883A411F27ED9FB60002B909 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		883A412127EDA0020002B909 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		883A412427EDA0480002B909 /* PostBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBoardViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				8824E7B027EEE68700125C8C /* MyInfoView.swift */,
 				8824E7B927EEE9BA00125C8C /* SolvedProblem View */,
 				8824E7BD27EEEA3000125C8C /* ProblemTableViewCell.swift */,
+				8824E7BF27EEFC4100125C8C /* MyInfoTableViewCell.swift */,
 			);
 			path = "MyInfo View";
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				880BCA0827E879C500C5235A /* ViewController.swift in Sources */,
 				8824E7AA27EED94500125C8C /* WritePostViewController.swift in Sources */,
 				883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */,
+				8824E7C027EEFC4100125C8C /* MyInfoTableViewCell.swift in Sources */,
 				883A413327EDB4980002B909 /* PosterDetailViewController.swift in Sources */,
 				880BCA0427E879C500C5235A /* AppDelegate.swift in Sources */,
 				8824E7B827EEE9A200125C8C /* SolvedProblemViewController.swift in Sources */,
