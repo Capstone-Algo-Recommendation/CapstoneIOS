@@ -45,7 +45,22 @@ class SolvedProblemViewController: UIViewController {
         mainView.tableView
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
+        
+        mainView.tableView.rx.modelSelected(Item.self)
+            .subscribe { item in
+                
+                
+                let vc = SpecificProblemViewController()
+                vc.problemTitle = "\(item.element!.problemID). \(item.element!.titleKo)"
+                vc.problemInfo = item.element
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }.disposed(by: disposeBag)
+
     }
+    
+    
+    
     
 }
 
