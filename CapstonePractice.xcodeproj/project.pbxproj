@@ -46,6 +46,7 @@
 		887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085F127E8AAF400B5BC82 /* RegisterView.swift */; };
 		88C835FF27F1CA3D002211CA /* SpecificProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C835FE27F1CA3C002211CA /* SpecificProblemViewController.swift */; };
 		88C8360227F1CA6B002211CA /* SpecificProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C8360127F1CA6B002211CA /* SpecificProblemView.swift */; };
+		88C8360427F1D96C002211CA /* WrongProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C8360327F1D96C002211CA /* WrongProblemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		887085F127E8AAF400B5BC82 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		88C835FE27F1CA3C002211CA /* SpecificProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProblemViewController.swift; sourceTree = "<group>"; };
 		88C8360127F1CA6B002211CA /* SpecificProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProblemView.swift; sourceTree = "<group>"; };
+		88C8360327F1D96C002211CA /* WrongProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongProblemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		880BCA0227E879C500C5235A /* CapstonePractice */ = {
 			isa = PBXGroup;
 			children = (
+				8824E7B227EEE70100125C8C /* ApiService.swift */,
 				880BCA0327E879C500C5235A /* AppDelegate.swift */,
 				880BCA0527E879C500C5235A /* SceneDelegate.swift */,
 				880BCA0727E879C500C5235A /* ViewController.swift */,
@@ -137,7 +140,6 @@
 				883A412C27EDA2980002B909 /* UIView + Protocols.swift */,
 				883A413427EDB4AB0002B909 /* PosterDetail View  */,
 				8824E7AE27EEE61C00125C8C /* SolvedData.swift */,
-				8824E7B227EEE70100125C8C /* ApiService.swift */,
 				8824E7C127EF021500125C8C /* BackJoonProblemViewController.swift */,
 				88C8360027F1CA55002211CA /* SpecificProblem View */,
 			);
@@ -199,6 +201,7 @@
 				883A412727EDA0A20002B909 /* MyInfoViewController.swift */,
 				8824E7B027EEE68700125C8C /* MyInfoView.swift */,
 				8824E7B927EEE9BA00125C8C /* SolvedProblem View */,
+				88C8360327F1D96C002211CA /* WrongProblemViewController.swift */,
 			);
 			path = "MyInfo View";
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				8824E7B827EEE9A200125C8C /* SolvedProblemViewController.swift in Sources */,
 				883A412F27EDA4970002B909 /* PosterTableViewCell.swift in Sources */,
 				883A413C27EDC5E60002B909 /* PosterDetailCommentCell.swift in Sources */,
+				88C8360427F1D96C002211CA /* WrongProblemViewController.swift in Sources */,
 				887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */,
 				887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */,
 				8824E7AC27EEDAE900125C8C /* WritePosterView.swift in Sources */,

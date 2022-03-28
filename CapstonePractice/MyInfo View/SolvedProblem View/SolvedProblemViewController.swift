@@ -38,7 +38,7 @@ class SolvedProblemViewController: UIViewController {
         title = "성공한 문제"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))
         
-        ApiService.getUserSolvedProblems { problems in
+        ApiService.getUserTriedByProblems { problems in
             self.items = Observable.just(problems.items)
         }
         
