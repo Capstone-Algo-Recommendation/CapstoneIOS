@@ -34,7 +34,6 @@ class RegisterView: UIView {
         super.init(frame: frame)
         setUp()
         setUpConstraints()
-        
     }
     
     required init?(coder: NSCoder) {

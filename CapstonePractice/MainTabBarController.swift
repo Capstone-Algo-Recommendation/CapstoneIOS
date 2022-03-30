@@ -12,7 +12,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mainVC = MainViewController()
+        let mainVC = UINavigationController(rootViewController: MainViewController())
         let posterVC = UINavigationController(rootViewController: PostBoardViewController())
         let myInfoVC = UINavigationController(rootViewController: MyInfoViewController())
         

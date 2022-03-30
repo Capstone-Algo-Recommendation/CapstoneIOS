@@ -26,6 +26,7 @@ class PostBoardViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))
         
+        
         viewModel.items
         .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterTableViewCell.identifier) as? PosterTableViewCell else { return UITableViewCell()
