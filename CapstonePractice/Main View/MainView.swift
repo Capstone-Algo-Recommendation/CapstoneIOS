@@ -9,45 +9,46 @@ import UIKit
 import SnapKit
 
 class CollectionViewLeftAlignFlowLayout: UICollectionViewFlowLayout {
-    
-   let cellSpacing: CGFloat = 8
-
-   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-       self.minimumLineSpacing = 8
-       self.sectionInset = UIEdgeInsets(top: 0, left: 16.0, bottom: 0.0, right: 30)
-       
-       let attributes = super.layoutAttributesForElements(in: rect)
-
-       var leftMargin = sectionInset.left
-       var maxY: CGFloat = -1.0
-       attributes?.forEach { layoutAttribute in
-           if layoutAttribute.frame.origin.y >= maxY {
-               leftMargin = sectionInset.left
-       }
-           layoutAttribute.frame.origin.x = leftMargin
-           leftMargin += layoutAttribute.frame.width + cellSpacing
-           maxY = max(layoutAttribute.frame.maxY, maxY)
-       }
-       return attributes
-   }
+    let cellSpacing: CGFloat = 3
+ 
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        self.minimumLineSpacing = 3.0
+        self.sectionInset = UIEdgeInsets(top: 12.0, left: 16.0, bottom: 0.0, right: 16.0)
+        let attributes = super.layoutAttributesForElements(in: rect)
+ 
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                leftMargin = sectionInset.left
+            }
+            layoutAttribute.frame.origin.x = leftMargin
+            leftMargin += layoutAttribute.frame.width + cellSpacing
+            maxY = max(layoutAttribute.frame.maxY, maxY)
+        }
+        return attributes
+    }
 }
+
+
 
 class MainView: UIView, SetUpView {
     
     let recommendProblem = UILabel()
     
     let recommendCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        
+        let layout = CollectionViewLeftAlignFlowLayout()
+//        let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        layout.estimatedItemSize = .zero
         
         layout.minimumInteritemSpacing = 8
         layout.minimumLineSpacing = 8
         layout.scrollDirection = .horizontal
+        
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
-        
         return cv
     }()
     

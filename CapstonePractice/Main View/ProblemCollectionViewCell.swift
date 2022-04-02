@@ -27,29 +27,39 @@ final class ProblemCollectionViewCell: UICollectionViewCell, SetUpView {
     
     
     func setUp() {
-        addSubview(problemNumber)
-        addSubview(problemTitle)
+        contentView.addSubview(problemTitle)
+        contentView.addSubview(problemNumber)
+//        addSubview(problemNumber)
+//        addSubview(problemTitle)
         
         problemNumber.text = "10001"
         problemTitle.text = "hello world tjiss "
-        problemTitle.numberOfLines = 0
+//        problemTitle.numberOfLines = 0
     }
     
     func setUpConstraints() {
         
-        problemNumber.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(4)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(50)
-            make.height.equalTo(20)
-        }
+
+//        problemNumber.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(4)
+//            make.centerX.equalToSuperview()
+//            make.width.equalTo(50)
+//            make.height.equalTo(20)
+//        }
         
         problemTitle.snp.makeConstraints { make in
-            make.top.equalTo(problemNumber.snp.bottom).offset(4)
-            make.height.equalTo(22).priority(500)
-            make.bottom.equalToSuperview().offset(-5)
-            make.leading.equalToSuperview().offset(8)
-            make.trailing.equalToSuperview().offset(-8)
+//            make.top.equalTo(problemNumber.snp.bottom).offset(4)
+////            make.height.equalTo(22).priority(500)
+//            make.bottom.equalToSuperview().offset(-5)
+//            make.leading.equalToSuperview().offset(8)
+//            make.trailing.equalToSuperview().offset(-8)
+            make.top.equalToSuperview().offset(4)
+            
+//            make.width.equalTo(50)
+//            make.height.equalTo(20)
+            make.leading.equalToSuperview().offset(4)
+            make.trailing.equalToSuperview().offset(-4)
+            make.bottom.equalToSuperview().offset(-4)
         }
         
     }
