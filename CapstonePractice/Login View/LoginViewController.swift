@@ -8,11 +8,15 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import FirebaseCore
+import GoogleSignIn
+import Firebase
 
 final class LoginViewController: UIViewController {
     
     let mainView = LoginView()
     let disposeBag = DisposeBag()
+    let signInConfig = GIDConfiguration.init(clientID: "591917256191-dci0ftkrmar7n2ja4gsohuhae6l4ng7c.apps.googleusercontent.com")
     
     override func loadView() {
         super.loadView()
@@ -33,12 +37,15 @@ final class LoginViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         
-        mainView.registerButton
-            .rx.tap
-            .bind {
-                let vc = RegisterViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
-            }.disposed(by: disposeBag)
+//        mainView.registerButton
+//            .rx.tap
+//            .bind {
+//                let vc = RegisterViewController()
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }.dispoxsed(by: disposeBag)
+        
+        
+        mainView.registerButton.addTarget(self, action: #selector(goolgeLogintTapped), for: .touchUpInside)
     
         mainView.idTextField
             .rx.value
@@ -59,7 +66,30 @@ final class LoginViewController: UIViewController {
                 print("pass \(text)")
             }.disposed(by: disposeBag)
         
+        
+        
     }
     
     
+    
+    @objc func goolgeLogintTapped() {
+        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+            guard error == nil else { return }
+            guard let user = user else { return }
+            
+            user.authentication.do { authentication, error in
+                guard error == nil else { return }
+                guard let authentication = authentication else { return }
+
+                let idToken = authentication.idToken
+                
+                print(idToken)
+                
+                // Send ID token to backend.
+                // TODO: LogIn Succeeded. Need Transition.
+                // If sign in succeeded, display the app's main content View.
+                
+                }
+          }
+    }
 }

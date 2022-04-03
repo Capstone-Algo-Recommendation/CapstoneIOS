@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import TextFieldEffects
+
 import SnapKit
 
 class RegisterView: UIView {

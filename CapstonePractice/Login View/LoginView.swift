@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseCore
+import GoogleSignIn
+import Firebase
 import SnapKit
 
 final class LoginView: UIView {
@@ -21,7 +24,7 @@ final class LoginView: UIView {
     
     
     let startButton = UIButton()
-    let registerButton = UIButton()
+    let registerButton = GIDSignInButton()
     
     
     override init(frame: CGRect) {
@@ -60,7 +63,7 @@ final class LoginView: UIView {
         passWordTextField.placeholder = "  비밀번호를 입력해주세요"
         
         startButton.setTitle("시작하기", for: .normal)
-        registerButton.setTitle("회원 가입", for: .normal)
+//        registerButton.setTitle("회원 가입", for: .normal)
         
         idTextField.layer.borderColor = UIColor.lightGray.cgColor
         idTextField.layer.borderWidth = 1
@@ -76,7 +79,7 @@ final class LoginView: UIView {
         startButton.backgroundColor = .systemOrange
         registerButton.backgroundColor = .lightGray
         startButton.setTitleColor(.white, for: .normal)
-        registerButton.setTitleColor(.white, for: .normal)
+//        registerButton.setTitleColor(.white, for: .normal)
     }
     
     private func setUpConstraints() {
