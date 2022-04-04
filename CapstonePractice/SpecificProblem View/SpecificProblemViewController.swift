@@ -69,6 +69,47 @@ class SpecificProblemViewController: UIViewController {
                     self.mainView.fixTextView.textColor = UIColor.gray
                 }
             }.disposed(by: disposeBag)
+        
+        
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(problemStatusButtonClicked))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: ProblemSolvedStatus.notTried.rawValue, style: .plain, target: self, action: #selector(problemStatusButtonClicked))
+        
+    }
+    
+    @objc func problemStatusButtonClicked() {
+        
+        
+        let alertVC = UIAlertController(title: "영수증으로 내역을 첨부하시겠습니까?", message: "", preferredStyle: .actionSheet)
+        
+        let solvedButton = UIAlertAction(title: "성공", style: .default, handler: { _ in
+            self.navigationItem.rightBarButtonItem?.title = "성공"
+        })
+        let failedButton = UIAlertAction(title: "실패", style: .default, handler: { _ in
+            self.navigationItem.rightBarButtonItem?.title = "실패"
+        })
+        let notTriedButton = UIAlertAction(title: "시도중", style: .default, handler: { _ in
+            self.navigationItem.rightBarButtonItem?.title = "시도중"
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alertVC.addAction(solvedButton)
+        alertVC.addAction(failedButton)
+        alertVC.addAction(notTriedButton)
+        alertVC.addAction(cancelButton)
+        
+        present(alertVC, animated: true, completion: nil)
+   
     }
     
 }
+
+enum ProblemSolvedStatus: String {
+    
+    case solved = "성공"
+    case failed = "실패"
+    case notTried = "시도해보세요"
+}
+
