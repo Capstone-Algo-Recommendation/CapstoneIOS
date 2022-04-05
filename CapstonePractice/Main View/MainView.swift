@@ -8,39 +8,13 @@
 import UIKit
 import SnapKit
 
-class CollectionViewLeftAlignFlowLayout: UICollectionViewFlowLayout {
-    let cellSpacing: CGFloat = 3
- 
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        self.minimumLineSpacing = 3.0
-        self.sectionInset = UIEdgeInsets(top: 12.0, left: 16.0, bottom: 0.0, right: 16.0)
-        let attributes = super.layoutAttributesForElements(in: rect)
- 
-        var leftMargin = sectionInset.left
-        var maxY: CGFloat = -1.0
-        attributes?.forEach { layoutAttribute in
-            if layoutAttribute.frame.origin.y >= maxY {
-                leftMargin = sectionInset.left
-            }
-            layoutAttribute.frame.origin.x = leftMargin
-            leftMargin += layoutAttribute.frame.width + cellSpacing
-            maxY = max(layoutAttribute.frame.maxY, maxY)
-        }
-        return attributes
-    }
-}
-
-
-
 class MainView: UIView, SetUpView {
     
     let recommendProblem = UILabel()
     
     let recommendCollectionView: UICollectionView = {
         
-        let layout = CollectionViewLeftAlignFlowLayout()
-//        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        let layout = UICollectionViewFlowLayout()
         
         layout.minimumInteritemSpacing = 8
         layout.minimumLineSpacing = 8
@@ -49,6 +23,7 @@ class MainView: UIView, SetUpView {
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
+        cv.backgroundColor = .white
         return cv
     }()
     
@@ -62,6 +37,7 @@ class MainView: UIView, SetUpView {
 
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
+        cv.backgroundColor = .white
 
         return cv
     }()
@@ -78,6 +54,8 @@ class MainView: UIView, SetUpView {
         super.init(coder: coder)
     }
     
+    
+    
     func setUp() {
         backgroundColor = .white
         
@@ -86,6 +64,9 @@ class MainView: UIView, SetUpView {
         
         addSubview(tryingProblem)
         addSubview(tryingCollectionView)
+        
+        recommendProblem.textColor = UIColor(red: 67/255, green: 89/255, blue: 106/255, alpha: 1)
+        tryingProblem.textColor = UIColor(red: 182/255, green: 78/255, blue: 61/255, alpha: 1)
         
         recommendProblem.text = "추천 문제"
         tryingProblem.text = "시도중인 문제"
