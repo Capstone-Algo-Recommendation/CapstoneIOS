@@ -12,6 +12,9 @@ class PosterDetailView: UIView, SetUpView {
     
     let tableView = UITableView()
     
+    let commentSuperView = UIView()
+    let commentTextView = UITextView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -24,13 +27,39 @@ class PosterDetailView: UIView, SetUpView {
     
     func setUp() {
         addSubview(tableView)
+        
+        commentSuperView.addSubview(commentTextView)
+        addSubview(commentSuperView)
+        
+        commentTextView.layer.cornerRadius = 20
+        
+        commentSuperView.backgroundColor = .white
+        
+        commentTextView.backgroundColor = .gray
         tableView.register(PosterDetailMainCell.self, forCellReuseIdentifier: PosterDetailMainCell.identifier)
         tableView.register(PosterDetailCommentCell.self, forCellReuseIdentifier: PosterDetailCommentCell.identeifier)
     }
     
     func setUpConstraints() {
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(commentSuperView.snp.top)
+        }
+        
+        commentTextView.snp.makeConstraints { make in
+            make.trailing.equalTo(commentSuperView.snp.trailing).offset(-25)
+            make.leading.equalTo(commentSuperView.snp.leading).offset(25)
+            make.top.equalTo(commentSuperView.snp.top).offset(3)
+            make.height.equalTo(40)
+        }
+        
+        commentSuperView.snp.makeConstraints { make in
+            make.height.equalTo(65)
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 }

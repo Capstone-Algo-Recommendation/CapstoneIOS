@@ -26,6 +26,8 @@ class PosterDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.tabBar.isHidden = true
     
 //        viewModel.items
 //        .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in

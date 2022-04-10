@@ -83,7 +83,7 @@ final class LoginViewController: UIViewController {
 
                 let idToken = authentication.idToken
                 
-//                print(idToken)
+                print(idToken)
                 
                 // Send ID token to backend.
                 // TODO: LogIn Succeeded. Need Transition.
