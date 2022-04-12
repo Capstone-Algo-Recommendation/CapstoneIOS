@@ -58,16 +58,13 @@ final class LoginViewController: UIViewController {
             .bind { text in
                 print(text, " from end")
             }.disposed(by: disposeBag)
-        
-        
+                
         mainView.passWordTextField
             .rx.value
             .subscribe { text in
                 print("pass \(text)")
             }.disposed(by: disposeBag)
-        
-        
-        
+
     }
     
     
