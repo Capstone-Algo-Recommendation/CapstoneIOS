@@ -30,7 +30,7 @@ final class SpecificProblemView: UIView, SetUpView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -97,7 +97,7 @@ final class SpecificProblemView: UIView, SetUpView {
         
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         
         rankImage.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(15)

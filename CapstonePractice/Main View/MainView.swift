@@ -47,7 +47,7 @@ class MainView: UIView, SetUpView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -75,7 +75,7 @@ class MainView: UIView, SetUpView {
         tryingProblem.font = .systemFont(ofSize: 23)
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         
         recommendProblem.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(8)

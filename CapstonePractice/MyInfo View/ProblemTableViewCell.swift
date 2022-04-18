@@ -19,7 +19,7 @@ final class ProblemTableViewCell: UITableViewCell, SetUpView {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     
@@ -41,7 +41,7 @@ final class ProblemTableViewCell: UITableViewCell, SetUpView {
         
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         
         numberLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(5)

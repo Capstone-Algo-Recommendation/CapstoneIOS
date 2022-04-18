@@ -16,7 +16,7 @@ final class WritePosterView: UIView, SetUpView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     
@@ -35,7 +35,7 @@ final class WritePosterView: UIView, SetUpView {
         textView.font = .systemFont(ofSize: 15)
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         textView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().offset(20)

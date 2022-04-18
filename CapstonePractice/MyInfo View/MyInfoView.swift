@@ -16,7 +16,7 @@ class MyInfoView: UIView, SetUpView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -29,7 +29,7 @@ class MyInfoView: UIView, SetUpView {
         tableView.register(MyInfoTableViewCell.self, forCellReuseIdentifier: MyInfoTableViewCell.identifier)
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

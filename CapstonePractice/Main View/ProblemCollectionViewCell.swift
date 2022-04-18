@@ -17,7 +17,7 @@ final class ProblemCollectionViewCell: UICollectionViewCell, SetUpView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     
@@ -44,7 +44,7 @@ final class ProblemCollectionViewCell: UICollectionViewCell, SetUpView {
         self.layer.cornerRadius = 10
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         
         problemNumber.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)

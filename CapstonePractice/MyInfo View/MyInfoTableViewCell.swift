@@ -18,7 +18,7 @@ final class MyInfoTableViewCell: UITableViewCell, SetUpView {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +32,7 @@ final class MyInfoTableViewCell: UITableViewCell, SetUpView {
         menuTitle.font = .systemFont(ofSize: 18)
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         
         menuImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)

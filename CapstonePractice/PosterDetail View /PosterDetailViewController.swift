@@ -11,8 +11,6 @@ import RxCocoa
 import RxDataSources
 
 
-
-
 class PosterDetailViewController: UIViewController {
     
     let mainView = PosterDetailView()
@@ -28,6 +26,7 @@ class PosterDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.isHidden = true
+        addTargets()
     
 //        viewModel.items
 //        .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
@@ -81,12 +80,42 @@ class PosterDetailViewController: UIViewController {
             ]
           )
         ]
+        
+        mainView.tableView
+            .rx.itemSelected.bind { _ in
+                print("hh")
+                self.view.endEditing(true)
+            }.disposed(by: disposeBag)
 
         Observable.just(sections)
             .bind(to: mainView.tableView.rx.items(dataSource: dataSource))
           .disposed(by: disposeBag)
      
+    }
+    
+    private func addTargets() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyBoardWillShow(_ sender: Notification) {
+        var keyboardHeight: CGFloat = 0
+        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboardFrame.cgRectValue
+            
+            keyboardHeight = keyboardRect.height
+        }
         
+//        if viewModel.open {
+//            mainView.setUpKeyBoardConstraints(keyboardHeight: keyboardHeight)
+//        }else {
+//            mainView.setUpNormalConstraints()
+//        }
+        mainView.keyBoardShowConstraints(keyBoardHeight: keyboardHeight)
+    }
+    
+    @objc func keyboardWillHide() {
+        mainView.keyBoardHiddenConstraints()
     }
 }
 
@@ -94,4 +123,6 @@ extension PosterDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    
 }

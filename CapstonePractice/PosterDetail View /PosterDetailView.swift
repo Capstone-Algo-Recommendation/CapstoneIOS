@@ -11,6 +11,7 @@ import SnapKit
 class PosterDetailView: UIView, SetUpView {
     
     let tableView = UITableView()
+    var open = true
     
     let commentSuperView = UIView()
     let commentTextView = UITextView()
@@ -18,7 +19,7 @@ class PosterDetailView: UIView, SetUpView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +41,39 @@ class PosterDetailView: UIView, SetUpView {
         tableView.register(PosterDetailCommentCell.self, forCellReuseIdentifier: PosterDetailCommentCell.identeifier)
     }
     
-    func setUpConstraints() {
+    func keyBoardShowConstraints(keyBoardHeight: CGFloat) {
+        tableView.snp.removeConstraints()
+        commentTextView.snp.removeConstraints()
+        commentSuperView.snp.removeConstraints()
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(commentSuperView.snp.top)
+        }
+        
+        commentTextView.snp.makeConstraints { make in
+            make.trailing.equalTo(commentSuperView.snp.trailing).offset(-25)
+            make.leading.equalTo(commentSuperView.snp.leading).offset(25)
+            make.top.equalTo(commentSuperView.snp.top).offset(3)
+            make.height.equalTo(40)
+        }
+        
+        commentSuperView.snp.makeConstraints { make in
+            make.height.equalTo(65 + keyBoardHeight)
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+    }
+    
+    func keyBoardHiddenConstraints() {
+        
+        tableView.snp.removeConstraints()
+        commentTextView.snp.removeConstraints()
+        commentSuperView.snp.removeConstraints()
+    
         tableView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.leading.equalToSuperview()

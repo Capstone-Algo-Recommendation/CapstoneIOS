@@ -15,7 +15,7 @@ class PosterView: UIView, SetUpView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -28,7 +28,7 @@ class PosterView: UIView, SetUpView {
         tableView.register(PosterTableViewCell.self, forCellReuseIdentifier: PosterTableViewCell.identifier)
     }
     
-    internal func setUpConstraints() {
+    internal func keyBoardHiddenConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

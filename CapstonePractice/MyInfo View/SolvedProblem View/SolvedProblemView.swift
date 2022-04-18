@@ -16,7 +16,7 @@ final class SolvedProblemView: UIView, SetUpView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -28,7 +28,7 @@ final class SolvedProblemView: UIView, SetUpView {
         tableView.register(ProblemTableViewCell.self, forCellReuseIdentifier: ProblemTableViewCell.identifier)
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

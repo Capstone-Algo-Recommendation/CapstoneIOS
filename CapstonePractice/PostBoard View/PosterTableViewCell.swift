@@ -22,7 +22,7 @@ class PosterTableViewCell: UITableViewCell, SetUpView {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -54,7 +54,7 @@ class PosterTableViewCell: UITableViewCell, SetUpView {
         
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
             make.height.equalTo(25)

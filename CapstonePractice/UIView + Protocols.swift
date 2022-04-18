@@ -9,5 +9,5 @@ import Foundation
 
 protocol SetUpView {
     func setUp()
-    func setUpConstraints()
+    func keyBoardHiddenConstraints()
 }

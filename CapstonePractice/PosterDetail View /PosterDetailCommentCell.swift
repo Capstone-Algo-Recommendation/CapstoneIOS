@@ -20,7 +20,7 @@ final class PosterDetailCommentCell: UITableViewCell, SetUpView {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
-        setUpConstraints()
+        keyBoardHiddenConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -47,7 +47,7 @@ final class PosterDetailCommentCell: UITableViewCell, SetUpView {
         
     }
     
-    func setUpConstraints() {
+    func keyBoardHiddenConstraints() {
         userIdLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().offset(20)
