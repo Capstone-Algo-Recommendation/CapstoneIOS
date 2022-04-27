@@ -14,6 +14,8 @@ import Firebase
 
 final class LoginViewController: UIViewController {
     
+    
+    
     let mainView = LoginView()
     let disposeBag = DisposeBag()
     let signInConfig = GIDConfiguration.init(clientID: "591917256191-dci0ftkrmar7n2ja4gsohuhae6l4ng7c.apps.googleusercontent.com")
@@ -64,29 +66,27 @@ final class LoginViewController: UIViewController {
             .subscribe { text in
                 print("pass \(text)")
             }.disposed(by: disposeBag)
-
     }
     
     
     
     @objc func goolgeLogintTapped() {
+        
+//        guard let url = URL(string: "http://15.164.165.132/social/login"), UIApplication.shared.canOpenURL(url) else { return }
+//        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+        
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
             guard error == nil else { return }
             guard let user = user else { return }
-            
+
             user.authentication.do { authentication, error in
                 guard error == nil else { return }
                 guard let authentication = authentication else { return }
-
-                let idToken = authentication.idToken
-                
-                print(idToken)
-                
-                // Send ID token to backend.
-                // TODO: LogIn Succeeded. Need Transition.
-                // If sign in succeeded, display the app's main content View.
-                
-                }
-          }
+                ApiService.test(access_token: authentication.accessToken, token_type: "", refresh_token: authentication.refreshToken, expir:1000, refrtokenEx: 100)
+            }
+            
+            
+        }
     }
 }
