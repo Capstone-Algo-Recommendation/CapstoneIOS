@@ -52,6 +52,8 @@
 		88C835FF27F1CA3D002211CA /* SpecificProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C835FE27F1CA3C002211CA /* SpecificProblemViewController.swift */; };
 		88C8360227F1CA6B002211CA /* SpecificProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C8360127F1CA6B002211CA /* SpecificProblemView.swift */; };
 		88C8360427F1D96C002211CA /* WrongProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C8360327F1D96C002211CA /* WrongProblemViewController.swift */; };
+		88F4EF7D281AD10600453FB4 /* BackJoonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4EF7C281AD10600453FB4 /* BackJoonInfoViewController.swift */; };
+		88F4EF7F281AD12B00453FB4 /* BackJoonInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4EF7E281AD12B00453FB4 /* BackJoonInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		88C835FE27F1CA3C002211CA /* SpecificProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProblemViewController.swift; sourceTree = "<group>"; };
 		88C8360127F1CA6B002211CA /* SpecificProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProblemView.swift; sourceTree = "<group>"; };
 		88C8360327F1D96C002211CA /* WrongProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongProblemViewController.swift; sourceTree = "<group>"; };
+		88F4EF7C281AD10600453FB4 /* BackJoonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackJoonInfoViewController.swift; sourceTree = "<group>"; };
+		88F4EF7E281AD12B00453FB4 /* BackJoonInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackJoonInfoView.swift; sourceTree = "<group>"; };
 		E3411A1C11C1C5335141FEBE /* Pods_CapstonePractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstonePractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -233,11 +237,13 @@
 			isa = PBXGroup;
 			children = (
 				8824E7BD27EEEA3000125C8C /* ProblemTableViewCell.swift */,
+				88F4EF7C281AD10600453FB4 /* BackJoonInfoViewController.swift */,
 				8824E7BF27EEFC4100125C8C /* MyInfoTableViewCell.swift */,
 				883A412727EDA0A20002B909 /* MyInfoViewController.swift */,
 				8824E7B027EEE68700125C8C /* MyInfoView.swift */,
 				8824E7B927EEE9BA00125C8C /* SolvedProblem View */,
 				88C8360327F1D96C002211CA /* WrongProblemViewController.swift */,
+				88F4EF7E281AD12B00453FB4 /* BackJoonInfoView.swift */,
 			);
 			path = "MyInfo View";
 			sourceTree = "<group>";
@@ -415,6 +421,8 @@
 				8824E7B827EEE9A200125C8C /* SolvedProblemViewController.swift in Sources */,
 				88B776C727F47BA90068C1FD /* MainView.swift in Sources */,
 				883A412F27EDA4970002B909 /* PosterTableViewCell.swift in Sources */,
+				88F4EF7D281AD10600453FB4 /* BackJoonInfoViewController.swift in Sources */,
+				88F4EF7F281AD12B00453FB4 /* BackJoonInfoView.swift in Sources */,
 				883A413C27EDC5E60002B909 /* PosterDetailCommentCell.swift in Sources */,
 				88C8360427F1D96C002211CA /* WrongProblemViewController.swift in Sources */,
 				887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */,

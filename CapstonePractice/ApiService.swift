@@ -17,7 +17,6 @@ class ApiService {
         AF.request(url, method: .get).responseData { response in
             switch response.result {
             case .success(let value):
-//                guard let statusCode = response.response?.statusCode else { return }
                 let decoder = JSONDecoder()
                 let data = try! decoder.decode(SolvedProblems.self, from: value)
                 completion(data)
@@ -40,16 +39,16 @@ class ApiService {
             "refresh_token_expires_in": refrtokenEx
         ]
         
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        let decode = JSONDecoder()
-        let b  = try! decode.decode(A1.self, from: jsonData!)
+//        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+//        let decode = JSONDecoder()
+//        let b  = try! decode.decode(A1.self, from: jsonData!)
         
         var request = URLRequest(url: url)
 
         request.httpMethod = "POST"
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
-        request.httpBody = jsonData
+//        request.httpBody = jsonData
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
@@ -62,7 +61,6 @@ class ApiService {
             }
         }
         task.resume()
-        
     }
     
     static func getUserSolvedProblems(completion:@escaping (SolvedProblems)->Void) {
@@ -72,7 +70,6 @@ class ApiService {
         AF.request(url, method: .get).responseData { response in
             switch response.result {
             case .success(let value):
-//                guard let statusCode = response.response?.statusCode else { return }
                 let decoder = JSONDecoder()
                 let data = try! decoder.decode(SolvedProblems.self, from: value)
                 completion(data)
@@ -81,7 +78,6 @@ class ApiService {
             }
         }
     }
-    
 }
 
 struct A1: Codable{
@@ -91,12 +87,3 @@ struct A1: Codable{
     var expires_in: Int
     var refresh_token_expires_in:Int
 }
-
-
-//{
-//    "access_token" : "aaa",
-//    "token_type" : "bbb",
-//    "refresh_token" : "ccc",
-//    "expires_in" : long,
-//    "refresh_token_expires_in" : long
-//}

@@ -28,7 +28,7 @@ class MyInfoViewController: UIViewController {
         
         title = "내 정보"
         
-        let items = Observable.just(["성공한 문제", "실패한 문제"])
+        let items = Observable.just(["백준 정보","성공한 문제", "실패한 문제"])
         
         
         items
@@ -38,9 +38,9 @@ class MyInfoViewController: UIViewController {
             }
             cell.menuTitle.text = element
             
-            if row == 0 {
+            if row == 1 {
                 cell.menuImage.image = UIImage(named: "checked")
-            }else if row == 1 {
+            }else if row == 2 {
                 cell.menuImage.image = UIImage(named: "cancel")
             }
             
@@ -60,7 +60,15 @@ class MyInfoViewController: UIViewController {
 extension MyInfoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(SolvedProblemViewController(), animated: true)
+        if indexPath.row == 1 || indexPath.row == 2{
+            self.navigationController?.pushViewController(SolvedProblemViewController(), animated: true)
+        }else {
+            let vc = BackJoonInfoViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true)
+//            self.navigationController?.pushViewController()
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
