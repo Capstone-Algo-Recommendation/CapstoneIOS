@@ -12,7 +12,7 @@ import RxCocoa
 class SolvedProblemViewController: UIViewController {
     
     let mainView = SolvedProblemView()
-    var items = Observable.just([Item(problemID: 3, titleKo: "2", isSolvable: true, isPartial: true, acceptedUserCount: 2, level: 2, votedUserCount: 2, isLevelLocked: true, averageTries: 2.2, official: true, tags: [])])
+//    var items = Observable.just([Item(problemID: 3, titleKo: "2", isSolvable: true, isPartial: true, acceptedUserCount: 2, level: 2, votedUserCount: 2, isLevelLocked: true, averageTries: 2.2, official: true, tags: [])])
     
     var itemss = Observable<[Item]>.empty()
     let disposeBag = DisposeBag()
@@ -44,12 +44,29 @@ class SolvedProblemViewController: UIViewController {
         
     }
 
-    @objc func moreButtonTapped() {
-        print("hello")
-    }
     
     @objc func filterProblems() {
-        print("sleec filter")
+        let alertVC = UIAlertController(title: "보고 싶은 알고리즘을 선택해주세요", message: "", preferredStyle: .alert)
+        
+        let dpButton = UIAlertAction(title: "다이나믹 프로그래밍", style: .default, handler: nil)
+        let dataStructureButton = UIAlertAction(title: "자료구조", style: .default, handler: nil)
+        let graphButton = UIAlertAction(title: "그래프", style: .default, handler: nil)
+        let implementationButton = UIAlertAction(title: "구현", style: .default, handler: nil)
+        let greedyButton = UIAlertAction(title: "그리디", style: .default, handler: nil)
+        let etcButton = UIAlertAction(title: "기타", style: .default, handler: nil)
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alertVC.addAction(dpButton)
+        alertVC.addAction(dataStructureButton)
+        alertVC.addAction(graphButton)
+        alertVC.addAction(implementationButton)
+        alertVC.addAction(greedyButton)
+        alertVC.addAction(etcButton)
+        alertVC.addAction(cancelButton)
+        
+        present(alertVC, animated: true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
