@@ -10,40 +10,14 @@ import SnapKit
 
 class MainView: UIView, SetUpView {
     
-    let recommendProblem = UILabel()
+    let scrollView = UIScrollView()
     
-    let recommendCollectionView: UICollectionView = {
-        
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.minimumInteritemSpacing = 8
-        layout.minimumLineSpacing = 8
-        layout.scrollDirection = .horizontal
-        
-        let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
-        
-        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
-        cv.backgroundColor = .white
-        return cv
-    }()
-    
-    let tryingProblem = UILabel()
-    let tryingCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
+    let containerView = UIView()
 
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
-        cv.backgroundColor = .white
-
-        return cv
-    }()
-    
-
-    
+    let firstProblem = ProbleCellLikeView()
+    let secondProblem = ProbleCellLikeView()
+    let thirdProblem = ProbleCellLikeView()
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -57,56 +31,61 @@ class MainView: UIView, SetUpView {
     
     
     func setUp() {
+        
         backgroundColor = .white
         
-        addSubview(recommendProblem)
-        addSubview(recommendCollectionView)
+        scrollView.backgroundColor = .gray
+
+        addSubview(scrollView)
         
-        addSubview(tryingProblem)
-        addSubview(tryingCollectionView)
+        scrollView.addSubview(firstProblem)
+        scrollView.addSubview(secondProblem)
+        scrollView.addSubview(thirdProblem)
         
-        recommendProblem.textColor = UIColor(red: 67/255, green: 89/255, blue: 106/255, alpha: 1)
-        tryingProblem.textColor = UIColor(red: 182/255, green: 78/255, blue: 61/255, alpha: 1)
+ 
         
-        recommendProblem.text = "추천 문제"
-        tryingProblem.text = "시도중인 문제"
+        firstProblem.problemTitleLabel.text = "hello worlasdasdadd"
         
-        recommendProblem.font = .systemFont(ofSize: 23)
-        tryingProblem.font = .systemFont(ofSize: 23)
+        secondProblem.problemTitleLabel.text = "this is my"
+        
+        thirdProblem.problemTitleLabel.text = "bebecucu"
     }
+    
     
     func keyBoardHiddenConstraints() {
         
-        recommendProblem.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(8)
-            make.leading.equalToSuperview().offset(12)
+//        scrollView.contentSize = CGSize(width: self.bounds.width, height: 2200)
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
+        
+        firstProblem.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(40)
+            make.height.equalTo(35)
         }
         
-        
-        recommendCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(recommendProblem.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(12)
-            make.trailing.equalToSuperview().offset(-12)
-            
-            make.height.equalTo(self.snp.height).multipliedBy(0.3)
-        }
-        
-        tryingProblem.snp.makeConstraints { make in
-            make.top.equalTo(recommendCollectionView.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(12)
+        secondProblem.snp.makeConstraints { make in
+            make.top.equalTo(firstProblem.snp.bottom).offset(20)
+            make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(40)
+            make.height.equalTo(35)
         }
         
-        tryingCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(tryingProblem.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(12)
-            make.trailing.equalToSuperview().offset(-12)
-            
-            make.height.equalTo(self.snp.height).multipliedBy(0.3)
+        thirdProblem.snp.makeConstraints { make in
+            make.top.equalTo(secondProblem.snp.bottom).offset(20)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(35)
         }
+
+
     }
 
 }

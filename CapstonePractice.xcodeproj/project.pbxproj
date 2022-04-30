@@ -47,11 +47,14 @@
 		887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */; };
 		887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085F127E8AAF400B5BC82 /* RegisterView.swift */; };
 		8875CA2427F970DE000C581A /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8875CA2327F970DE000C581A /* credentials.plist */; };
+		88B6D588281D32EC005FDFFE /* ProbleCellLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D587281D32EC005FDFFE /* ProbleCellLikeView.swift */; };
 		88B776C727F47BA90068C1FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B776C627F47BA90068C1FD /* MainView.swift */; };
 		88B776C927F47DF60068C1FD /* ProblemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B776C827F47DF60068C1FD /* ProblemCollectionViewCell.swift */; };
 		88C835FF27F1CA3D002211CA /* SpecificProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C835FE27F1CA3C002211CA /* SpecificProblemViewController.swift */; };
 		88C8360227F1CA6B002211CA /* SpecificProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C8360127F1CA6B002211CA /* SpecificProblemView.swift */; };
 		88C8360427F1D96C002211CA /* WrongProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C8360327F1D96C002211CA /* WrongProblemViewController.swift */; };
+		88F489C3281D4EF200F93775 /* PrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F489C2281D4EF200F93775 /* PrView.swift */; };
+		88F489C5281D4EFD00F93775 /* PRVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F489C4281D4EFD00F93775 /* PRVC.swift */; };
 		88F4EF7D281AD10600453FB4 /* BackJoonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4EF7C281AD10600453FB4 /* BackJoonInfoViewController.swift */; };
 		88F4EF7F281AD12B00453FB4 /* BackJoonInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4EF7E281AD12B00453FB4 /* BackJoonInfoView.swift */; };
 /* End PBXBuildFile section */
@@ -95,11 +98,14 @@
 		887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		887085F127E8AAF400B5BC82 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		8875CA2327F970DE000C581A /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = credentials.plist; path = ../../../Downloads/credentials.plist; sourceTree = "<group>"; };
+		88B6D587281D32EC005FDFFE /* ProbleCellLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProbleCellLikeView.swift; sourceTree = "<group>"; };
 		88B776C627F47BA90068C1FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		88B776C827F47DF60068C1FD /* ProblemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemCollectionViewCell.swift; sourceTree = "<group>"; };
 		88C835FE27F1CA3C002211CA /* SpecificProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProblemViewController.swift; sourceTree = "<group>"; };
 		88C8360127F1CA6B002211CA /* SpecificProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProblemView.swift; sourceTree = "<group>"; };
 		88C8360327F1D96C002211CA /* WrongProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongProblemViewController.swift; sourceTree = "<group>"; };
+		88F489C2281D4EF200F93775 /* PrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrView.swift; sourceTree = "<group>"; };
+		88F489C4281D4EFD00F93775 /* PRVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRVC.swift; sourceTree = "<group>"; };
 		88F4EF7C281AD10600453FB4 /* BackJoonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackJoonInfoViewController.swift; sourceTree = "<group>"; };
 		88F4EF7E281AD12B00453FB4 /* BackJoonInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackJoonInfoView.swift; sourceTree = "<group>"; };
 		E3411A1C11C1C5335141FEBE /* Pods_CapstonePractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstonePractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +166,8 @@
 		880BCA0227E879C500C5235A /* CapstonePractice */ = {
 			isa = PBXGroup;
 			children = (
+				88F489C2281D4EF200F93775 /* PrView.swift */,
+				88F489C4281D4EFD00F93775 /* PRVC.swift */,
 				8824E7B227EEE70100125C8C /* ApiService.swift */,
 				881B660E27F96BC70064A74F /* GoogleService-Info.plist */,
 				880BCA1127E879C800C5235A /* Info.plist */,
@@ -217,6 +225,7 @@
 				883A412127EDA0020002B909 /* MainViewController.swift */,
 				88B776C627F47BA90068C1FD /* MainView.swift */,
 				88B776C827F47DF60068C1FD /* ProblemCollectionViewCell.swift */,
+				88B6D587281D32EC005FDFFE /* ProbleCellLikeView.swift */,
 			);
 			path = "Main View";
 			sourceTree = "<group>";
@@ -410,6 +419,7 @@
 				883A413127EDA92F0002B909 /* PosterViewModel.swift in Sources */,
 				880BCA2027E87AA200C5235A /* LoginViewController.swift in Sources */,
 				880BCA0827E879C500C5235A /* ViewController.swift in Sources */,
+				88F489C3281D4EF200F93775 /* PrView.swift in Sources */,
 				8824E7AA27EED94500125C8C /* WritePostViewController.swift in Sources */,
 				883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */,
 				8824E7C227EF021500125C8C /* BackJoonProblemViewController.swift in Sources */,
@@ -422,6 +432,7 @@
 				88B776C727F47BA90068C1FD /* MainView.swift in Sources */,
 				883A412F27EDA4970002B909 /* PosterTableViewCell.swift in Sources */,
 				88F4EF7D281AD10600453FB4 /* BackJoonInfoViewController.swift in Sources */,
+				88F489C5281D4EFD00F93775 /* PRVC.swift in Sources */,
 				88F4EF7F281AD12B00453FB4 /* BackJoonInfoView.swift in Sources */,
 				883A413C27EDC5E60002B909 /* PosterDetailCommentCell.swift in Sources */,
 				88C8360427F1D96C002211CA /* WrongProblemViewController.swift in Sources */,
@@ -430,6 +441,7 @@
 				8824E7AC27EEDAE900125C8C /* WritePosterView.swift in Sources */,
 				8824E7BE27EEEA3000125C8C /* ProblemTableViewCell.swift in Sources */,
 				8824E7AF27EEE61C00125C8C /* SolvedData.swift in Sources */,
+				88B6D588281D32EC005FDFFE /* ProbleCellLikeView.swift in Sources */,
 				883A412227EDA0020002B909 /* MainViewController.swift in Sources */,
 				883A413827EDB62D0002B909 /* PosterDetailMainCell.swift in Sources */,
 				883A413627EDB4BB0002B909 /* PosterDetailView.swift in Sources */,

@@ -13,7 +13,7 @@ import GoogleSignIn
 import Firebase
 
 final class LoginViewController: UIViewController {
-    
+     
     
     
     let mainView = LoginView()
@@ -32,7 +32,7 @@ final class LoginViewController: UIViewController {
             .rx.tap
             .bind {
                 guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                let vc = MainTabBarController()
+                let vc = MainViewController()
                 windowScene.windows.first?.rootViewController = vc
                 windowScene.windows.first?.makeKeyAndVisible()
                 

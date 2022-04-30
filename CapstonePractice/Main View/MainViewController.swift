@@ -6,121 +6,125 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import SnapKit
 
 class MainViewController: UIViewController {
     
-    let mainView = MainView()
-    let disposeBag = DisposeBag()
+
+    var scrollView = UIScrollView()
     
-    let items = Observable.just([1,2,3,4,5,5,6,6,7,8,9,0,7,67,6,4,4,4,3,2,6,6,7,8,9,0,7,67,6,4,4,4,3,2,6,6,7,8,9,0,7,67,6,4,4,4,3,2,6,6,7,8,9,0,7,67,6,4,4,4,3,2])
+    let firstProblem = ProbleCellLikeView()
+    let secondProblem = ProbleCellLikeView()
+    let thirdProblem = ProbleCellLikeView()
     
-    let items2 = Observable.just([1,2,3,4,5,5,6,6,7,8,9,0,7,67,6,4,4,4,3,2,6,6,7,8,9,0,7,67,6,4,4,4,3,2,6,6,7,8,9,0,7,67,6,4,4,4,3,2,6,6,7,8,9,0,7,67,6,4,4,4,3,2])
-    
-    override func loadView() {
-        super.loadView()
-        self.view = mainView
-    }
+    let topRecommendView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         
         title = "문제 풀어요~"
-        mainView.recommendCollectionView.delegate = self
-        mainView.tryingCollectionView.delegate = self
+    }
+    
+  
+    
+    
 
-        items.bind(to:
-                    mainView.recommendCollectionView.rx.items(cellIdentifier: ProblemCollectionViewCell.identifier, cellType: ProblemCollectionViewCell.self)
-        )
-                { index, text, cell in
-
-
-                    if index % 3 == 0 {
-                        cell.backgroundColor = UIColor(red: 185/255, green: 189/255, blue: 182/255, alpha: 1)
-                        cell.problemTitle.text = "this will be longer"
-                    }else if index % 3 == 1 {
-                        cell.backgroundColor = UIColor(red: 145/255, green: 190/255, blue: 197/255, alpha: 1)
-                        cell.problemTitle.text = "thjs hor"
-                    }else if index % 3 == 2 {
-                        cell.backgroundColor = UIColor(red: 126/255, green: 168/255, blue: 145/255, alpha: 1)
-                        cell.problemTitle.text = "thjs"
-                    }
-
-
-                }
-                .disposed(by: disposeBag)
-            
-        items2.bind(to:
-                    mainView.tryingCollectionView.rx.items(cellIdentifier: ProblemCollectionViewCell.identifier, cellType: ProblemCollectionViewCell.self)
-        )
-                { index, text, cell in
-                    if index % 3 == 0 {
-                        cell.backgroundColor = UIColor(red: 185/255, green: 189/255, blue: 182/255, alpha: 1)
-                        cell.problemTitle.text = "this will be longer"
-                    }else if index % 3 == 1 {
-                        cell.backgroundColor = UIColor(red: 145/255, green: 190/255, blue: 197/255, alpha: 1)
-                        cell.problemTitle.text = "thjs hor"
-                    }else if index % 3 == 2 {
-                        cell.backgroundColor = UIColor(red: 126/255, green: 168/255, blue: 145/255, alpha: 1)
-                        cell.problemTitle.text = "thjs"
-                    }
-                }
-                .disposed(by: disposeBag)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setUp()
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalTo(view.snp.leading)
+            make.trailing.equalTo(view.snp.trailing)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
         
         
         
-        mainView.recommendCollectionView
-            .rx.modelSelected(Int.self)
-            .bind { item in
-                print("hello",item)
-            }
+        topRecommendView.frame = CGRect(x: 20, y: 20, width: view.frame.width, height: 200)
         
-        mainView.tryingCollectionView
-            .rx.modelSelected(Int.self)
-            .bind { _ in
-                print("H")
-            }.disposed(by: disposeBag)
+        // 고정
+        firstProblem.problemNumLabel.text = "1"
+        secondProblem.problemNumLabel.text = "2"
+        thirdProblem.problemNumLabel.text = "3"
         
+        // 바꿔야 할것들
+        firstProblem.problemTypeLabel.text = "dp"
+        firstProblem.problemTitleLabel.text = "피보나치 수열"
+        
+        
+        secondProblem.problemTitleLabel.text = "길찾기"
+        secondProblem.problemTypeLabel.text = "bfs"
+        
+        
+        thirdProblem.problemTitleLabel.text = "이렇게 저렇게 하는 거"
+        thirdProblem.problemTypeLabel.text = "data structure"
+        
+    
+        setUpConstraints()
+
+    }
+    
+}
+
+// UIs
+
+extension MainViewController {
+    private func setUp() {
+        
+        scrollView.backgroundColor = .brown
+        view.addSubview(scrollView)
+        topRecommendView.addSubview(firstProblem)
+        topRecommendView.addSubview(secondProblem)
+        topRecommendView.addSubview(thirdProblem)
+        
+        scrollView.addSubview(topRecommendView)
+        
+        firstProblem.addTarget(self, action: #selector(topTapped), for: .touchUpInside)
+        firstProblem.isUserInteractionEnabled = true
+        
+        secondProblem.addTarget(self, action: #selector(topTapped), for: .touchUpInside)
+        secondProblem.isUserInteractionEnabled = true
+        
+        thirdProblem.addTarget(self, action: #selector(topTapped), for: .touchUpInside)
+        thirdProblem.isUserInteractionEnabled = true
+    }
+    
+    private func setUpConstraints() {
+        scrollView.contentSize = CGSize(width: view.frame.width - 20, height: 2200)
+        
+        firstProblem.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.leading.equalTo(self.view.snp.leading).offset(20)
+            make.trailing.equalTo(self.view.snp.trailing).offset(-20)
+            make.height.equalTo(35)
+        }
+        secondProblem.snp.makeConstraints { make in
+            make.top.equalTo(firstProblem.snp.bottom).offset(15)
+            make.leading.equalTo(self.view.snp.leading).offset(20)
+            make.trailing.equalTo(self.view.snp.trailing).offset(-20)
+            make.height.equalTo(35)
+        }
+        thirdProblem.snp.makeConstraints { make in
+            make.top.equalTo(secondProblem.snp.bottom).offset(15)
+            make.leading.equalTo(self.view.snp.leading).offset(20)
+            make.trailing.equalTo(self.view.snp.trailing).offset(-20)
+            make.height.equalTo(35)
+        }
+        
+    }
+}
+
+// addTargets
+extension MainViewController {
+    
+    @objc func topTapped() {
+        print("Heelo")
     }
     
 }
 
 
-
-
-
-
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: collectionView.frame.height / 3 - 15)
-    }
-    
-}
-
-
-
-//extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//
-
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        item.count
-//    }
-
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProblemCollectionViewCell.identifier, for: indexPath) as? ProblemCollectionViewCell else {
-//            return UICollectionViewCell()
-//        }
-//
-//        if indexPath.item % 3 == 0 {
-//            cell.problemTitle.text = "this will be longer"
-//        }else if indexPath.item % 3 == 1 {
-//            cell.problemTitle.text = "thjs hor"
-//            cell.backgroundColor = .gray
-//        }else if indexPath.item % 3 == 2 {
-//            cell.problemTitle.text = "thjs"
-//        }
-//        return cell
-//    }
-//}
