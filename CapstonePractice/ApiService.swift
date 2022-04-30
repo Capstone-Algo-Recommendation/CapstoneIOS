@@ -39,7 +39,7 @@ class ApiService {
             "refresh_token_expires_in": refrtokenEx
         ]
         
-//        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
 //        let decode = JSONDecoder()
 //        let b  = try! decode.decode(A1.self, from: jsonData!)
         
@@ -48,7 +48,7 @@ class ApiService {
         request.httpMethod = "POST"
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
-//        request.httpBody = jsonData
+        request.httpBody = jsonData
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
