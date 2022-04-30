@@ -12,10 +12,14 @@ import RxCocoa
 class SolvedProblemViewController: UIViewController {
     
     let mainView = SolvedProblemView()
-    var items = Observable.just([Item(problemID: 3, titleKo: "2", isSolvable: true, isPartial: true, acceptedUserCount: 2, level: 2, votedUserCount: 2, isLevelLocked: true, averageTries: 2.2, official: true, tags: [])])
+//    var items = Observable.just([Item(problemID: 3, titleKo: "2", isSolvable: true, isPartial: true, acceptedUserCount: 2, level: 2, votedUserCount: 2, isLevelLocked: true, averageTries: 2.2, official: true, tags: [])])
     
-    var itemss = Observable<[Item]>.empty()
+//    var itemss = Observable<[Item]>.empty()
     let disposeBag = DisposeBag()
+    var items: [Item] = []
+    var filterdItems: [Item] = []
+    
+    
     
     override func loadView() {
         self.view = mainView
@@ -30,7 +34,9 @@ class SolvedProblemViewController: UIViewController {
         
         ApiService.getUserTriedByProblems { problems in
             
-            self.itemss = Observable.of(problems.items)
+            self.items = problems.items
+            self.filterdItems = problems.items
+            self.mainView.tableView.reloadData()
             
             
 //            self.itemss.bind(to: self.mainView.tableView.rx.items)
@@ -54,23 +60,93 @@ class SolvedProblemViewController: UIViewController {
         
     }
     
-    @objc func filter(keyword: String) {
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
+        title = "성공한 문제"
+        
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterProblems))
+        mainView.tableView.dataSource = self
+        mainView.tableView.delegate = self
+        
+    
+        
+//        mainView.tableView
+//            .rx.setDelegate(self)
+//            .disposed(by: disposeBag)
+//
+//        mainView.tableView.rx.modelSelected(Item.self)
+//            .subscribe { item in
+//
+//
+//                let vc = SpecificProblemViewController()
+//                vc.problemTitle = "\(item.element!.problemID). \(item.element!.titleKo)"
+//                vc.problemInfo = item.element
+//                self.navigationController?.pushViewController(vc, animated: true)
+//
+//            }.disposed(by: disposeBag)
+    }
+}
 
-        let filterdItem = itemss.map {
-            $0.filter { ite in
-                ite.tags[0].key == keyword
-            }
+
+extension SolvedProblemViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        filterdItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier, for: indexPath) as? ProblemTableViewCell else {
+            return UITableViewCell()
         }
-   
-        filterdItem.bind(to: self.mainView.tableView.rx.items){ (tableView, row, element) in
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier) as? ProblemTableViewCell else { return UITableViewCell()
-                }
+        
+        cell.titleLabel.text = filterdItems[indexPath.row].titleKo
+        cell.numberLabel.text = "문제 번호: \(filterdItems[indexPath.row])"
+        cell.keyLabel.text = filterdItems[indexPath.row].tags[0].key
+        
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+}
 
-                cell.titleLabel.text = element.titleKo
-                cell.numberLabel.text = "문제 번호: \(element.problemID)"
-                cell.keyLabel.text = element.tags[0].key
-                return cell
-            }.disposed(by: self.disposeBag)
+
+extension SolvedProblemViewController {
+    @objc func filter(keyword: String) {
+        
+        filterdItems = items.filter { it in
+            for tag in it.tags{
+                if tag.key == keyword{
+                    return true
+                }
+            }
+            return false
+            
+            
+            
+        }
+        mainView.tableView.reloadData()
+        
+
+//        let filterdItem = itemss.map {
+//            $0.filter { ite in
+//                ite.tags[0].key == keyword
+//            }
+//        }
+//
+//        filterdItem.bind(to: self.mainView.tableView.rx.items){ (tableView, row, element) in
+//                guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier) as? ProblemTableViewCell else { return UITableViewCell()
+//                }
+//
+//                cell.titleLabel.text = element.titleKo
+//                cell.numberLabel.text = "문제 번호: \(element.problemID)"
+//                cell.keyLabel.text = element.tags[0].key
+//                return cell
+//            }.disposed(by: self.disposeBag)
     }
 
     
@@ -110,36 +186,4 @@ class SolvedProblemViewController: UIViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
-        title = "성공한 문제"
-        
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterProblems))
-        
-    
-        
-        mainView.tableView
-            .rx.setDelegate(self)
-            .disposed(by: disposeBag)
-        
-        mainView.tableView.rx.modelSelected(Item.self)
-            .subscribe { item in
-                
-                
-                let vc = SpecificProblemViewController()
-                vc.problemTitle = "\(item.element!.problemID). \(item.element!.titleKo)"
-                vc.problemInfo = item.element
-                self.navigationController?.pushViewController(vc, animated: true)
-                
-            }.disposed(by: disposeBag)
-    }
-}
-
-
-extension SolvedProblemViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
-    }
 }
