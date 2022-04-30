@@ -12,14 +12,13 @@ import RxCocoa
 class SolvedProblemViewController: UIViewController {
     
     let mainView = SolvedProblemView()
-//    var items = Observable.just([Item(problemID: 3, titleKo: "2", isSolvable: true, isPartial: true, acceptedUserCount: 2, level: 2, votedUserCount: 2, isLevelLocked: true, averageTries: 2.2, official: true, tags: [])])
-    
-//    var itemss = Observable<[Item]>.empty()
+
     let disposeBag = DisposeBag()
     var items: [Item] = []
     var filterdItems: [Item] = []
     
-    
+    //    var items = Observable.just([Item(problemID: 3, titleKo: "2", isSolvable: true, isPartial: true, acceptedUserCount: 2, level: 2, votedUserCount: 2, isLevelLocked: true, averageTries: 2.2, official: true, tags: [])])
+    //    var itemss = Observable<[Item]>.empty()
     
     override func loadView() {
         self.view = mainView
@@ -43,10 +42,7 @@ class SolvedProblemViewController: UIViewController {
             
 //            self.itemss
 //                    .bind(to: self.mainView.tableView.rx.items)
-//
-            
-            
-            
+
 //            { (tableView, row, element) in
 //                    guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier) as? ProblemTableViewCell else { return UITableViewCell()
 //                    }
@@ -71,7 +67,6 @@ class SolvedProblemViewController: UIViewController {
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
         
-    
         
 //        mainView.tableView
 //            .rx.setDelegate(self)
@@ -125,9 +120,6 @@ extension SolvedProblemViewController {
                 }
             }
             return false
-            
-            
-            
         }
         mainView.tableView.reloadData()
         
@@ -153,6 +145,12 @@ extension SolvedProblemViewController {
     @objc func filterProblems() {
         let alertVC = UIAlertController(title: "보고 싶은 알고리즘을 선택해주세요", message: "", preferredStyle: .alert)
         
+        
+        let allButton = UIAlertAction(title: "전체", style: .default, handler: { _ in
+            self.filterdItems = self.items
+            self.mainView.tableView.reloadData()
+        })
+        
         let dpButton = UIAlertAction(title: "다이나믹 프로그래밍", style: .default, handler: { _ in
             self.filter(keyword: "dp")
         })
@@ -173,7 +171,7 @@ extension SolvedProblemViewController {
         })
         
         let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
+        alertVC.addAction(allButton)
         alertVC.addAction(dpButton)
         alertVC.addAction(dataStructureButton)
         alertVC.addAction(graphButton)
@@ -185,5 +183,4 @@ extension SolvedProblemViewController {
         present(alertVC, animated: true, completion: nil)
         
     }
-    
 }
