@@ -12,7 +12,7 @@ import RxCocoa
 class SolvedProblemViewController: UIViewController {
     
     let mainView = SolvedProblemView()
-//    var items = Observable.just([Item(problemID: 3, titleKo: "2", isSolvable: true, isPartial: true, acceptedUserCount: 2, level: 2, votedUserCount: 2, isLevelLocked: true, averageTries: 2.2, official: true, tags: [])])
+    var items = Observable.just([Item(problemID: 3, titleKo: "2", isSolvable: true, isPartial: true, acceptedUserCount: 2, level: 2, votedUserCount: 2, isLevelLocked: true, averageTries: 2.2, official: true, tags: [])])
     
     var itemss = Observable<[Item]>.empty()
     let disposeBag = DisposeBag()
@@ -29,31 +29,72 @@ class SolvedProblemViewController: UIViewController {
     private func loadData() {
         
         ApiService.getUserTriedByProblems { problems in
-            self.itemss = Observable.just(problems.items)
-            self.itemss
-                    .bind(to: self.mainView.tableView.rx.items) { (tableView, row, element) in
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier) as? ProblemTableViewCell else { return UITableViewCell()
-                    }
-                            
-                    cell.titleLabel.text = element.titleKo
-                    cell.numberLabel.text = "문제 번호: \(element.problemID)"
-                    cell.keyLabel.text = element.tags[0].key
-                    return cell
-                }.disposed(by: self.disposeBag)
+            
+            self.itemss = Observable.of(problems.items)
+            
+            
+//            self.itemss.bind(to: self.mainView.tableView.rx.items)
+            
+//            self.itemss
+//                    .bind(to: self.mainView.tableView.rx.items)
+//
+            
+            
+            
+//            { (tableView, row, element) in
+//                    guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier) as? ProblemTableViewCell else { return UITableViewCell()
+//                    }
+//
+//                    cell.titleLabel.text = element.titleKo
+//                    cell.numberLabel.text = "문제 번호: \(element.problemID)"
+//                    cell.keyLabel.text = element.tags[0].key
+//                    return cell
+//                    }.disposed(by: disposeBag)
         }
         
+    }
+    
+    @objc func filter(keyword: String) {
+
+        let filterdItem = itemss.map {
+            $0.filter { ite in
+                ite.tags[0].key == keyword
+            }
+        }
+   
+        filterdItem.bind(to: self.mainView.tableView.rx.items){ (tableView, row, element) in
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier) as? ProblemTableViewCell else { return UITableViewCell()
+                }
+
+                cell.titleLabel.text = element.titleKo
+                cell.numberLabel.text = "문제 번호: \(element.problemID)"
+                cell.keyLabel.text = element.tags[0].key
+                return cell
+            }.disposed(by: self.disposeBag)
     }
 
     
     @objc func filterProblems() {
         let alertVC = UIAlertController(title: "보고 싶은 알고리즘을 선택해주세요", message: "", preferredStyle: .alert)
         
-        let dpButton = UIAlertAction(title: "다이나믹 프로그래밍", style: .default, handler: nil)
-        let dataStructureButton = UIAlertAction(title: "자료구조", style: .default, handler: nil)
-        let graphButton = UIAlertAction(title: "그래프", style: .default, handler: nil)
-        let implementationButton = UIAlertAction(title: "구현", style: .default, handler: nil)
-        let greedyButton = UIAlertAction(title: "그리디", style: .default, handler: nil)
-        let etcButton = UIAlertAction(title: "기타", style: .default, handler: nil)
+        let dpButton = UIAlertAction(title: "다이나믹 프로그래밍", style: .default, handler: { _ in
+            self.filter(keyword: "dp")
+        })
+        let dataStructureButton = UIAlertAction(title: "자료구조", style: .default, handler: { _ in
+            self.filter(keyword: "data_structures")
+        })
+        let graphButton = UIAlertAction(title: "그래프", style: .default, handler: { _ in
+            self.filter(keyword: "graphs")
+        })
+        let implementationButton = UIAlertAction(title: "구현", style: .default, handler: { _ in
+            self.filter(keyword: "implementation")
+        })
+        let greedyButton = UIAlertAction(title: "그리디", style: .default, handler: { _ in
+            self.filter(keyword: "greedy")
+        })
+        let etcButton = UIAlertAction(title: "기타", style: .default, handler: { _ in
+            self.filter(keyword: "dp")
+        })
         
         let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
@@ -75,10 +116,9 @@ class SolvedProblemViewController: UIViewController {
         title = "성공한 문제"
         
         
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterProblems)),UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))]
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterProblems))
         
-        
-        
+    
         
         mainView.tableView
             .rx.setDelegate(self)
