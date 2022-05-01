@@ -24,10 +24,14 @@ class ProbleCellLikeView: UIControl, SetUpView {
     }
     
     func setUp() {
-        backgroundColor = .green
+        backgroundColor = UIColor(red: 35/255, green: 45/255, blue: 57/255, alpha: 1)
         addSubview(problemNumLabel)
         addSubview(problemTypeLabel)
         addSubview(problemTitleLabel)
+        
+        problemTitleLabel.textColor = .white
+        problemTypeLabel.textColor = .white
+        problemNumLabel.textColor = .white
     }
     
     func keyBoardHiddenConstraints() {

@@ -32,7 +32,7 @@ final class LoginViewController: UIViewController {
             .rx.tap
             .bind {
                 guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                let vc = MainViewController()
+                let vc = MainTabBarController()
                 windowScene.windows.first?.rootViewController = vc
                 windowScene.windows.first?.makeKeyAndVisible()
                 
