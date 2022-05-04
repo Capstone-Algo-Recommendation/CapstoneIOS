@@ -27,6 +27,12 @@ class ApiService {
     }
     
     
+    
+    
+    
+    
+    
+    
     static func test(access_token: String, token_type: String, refresh_token: String, expir: Int, refrtokenEx: Int ) {
  
         let url = URL(string: "http://15.164.165.132/sign/login/google/test")!
@@ -40,8 +46,7 @@ class ApiService {
         ]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-//        let decode = JSONDecoder()
-//        let b  = try! decode.decode(A1.self, from: jsonData!)
+
         
         var request = URLRequest(url: url)
 
@@ -86,4 +91,214 @@ struct A1: Codable{
     var refresh_token: String
     var expires_in: Int
     var refresh_token_expires_in:Int
+}
+
+
+// 게시글 관련
+extension ApiService {
+    
+    static func getPostBoard() {
+        
+        let url = URL(string: "http://15.164.165.132/api/board?page")!
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "GET"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        
+        task.resume()
+
+    }
+    
+    
+    // postId 숫자? 스트링
+    static func getSpecificPost(postid: Int) {
+        let url = URL(string: "http://15.164.165.132/api/board/\(postid)")!
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "GET"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        task.resume()
+    }
+    
+    
+    // 이거 problemId int? string?
+    static func writePost(title: String, content: String, problemId: Int) {
+        
+        let url = URL(string: "http://15.164.165.132/api/board")!
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        let json: [String: Any] = [
+            "title": title,
+            "content": content,
+            "problemId": problemId
+        ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        task.resume()
+    }
+    
+    static func changePost(postId: Int, title: String, content: String) {
+        let url = URL(string: "http://15.164.165.132/api/board/\(postId)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        let json: [String: Any] = [
+            "title": title,
+            "content": content
+        ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        task.resume()
+        
+    }
+    
+//    static func deletePost() {
+//        GET /api/board/delete
+//    }
+    
+    
+    
+    
+    // postid int?
+    static func writeComment(postId: Int, content: String) {
+        let url = URL(string: "http://15.164.165.132/api/board/\(postId)/comment")!
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        let json: [String: Any] = [
+            "content": content
+        ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        task.resume()
+    }
+    
+    static func changeComment(postId: Int, content: String) {
+        
+        let url = URL(string: "http://15.164.165.132/api/board/\(postId)/comment")!
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "PATCH"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        let json: [String: Any] = [
+            "content": content
+        ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        task.resume()
+
+    }
+    
+    static func deleteComment(commentId: Int) {
+        
+        let url = URL(string: "http://15.164.165.132/api/board/comment/delete/\(commentId)")!
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "GET"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
+        }
+        task.resume()
+    }
+    
 }

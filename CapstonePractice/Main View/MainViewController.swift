@@ -18,15 +18,77 @@ class MainViewController: UIViewController {
     let secondProblem = ProbleCellLikeView()
     let thirdProblem = ProbleCellLikeView()
 
-    let colletionView: UICollectionView = {
+    let dpLabel = UILabel()
+    let dpColletionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
 
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
+//        cv.isScrollEnabled = false
+
+        return cv
+    }()
+    
+    let dsLabel = UILabel()
+    let dsColletionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
+//        cv.isScrollEnabled = false
+
+        return cv
+    }()
+    
+    let graphLabel = UILabel()
+    let graphColletionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
+//        cv.isScrollEnabled = false
+
+        return cv
+    }()
+    
+    let implemntationLabel = UILabel()
+    let implementationColletionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
+//        cv.isScrollEnabled = false
+
+        return cv
+    }()
+    
+    let greedyLabel = UILabel()
+    let greedyColletionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
+//        cv.isScrollEnabled = false
 
         return cv
     }()
@@ -36,12 +98,33 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
-        view.backgroundColor = .white
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.green]
+        
+        
         title = "문제 풀어요~"
         
-        colletionView.delegate = self
-        colletionView.dataSource = self
+        dpColletionView.delegate = self
+        dpColletionView.dataSource = self
+        
+        dsColletionView.delegate = self
+        dsColletionView.dataSource = self
+        
+        graphColletionView.delegate = self
+        graphColletionView.dataSource = self
+        
+        implementationColletionView.delegate = self
+        implementationColletionView.dataSource = self
+        
+        
+        greedyColletionView.delegate = self
+        greedyColletionView.dataSource = self
+        
+    
+        navigationController?.navigationBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        
+        navigationController?.navigationBar.isTranslucent = false
+
         tabBarController?.tabBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
         tabBarController?.tabBar.isTranslucent = false
     }
@@ -62,17 +145,57 @@ class MainViewController: UIViewController {
         
         threePickLabel.frame = CGRect(x: 20, y: 30, width: view.frame.width, height: 20)
         topRecommendView.frame = CGRect(x: 20, y: 55, width: view.frame.width, height: 200)
-        colletionView.frame = CGRect(x: 20, y: 265, width: view.frame.width - 40, height: 1800)
+        
+//        scrollView.bringSubviewToFront(dpLabel)
+//        dpLabel.text = " hhhhhhh"
+        dpLabel.frame = CGRect(x: 20, y: 270, width: 200, height: 30)
+    
+        dpColletionView.frame = CGRect(x: 20, y: 310, width: view.frame.width - 40, height: 220)
         
         
         
         
+        dsLabel.frame = CGRect(x: 20, y: 575, width: 200, height: 30)
+        dsColletionView.frame = CGRect(x: 20, y: 615, width: view.frame.width - 40, height: 220)
+        
+        graphLabel.frame = CGRect(x: 20, y: 895, width: 200, height: 30)
+        graphColletionView.frame = CGRect(x: 20, y: 935, width: view.frame.width - 40, height: 220)
+        
+        implemntationLabel.frame = CGRect(x: 20, y: 1200, width: 200, height: 30)
+        implementationColletionView.frame = CGRect(x: 20, y: 1240, width: view.frame.width - 40, height: 220)
+        
+        
+        greedyLabel.frame = CGRect(x: 20, y: 1495, width: 200, height: 30)
+        greedyColletionView.frame = CGRect(x: 20, y: 1535, width: view.frame.width - 40, height: 220)
+        
+    
         
         
         // 고정
         firstProblem.problemNumLabel.text = "1"
         secondProblem.problemNumLabel.text = "2"
         thirdProblem.problemNumLabel.text = "3"
+        
+        dpLabel.text = "DP"
+        dsLabel.text = "Data Structure"
+        graphLabel.text = "Graph"
+        implemntationLabel.text = "Implementation"
+        greedyLabel.text = "Greedy"
+        
+        
+        dpLabel.textColor = .white
+        dsLabel.textColor = .white
+        graphLabel.textColor = .white
+        implemntationLabel.textColor = .white
+        greedyLabel.textColor = .white
+        
+            
+        dpLabel.font = .boldSystemFont(ofSize: 23)
+
+        dsLabel.font = .boldSystemFont(ofSize: 23)
+        graphLabel.font = .boldSystemFont(ofSize: 23)
+        implemntationLabel.font = .boldSystemFont(ofSize: 23)
+        greedyLabel.font = .boldSystemFont(ofSize: 23)
         
         // 바꿔야 할것들
         firstProblem.problemTypeLabel.text = "dp"
@@ -93,14 +216,16 @@ class MainViewController: UIViewController {
     
 }
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        6
+        1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         20
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProblemCollectionViewCell.identifier, for: indexPath) as? ProblemCollectionViewCell else { return UICollectionViewCell() }
@@ -113,6 +238,21 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+            return CGSize(width: 100, height: 100)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        20
+    }
+    
+//    collec
+    
     
 }
 
@@ -123,7 +263,13 @@ extension MainViewController {
     private func setUp() {
         
         scrollView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
-        colletionView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+        
+        
+        dpColletionView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+        dsColletionView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+        graphColletionView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+        implementationColletionView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+        greedyColletionView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
         
         
         view.addSubview(scrollView)
@@ -132,7 +278,19 @@ extension MainViewController {
         topRecommendView.addSubview(thirdProblem)
         
         scrollView.addSubview(topRecommendView)
-        scrollView.addSubview(colletionView)
+        scrollView.addSubview(dpColletionView)
+        scrollView.addSubview(dsColletionView)
+        scrollView.addSubview(graphColletionView)
+        scrollView.addSubview(implementationColletionView)
+        scrollView.addSubview(greedyColletionView)
+        
+
+        scrollView.addSubview(dpLabel)
+        scrollView.addSubview(dsLabel)
+        scrollView.addSubview(graphLabel)
+        scrollView.addSubview(implemntationLabel)
+        scrollView.addSubview(greedyLabel)
+        
         scrollView.addSubview(threePickLabel)
         threePickLabel.textColor = .white
         threePickLabel.text = "오늘의 추천 3문제"
@@ -150,7 +308,7 @@ extension MainViewController {
     }
     
     private func setUpConstraints() {
-        scrollView.contentSize = CGSize(width: view.frame.width - 20, height: 2200)
+        scrollView.contentSize = CGSize(width: view.frame.width - 20, height: 1780)
         
         firstProblem.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)

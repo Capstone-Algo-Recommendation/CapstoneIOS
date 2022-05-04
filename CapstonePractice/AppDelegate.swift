@@ -21,6 +21,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        UITabBar.appearance().backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+        
+        let myColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+            
+        let barAppearance = UINavigationBarAppearance()
+        barAppearance.backgroundColor = myColor
+        barAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+//        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.green]
+
+        let navigationBar = UINavigationBar.appearance()
+    
+        navigationBar.standardAppearance = barAppearance
+        navigationBar.scrollEdgeAppearance = barAppearance // f
+        
+        
         return true
     }
 

@@ -10,7 +10,7 @@ import SnapKit
 
 class PosterView: UIView, SetUpView {
     
-    let tableView = UITableView()
+    let tableView = UITableView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 20, height: 20)), style: .insetGrouped)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,8 +23,9 @@ class PosterView: UIView, SetUpView {
     }
     
     internal func setUp() {
-        backgroundColor = .white
+        tableView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
         addSubview(tableView)
+        
         tableView.register(PosterTableViewCell.self, forCellReuseIdentifier: PosterTableViewCell.identifier)
     }
     

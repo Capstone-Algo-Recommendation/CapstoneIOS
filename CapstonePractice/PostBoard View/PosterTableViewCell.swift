@@ -34,8 +34,10 @@ class PosterTableViewCell: UITableViewCell, SetUpView {
         addSubview(contentLabel)
         addSubview(dateIdLabel)
         addSubview(likeLabel)
+        backgroundColor = UIColor(red: 43/255, green: 50/255, blue: 71/255, alpha: 1)
         
         titleLabel.text = "This is title"
+        titleLabel.textColor = .white
         contentLabel.text = "this is content of this poster"
         dateIdLabel.text = "03.24"
         likeLabel.text = "👍 5 💬 3"
