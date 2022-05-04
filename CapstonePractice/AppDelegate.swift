@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         barAppearance.backgroundColor = myColor
         barAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         
-//        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.green]
 
         let navigationBar = UINavigationBar.appearance()
     
