@@ -36,6 +36,15 @@ final class PosterDetailMainCell: UITableViewCell, SetUpView {
         addSubview(posterContentLabel)
         addSubview(likeLabel)
         
+        backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        
+        
+        authorLabel.textColor = .white
+        createdDateLabel.textColor = .white
+        posterTitleLabel.textColor = .white
+        likeLabel.textColor = .white
+        posterContentLabel.textColor = .white
+        
         authorLabel.text = "unknown author"
         authorLabel.font = .systemFont(ofSize: 15)
         createdDateLabel.text = "2017/01/11"

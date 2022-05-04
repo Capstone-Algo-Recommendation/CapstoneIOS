@@ -123,10 +123,12 @@ class MainViewController: UIViewController {
     
         navigationController?.navigationBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         
-        navigationController?.navigationBar.isTranslucent = false
 
         tabBarController?.tabBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
-        tabBarController?.tabBar.isTranslucent = false
+        
+        //        navigationController?.navigationBar.isTranslucent = false
+        //        tabBarController?.tabBar.isTranslucent = false
+
     }
     
 

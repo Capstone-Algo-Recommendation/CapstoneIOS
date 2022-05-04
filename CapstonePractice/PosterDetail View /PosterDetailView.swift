@@ -32,6 +32,9 @@ class PosterDetailView: UIView, SetUpView {
         commentSuperView.addSubview(commentTextView)
         addSubview(commentSuperView)
         
+        tableView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        tableView.allowsSelection = false
+        
         commentTextView.layer.cornerRadius = 20
         
         commentSuperView.backgroundColor = .white

@@ -33,6 +33,13 @@ final class PosterDetailCommentCell: UITableViewCell, SetUpView {
         addSubview(createdLabel)
         addSubview(likeButton)
         
+        backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        
+        userIdLabel.textColor = .white
+        contentLablel.textColor = .white
+        createdLabel.textColor = .white
+        
+        
         userIdLabel.font = .systemFont(ofSize: 20)
         createdLabel.font = .systemFont(ofSize: 15)
         contentLablel.font = .systemFont(ofSize: 17)
