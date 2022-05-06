@@ -22,6 +22,8 @@ class PosterDetailViewController: UIViewController {
         self.view = mainView
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,6 +84,18 @@ class PosterDetailViewController: UIViewController {
     private func addTargets() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        mainView.sendButton.rx.tap.bind { _ in
+            
+            // TODO: Send button  보내기
+            print("hl")
+            
+        }.disposed(by: disposeBag)
+        
+        
+        
+        
+        
     }
     
     @objc func keyBoardWillShow(_ sender: Notification) {
@@ -113,6 +127,13 @@ extension PosterDetailViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         mainView.commentTextView.resignFirstResponder()
         mainView.resignFirstResponder()
+        mainView.endEditing(true)
+        mainView.commentTextView.endEditing(true)
+        scrollView.endEditing(true)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("ASDf")
     }
     
     

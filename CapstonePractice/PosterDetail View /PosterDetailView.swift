@@ -39,6 +39,7 @@ class PosterDetailView: UIView, SetUpView {
         sendButton.backgroundColor = .yellow
         tableView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         tableView.allowsSelection = false
+        tableView.keyboardDismissMode = .onDrag
         
         commentTextView.layer.cornerRadius = 20
         
@@ -69,7 +70,7 @@ class PosterDetailView: UIView, SetUpView {
         }
         
         sendButton.snp.makeConstraints { make in
-            make.leading.equalTo(commentTextView.snp.trailing).offset(8)
+            make.leading.equalTo(commentTextView.snp.trailing).offset(8).priority(750)
             make.trailing.equalTo(commentSuperView.snp.trailing).offset(-25)
             make.top.equalTo(commentSuperView.snp.top).offset(3)
             make.height.equalTo(40)
@@ -108,7 +109,7 @@ class PosterDetailView: UIView, SetUpView {
         }
         
         sendButton.snp.makeConstraints { make in
-            make.leading.equalTo(commentTextView.snp.trailing).offset(8)
+            make.leading.equalTo(commentTextView.snp.trailing).offset(8).priority(750)
             make.trailing.equalTo(commentSuperView.snp.trailing).offset(-25)
             make.top.equalTo(commentSuperView.snp.top).offset(3)
             make.height.equalTo(40)
