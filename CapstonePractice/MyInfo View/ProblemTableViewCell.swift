@@ -36,7 +36,9 @@ final class ProblemTableViewCell: UITableViewCell, SetUpView {
         
         numberLabel.font = .systemFont(ofSize: 16)
         titleLabel.font = .boldSystemFont(ofSize: 20)
-        
+        backgroundColor = UIColor(red: 43/255, green: 50/255, blue: 71/255, alpha: 1)
+        titleLabel.textColor = .white
+        keyLabel.textColor = .white
         numberLabel.textColor = .gray
         
     }
