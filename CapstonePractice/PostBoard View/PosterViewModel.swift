@@ -17,7 +17,7 @@ struct Poster {
 
 class PosterViewModel {
     
-    let items = Observable.just([
+    var items = Observable.just([
         Poster(title: "다이어터의 만찬", content: "로제 찜딹 대 황올", writtenDate: "03/02", like: "2"),
         Poster(title: "가족이 코로나 걸림", content: "나도 목좀 아프고 해서 pcr검사받으려는데 1시간뒤 수업있음 어캐?", writtenDate: "03/04", like: "2"),
         Poster(title: "경영학부 사물함 돈내고 쓰나요?", content: "학생회비 안 냈는데, 돈 내고 쓰나요?", writtenDate: "03/21", like: "2"),
@@ -29,6 +29,15 @@ class PosterViewModel {
         Poster(title: "아이폰 아이패드 기본앱.", content: "기본으로 있으면 좋을만한 어플들 알려주3", writtenDate: "03/22", like: "2")
 
     ])
+    
+    
+    func loadPosts() {
+        // Poster 객체로 가져오고 Poster 배열을 items에 넣기
+    
+//        ApiService.getPostBoard()
+        
+        
+    }
     
 
 }

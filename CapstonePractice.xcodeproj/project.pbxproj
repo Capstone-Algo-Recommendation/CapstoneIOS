@@ -47,6 +47,7 @@
 		887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */; };
 		887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085F127E8AAF400B5BC82 /* RegisterView.swift */; };
 		8875CA2427F970DE000C581A /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8875CA2327F970DE000C581A /* credentials.plist */; };
+		88B280C328250DF6002D3618 /* ApiService + member extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B280C228250DF6002D3618 /* ApiService + member extension.swift */; };
 		88B6D588281D32EC005FDFFE /* ProbleCellLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D587281D32EC005FDFFE /* ProbleCellLikeView.swift */; };
 		88B776C727F47BA90068C1FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B776C627F47BA90068C1FD /* MainView.swift */; };
 		88B776C927F47DF60068C1FD /* ProblemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B776C827F47DF60068C1FD /* ProblemCollectionViewCell.swift */; };
@@ -98,6 +99,7 @@
 		887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		887085F127E8AAF400B5BC82 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		8875CA2327F970DE000C581A /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = credentials.plist; path = ../../../Downloads/credentials.plist; sourceTree = "<group>"; };
+		88B280C228250DF6002D3618 /* ApiService + member extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiService + member extension.swift"; sourceTree = "<group>"; };
 		88B6D587281D32EC005FDFFE /* ProbleCellLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProbleCellLikeView.swift; sourceTree = "<group>"; };
 		88B776C627F47BA90068C1FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		88B776C827F47DF60068C1FD /* ProblemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -168,7 +170,7 @@
 			children = (
 				88F489C2281D4EF200F93775 /* PrView.swift */,
 				88F489C4281D4EFD00F93775 /* PRVC.swift */,
-				8824E7B227EEE70100125C8C /* ApiService.swift */,
+				88B280C128250DDD002D3618 /* Apis */,
 				881B660E27F96BC70064A74F /* GoogleService-Info.plist */,
 				880BCA1127E879C800C5235A /* Info.plist */,
 				8875CA2327F970DE000C581A /* credentials.plist */,
@@ -276,6 +278,15 @@
 				887085F127E8AAF400B5BC82 /* RegisterView.swift */,
 			);
 			path = "Register View";
+			sourceTree = "<group>";
+		};
+		88B280C128250DDD002D3618 /* Apis */ = {
+			isa = PBXGroup;
+			children = (
+				8824E7B227EEE70100125C8C /* ApiService.swift */,
+				88B280C228250DF6002D3618 /* ApiService + member extension.swift */,
+			);
+			path = Apis;
 			sourceTree = "<group>";
 		};
 		88C8360027F1CA55002211CA /* SpecificProblem View */ = {
@@ -433,6 +444,7 @@
 				883A412F27EDA4970002B909 /* PosterTableViewCell.swift in Sources */,
 				88F4EF7D281AD10600453FB4 /* BackJoonInfoViewController.swift in Sources */,
 				88F489C5281D4EFD00F93775 /* PRVC.swift in Sources */,
+				88B280C328250DF6002D3618 /* ApiService + member extension.swift in Sources */,
 				88F4EF7F281AD12B00453FB4 /* BackJoonInfoView.swift in Sources */,
 				883A413C27EDC5E60002B909 /* PosterDetailCommentCell.swift in Sources */,
 				88C8360427F1D96C002211CA /* WrongProblemViewController.swift in Sources */,

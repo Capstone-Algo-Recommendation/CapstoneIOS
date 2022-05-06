@@ -14,8 +14,6 @@ import Firebase
 
 final class LoginViewController: UIViewController {
      
-    
-    
     let mainView = LoginView()
     let disposeBag = DisposeBag()
     let signInConfig = GIDConfiguration.init(clientID: "591917256191-dci0ftkrmar7n2ja4gsohuhae6l4ng7c.apps.googleusercontent.com")
@@ -83,7 +81,8 @@ final class LoginViewController: UIViewController {
             user.authentication.do { authentication, error in
                 guard error == nil else { return }
                 guard let authentication = authentication else { return }
-                ApiService.test(access_token: authentication.accessToken, token_type: "", refresh_token: authentication.refreshToken, expir:1000, refrtokenEx: 100)
+                
+                ApiService.login(access_token: authentication.accessToken, refresh_token: authentication.refreshToken)
             }
             
             

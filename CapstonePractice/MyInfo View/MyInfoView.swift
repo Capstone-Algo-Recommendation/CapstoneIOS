@@ -24,8 +24,8 @@ class MyInfoView: UIView, SetUpView {
     }
     
     func setUp() {
-        backgroundColor = .systemMint
         addSubview(tableView)
+        tableView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         tableView.register(MyInfoTableViewCell.self, forCellReuseIdentifier: MyInfoTableViewCell.identifier)
     }
     

@@ -29,7 +29,10 @@ final class MyInfoTableViewCell: UITableViewCell, SetUpView {
     func setUp() {
         addSubview(menuImage)
         addSubview(menuTitle)
+        backgroundColor = UIColor(red: 43/255, green: 50/255, blue: 71/255, alpha: 1)
         menuTitle.font = .systemFont(ofSize: 18)
+        
+        menuTitle.textColor = .white
     }
     
     func keyBoardHiddenConstraints() {

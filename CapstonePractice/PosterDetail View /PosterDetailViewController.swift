@@ -27,20 +27,7 @@ class PosterDetailViewController: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = true
         addTargets()
-    
-//        viewModel.items
-//        .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterDetailMainCell.identifier) as? PosterDetailMainCell else { return UITableViewCell()
-//            }
-//            
-//            cell.posterContentLabel.text = element.content
-//            cell.posterTitleLabel.text = element.title
-//            cell.createdDateLabel.text = element.writtenDate
-//             
-//            return cell
-//        }
-//        .disposed(by: disposeBag)
-        
+
         
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfCustomData>(
           configureCell: { dataSource, tableView, indexPath, item in
@@ -59,7 +46,6 @@ class PosterDetailViewController: UIViewController {
                   
                   return cell
               }
-              
           })
         
         let sections = [
@@ -122,6 +108,11 @@ class PosterDetailViewController: UIViewController {
 extension PosterDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        mainView.commentTextView.resignFirstResponder()
+        mainView.resignFirstResponder()
     }
     
     

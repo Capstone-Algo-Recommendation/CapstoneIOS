@@ -25,24 +25,18 @@ class ApiService {
             }
         }
     }
+
     
-    
-    
-    
-    
-    
-    
-    
-    static func test(access_token: String, token_type: String, refresh_token: String, expir: Int, refrtokenEx: Int ) {
+    static func login(access_token: String, refresh_token: String ) {
  
         let url = URL(string: "http://15.164.165.132/sign/login/google/test")!
         
         let json: [String: Any] = [
             "access_token": access_token,
-            "token_type": token_type,
+            "token_type": "asd",
             "refresh_token": refresh_token,
-            "expires_in": expir,
-            "refresh_token_expires_in": refrtokenEx
+            "expires_in": 1000,
+            "refresh_token_expires_in": 100
         ]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
@@ -62,7 +56,15 @@ class ApiService {
             }
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
+                
+                // TODO: login 했을시 acess token 처리해야 됨
                 print(responseJSON)
+                
+                
+                
+                
+                
+                
             }
         }
         task.resume()
@@ -94,6 +96,7 @@ struct A1: Codable{
 }
 
 
+
 // 게시글 관련
 extension ApiService {
     
@@ -113,7 +116,8 @@ extension ApiService {
             }
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
-                print(responseJSON)
+                // TODO: 게시글 데이터 가져오면 어떻게 처리할지
+                
             }
         }
         
