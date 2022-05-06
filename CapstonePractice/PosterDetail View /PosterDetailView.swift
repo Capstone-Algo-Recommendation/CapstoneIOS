@@ -14,6 +14,7 @@ class PosterDetailView: UIView, SetUpView {
     var open = true
     
     let commentSuperView = UIView()
+    let sendButton = UIButton()
     let commentTextView = UITextView()
     
     override init(frame: CGRect) {
@@ -31,13 +32,15 @@ class PosterDetailView: UIView, SetUpView {
         
         commentSuperView.addSubview(commentTextView)
         addSubview(commentSuperView)
+        commentSuperView.addSubview(sendButton)
         
+        commentSuperView.backgroundColor = .black
+        
+        sendButton.backgroundColor = .yellow
         tableView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         tableView.allowsSelection = false
         
         commentTextView.layer.cornerRadius = 20
-        
-        commentSuperView.backgroundColor = .white
         
         commentTextView.backgroundColor = .gray
         tableView.register(PosterDetailMainCell.self, forCellReuseIdentifier: PosterDetailMainCell.identifier)
@@ -47,6 +50,7 @@ class PosterDetailView: UIView, SetUpView {
     func keyBoardShowConstraints(keyBoardHeight: CGFloat) {
         tableView.snp.removeConstraints()
         commentTextView.snp.removeConstraints()
+        sendButton.snp.removeConstraints()
         commentSuperView.snp.removeConstraints()
         
         tableView.snp.makeConstraints { make in
@@ -57,10 +61,19 @@ class PosterDetailView: UIView, SetUpView {
         }
         
         commentTextView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-65)
+            make.leading.equalToSuperview().offset(25)
+            make.top.equalToSuperview().offset(3)
+            make.height.equalTo(40)
+            
+        }
+        
+        sendButton.snp.makeConstraints { make in
+            make.leading.equalTo(commentTextView.snp.trailing).offset(8)
             make.trailing.equalTo(commentSuperView.snp.trailing).offset(-25)
-            make.leading.equalTo(commentSuperView.snp.leading).offset(25)
             make.top.equalTo(commentSuperView.snp.top).offset(3)
             make.height.equalTo(40)
+            make.width.equalTo(40)
         }
         
         commentSuperView.snp.makeConstraints { make in
@@ -72,10 +85,13 @@ class PosterDetailView: UIView, SetUpView {
     }
     
     func keyBoardHiddenConstraints() {
-        
+        sendButton.snp.removeConstraints()
         tableView.snp.removeConstraints()
         commentTextView.snp.removeConstraints()
         commentSuperView.snp.removeConstraints()
+        
+        
+
     
         tableView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
@@ -85,10 +101,18 @@ class PosterDetailView: UIView, SetUpView {
         }
         
         commentTextView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-65)
+            make.leading.equalToSuperview().offset(25)
+            make.top.equalToSuperview().offset(3)
+            make.height.equalTo(40)
+        }
+        
+        sendButton.snp.makeConstraints { make in
+            make.leading.equalTo(commentTextView.snp.trailing).offset(8)
             make.trailing.equalTo(commentSuperView.snp.trailing).offset(-25)
-            make.leading.equalTo(commentSuperView.snp.leading).offset(25)
             make.top.equalTo(commentSuperView.snp.top).offset(3)
             make.height.equalTo(40)
+            make.width.equalTo(40)
         }
         
         commentSuperView.snp.makeConstraints { make in

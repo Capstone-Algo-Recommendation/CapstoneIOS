@@ -10,8 +10,6 @@ import FirebaseCore
 import GoogleSignIn
 import Firebase
 
-
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,13 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        UITabBar.appearance().backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+        UITabBar.appearance().backgroundColor = .gray
+        UITabBar.appearance().standardAppearance.backgroundColor = .gray
+        UITabBar.appearance().scrollEdgeAppearance?.backgroundColor = .gray
+        
+        
+        
+//        UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
         
         let myColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
             
         let barAppearance = UINavigationBarAppearance()
         barAppearance.backgroundColor = myColor
         barAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        
         
 
         let navigationBar = UINavigationBar.appearance()
