@@ -82,10 +82,23 @@ final class LoginViewController: UIViewController {
                 guard error == nil else { return }
                 guard let authentication = authentication else { return }
                 
-                ApiService.login(access_token: authentication.accessToken, refresh_token: authentication.refreshToken) {
-                    print("success")
-//                    User
+                ApiService.login(access_token: authentication.accessToken, refresh_token: authentication.refreshToken) { token in
+                    print("success: ", token)
+                    
+                    
+                    
+                    UserDefaults.standard.set(token, forKey: StaticMembers.userToken)
+                    
+                    DispatchQueue.main.async {
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                        let vc = MainTabBarController()
+                        windowScene.windows.first?.rootViewController = vc
+                        windowScene.windows.first?.makeKeyAndVisible()
+                    }
+                    
                 }
+
+//                ApiService.getPostBoard()
             }
             
             

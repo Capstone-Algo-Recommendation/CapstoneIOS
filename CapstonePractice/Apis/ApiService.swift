@@ -27,23 +27,10 @@ class ApiService {
     }
 
     
-    static func login(access_token: String, refresh_token: String, completion: () -> Void ) {
+    static func login(access_token: String, refresh_token: String, completion: @escaping (String) -> Void ) {
         
         let url = URL(string: "http://15.164.165.132/sign/login/google/test")!
-        
-//        AF.request(url, method: .post).responseData { response in
-//            switch response.result {
-//            case .success(let value):
-//                let decoder = JSONDecoder()
-//                let data = try? decoder.decode(SolvedProblems2.self, from: value)
-//                print(data)
-//                print(value)
-//            case .failure(let error):
-//                print("what kind of error", error)
-//            }
-//        }
- 
-        
+                
         
         let json: [String: Any] = [
             "access_token": access_token,
@@ -69,23 +56,16 @@ class ApiService {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-
-            let decoder = JSONDecoder()
-
-            let responseJSON2 = try? JSONSerialization.jsonObject(with: data, options: [ ])
             
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             
-            let result = try? decoder.decode(SolvedProblems2.self, from: data )
-            print(result,"ASdas")
-            
-            
-            
-            if let responseJSON = responseJSON2 as? [String: Any] {
-
-                print(responseJSON)
-                print(responseJSON2)
-           
-            }
+            let str = String(decoding: data, as: UTF8.self)
+    
+//            print(str)
+            let sodeul = try? JSONDecoder().decode(UserData.self, from: data)
+//            print(sodeul)
+//            print("token is " , sodeul?.data.token)
+            completion(sodeul?.data.token ?? "asd")
         }
         task.resume()
     }
@@ -122,9 +102,9 @@ struct A1: Codable{
 // 게시글 관련
 extension ApiService {
     
-    static func getPostBoard() {
+    static func getPostBoard(completion : @escaping ([Datum]) -> Void) {
         
-        let url = URL(string: "http://15.164.165.132/api/board?page")!
+        let url = URL(string: "http://15.164.165.132/api/board?page=0")!
         var request = URLRequest(url: url)
 
         request.httpMethod = "GET"
@@ -137,10 +117,17 @@ extension ApiService {
                 return
             }
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                // TODO: 게시글 데이터 가져오면 어떻게 처리할지
-                
-            }
+            
+            let str = String(decoding: data, as: UTF8.self)
+        
+            
+            let sodeul = try? JSONDecoder().decode(Boards.self, from: data)
+            let d = sodeul!.data
+            completion(d)
+//            print(sodeul?.data)
+            
+            
+
         }
         
         task.resume()

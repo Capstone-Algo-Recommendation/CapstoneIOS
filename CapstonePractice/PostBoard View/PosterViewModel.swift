@@ -30,13 +30,17 @@ class PosterViewModel {
 
     ])
     
-    var it: [Poster] = []
+    var it: [Datum] = []
     
     
-    func loadPosts() {
+    func loadPosts(competion: @escaping ()-> Void) {
         // Poster 객체로 가져오고 Poster 배열을 items에 넣기
     
-//        ApiService.getPostBoard()
+        ApiService.getPostBoard { datum in
+//            print(datum, "dsafadsfasdfasdfasdf")
+            self.it = datum
+            competion()
+        }
         
         
     }

@@ -99,6 +99,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("From mainView")
+        print(UserDefaults.standard.string(forKey: StaticMembers.userToken))
+        
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.green]
         
         
