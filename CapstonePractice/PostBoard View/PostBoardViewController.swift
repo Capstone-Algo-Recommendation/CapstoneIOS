@@ -18,6 +18,7 @@ class PostBoardViewController: UIViewController {
     override func loadView() {
         self.view = mainView
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
@@ -45,9 +46,46 @@ class PostBoardViewController: UIViewController {
         }
         .disposed(by: disposeBag)
         
+//        viewModel.loadPosts()
+//        mainView.tableView.reloadData()
+        
         mainView.tableView
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
+    }
+    
+}
+
+
+//UITableViewDataSource
+extension PostBoardViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        viewModel.it.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterTableViewCell.identifier, for: indexPath) as? PosterTableViewCell else  {
+//            return UITableViewCell()
+//        }
+//
+//
+//        let element = viewModel.it[indexPath.row]
+//
+//        cell.titleLabel.text = element.title
+//        cell.contentLabel.text = element.content
+//        cell.dateIdLabel.text = element.writtenDate
+//
+//
+//        return cell
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = PosterDetailViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -73,14 +111,4 @@ extension PostBoardViewController {
     }
 }
 
-extension PostBoardViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 80
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PosterDetailViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
+

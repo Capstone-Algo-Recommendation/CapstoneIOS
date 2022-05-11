@@ -30,6 +30,8 @@ class PosterViewModel {
 
     ])
     
+    var it: [Poster] = []
+    
     
     func loadPosts() {
         // Poster 객체로 가져오고 Poster 배열을 items에 넣기

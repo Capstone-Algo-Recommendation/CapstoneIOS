@@ -27,9 +27,23 @@ class ApiService {
     }
 
     
-    static func login(access_token: String, refresh_token: String ) {
- 
+    static func login(access_token: String, refresh_token: String, completion: () -> Void ) {
+        
         let url = URL(string: "http://15.164.165.132/sign/login/google/test")!
+        
+//        AF.request(url, method: .post).responseData { response in
+//            switch response.result {
+//            case .success(let value):
+//                let decoder = JSONDecoder()
+//                let data = try? decoder.decode(SolvedProblems2.self, from: value)
+//                print(data)
+//                print(value)
+//            case .failure(let error):
+//                print("what kind of error", error)
+//            }
+//        }
+ 
+        
         
         let json: [String: Any] = [
             "access_token": access_token,
@@ -38,33 +52,39 @@ class ApiService {
             "expires_in": 1000,
             "refresh_token_expires_in": 100
         ]
-        
+
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
 
-        
+
         var request = URLRequest(url: url)
 
         request.httpMethod = "POST"
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         request.httpBody = jsonData
+    
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                
-                // TODO: login 했을시 acess token 처리해야 됨
+
+            let decoder = JSONDecoder()
+
+            let responseJSON2 = try? JSONSerialization.jsonObject(with: data, options: [ ])
+            
+            
+            let result = try? decoder.decode(SolvedProblems2.self, from: data )
+            print(result,"ASdas")
+            
+            
+            
+            if let responseJSON = responseJSON2 as? [String: Any] {
+
                 print(responseJSON)
-                
-                
-                
-                
-                
-                
+                print(responseJSON2)
+           
             }
         }
         task.resume()
@@ -84,6 +104,8 @@ class ApiService {
                 print("what kind of error", error)
             }
         }
+        
+        
     }
 }
 

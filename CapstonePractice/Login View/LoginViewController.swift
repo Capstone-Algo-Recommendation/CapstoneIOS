@@ -82,10 +82,14 @@ final class LoginViewController: UIViewController {
                 guard error == nil else { return }
                 guard let authentication = authentication else { return }
                 
-                ApiService.login(access_token: authentication.accessToken, refresh_token: authentication.refreshToken)
+                ApiService.login(access_token: authentication.accessToken, refresh_token: authentication.refreshToken) {
+                    print("success")
+//                    User
+                }
             }
             
             
         }
     }
 }
+
