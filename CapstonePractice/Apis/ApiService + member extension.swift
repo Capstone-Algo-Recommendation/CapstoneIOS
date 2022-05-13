@@ -39,12 +39,7 @@ extension ApiService {
                 
                 // TODO: login 했을시 acess token 처리해야 됨
                 print(responseJSON)
-                
-                
-                
-                
-                
-                
+
             }
         }
         task.resume()

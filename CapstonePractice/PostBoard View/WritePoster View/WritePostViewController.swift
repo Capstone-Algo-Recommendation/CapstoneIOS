@@ -40,13 +40,6 @@ class WritePostViewController: UIViewController {
                     self.mainView.textView.textColor = UIColor.lightGray
                 }
             }.disposed(by: disposeBag)
-    
-        
-//        mainView.textView
-//            .rx.text.changed
-//            .bind { text in
-//            print("textview Text: \(text)")
-//        }
     }
 }
 
@@ -64,6 +57,15 @@ extension WritePostViewController {
     
     @objc func postButtonClicked() {
         print("need to post")
-        mainView.textView.endEditing(true)
+//        mainView.textView.endEditing(true)
+        
+        
+    }
+    
+    func thankYou(to Jack: String, to2 Hue: String, to3 Dustin: String) {
+        print("\(Jack)님, \(Hue)님, \(Dustin)님 새싹 1기 수고 많으셨습니다!! ")
+        print("새싹 2기도 화이팅!!  ")
+        print("By 새싹 1기 수강생 Yundong Lee")
+        
     }
 }

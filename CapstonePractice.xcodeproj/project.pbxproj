@@ -16,6 +16,14 @@
 		880BCA1927E879EF00C5235A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 880BCA1827E879EF00C5235A /* SnapKit */; };
 		880BCA2027E87AA200C5235A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BCA1F27E87AA100C5235A /* LoginViewController.swift */; };
 		880BCA2327E87AC300C5235A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880BCA2227E87AC300C5235A /* LoginView.swift */; };
+		8814C1B0282E3C5400EF7E6B /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8814C1A9282E3C5400EF7E6B /* NotoSansKR-Light.otf */; };
+		8814C1B1282E3C5400EF7E6B /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8814C1AA282E3C5400EF7E6B /* NotoSansKR-Bold.otf */; };
+		8814C1B2282E3C5400EF7E6B /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8814C1AB282E3C5400EF7E6B /* NotoSansKR-Thin.otf */; };
+		8814C1B3282E3C5400EF7E6B /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8814C1AC282E3C5400EF7E6B /* OFL.txt */; };
+		8814C1B4282E3C5400EF7E6B /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8814C1AD282E3C5400EF7E6B /* NotoSansKR-Black.otf */; };
+		8814C1B5282E3C5400EF7E6B /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8814C1AE282E3C5400EF7E6B /* NotoSansKR-Medium.otf */; };
+		8814C1B6282E3C5400EF7E6B /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8814C1AF282E3C5400EF7E6B /* NotoSansKR-Regular.otf */; };
+		8814C1B8282E3C9A00EF7E6B /* FontNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8814C1B7282E3C9A00EF7E6B /* FontNames.swift */; };
 		881B660F27F96BC70064A74F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 881B660E27F96BC70064A74F /* GoogleService-Info.plist */; };
 		8824E7AA27EED94500125C8C /* WritePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7A927EED94500125C8C /* WritePostViewController.swift */; };
 		8824E7AC27EEDAE900125C8C /* WritePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7AB27EEDAE900125C8C /* WritePosterView.swift */; };
@@ -74,6 +82,14 @@
 		880BCA1127E879C800C5235A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		880BCA1F27E87AA100C5235A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		880BCA2227E87AC300C5235A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8814C1A9282E3C5400EF7E6B /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		8814C1AA282E3C5400EF7E6B /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		8814C1AB282E3C5400EF7E6B /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		8814C1AC282E3C5400EF7E6B /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		8814C1AD282E3C5400EF7E6B /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		8814C1AE282E3C5400EF7E6B /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		8814C1AF282E3C5400EF7E6B /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		8814C1B7282E3C9A00EF7E6B /* FontNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNames.swift; sourceTree = "<group>"; };
 		881B660E27F96BC70064A74F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8824E7A927EED94500125C8C /* WritePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePostViewController.swift; sourceTree = "<group>"; };
 		8824E7AB27EEDAE900125C8C /* WritePosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePosterView.swift; sourceTree = "<group>"; };
@@ -172,6 +188,7 @@
 		880BCA0227E879C500C5235A /* CapstonePractice */ = {
 			isa = PBXGroup;
 			children = (
+				8814C1A8282E3C5400EF7E6B /* Noto_Sans_KR */,
 				88F489C2281D4EF200F93775 /* PrView.swift */,
 				88F489C4281D4EFD00F93775 /* PRVC.swift */,
 				88B280C128250DDD002D3618 /* Apis */,
@@ -195,6 +212,7 @@
 				8824E7C127EF021500125C8C /* BackJoonProblemViewController.swift */,
 				88C8360027F1CA55002211CA /* SpecificProblem View */,
 				883A96B8282B82FA003AD20F /* Enums.swift */,
+				8814C1B7282E3C9A00EF7E6B /* FontNames.swift */,
 			);
 			path = CapstonePractice;
 			sourceTree = "<group>";
@@ -206,6 +224,21 @@
 				880BCA2227E87AC300C5235A /* LoginView.swift */,
 			);
 			path = "Login View";
+			sourceTree = "<group>";
+		};
+		8814C1A8282E3C5400EF7E6B /* Noto_Sans_KR */ = {
+			isa = PBXGroup;
+			children = (
+				8814C1A9282E3C5400EF7E6B /* NotoSansKR-Light.otf */,
+				8814C1AA282E3C5400EF7E6B /* NotoSansKR-Bold.otf */,
+				8814C1AB282E3C5400EF7E6B /* NotoSansKR-Thin.otf */,
+				8814C1AC282E3C5400EF7E6B /* OFL.txt */,
+				8814C1AD282E3C5400EF7E6B /* NotoSansKR-Black.otf */,
+				8814C1AE282E3C5400EF7E6B /* NotoSansKR-Medium.otf */,
+				8814C1AF282E3C5400EF7E6B /* NotoSansKR-Regular.otf */,
+			);
+			name = Noto_Sans_KR;
+			path = ../../../Downloads/Noto_Sans_KR;
 			sourceTree = "<group>";
 		};
 		8824E7AD27EEDDB400125C8C /* WritePoster View */ = {
@@ -377,9 +410,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8814C1B6282E3C5400EF7E6B /* NotoSansKR-Regular.otf in Resources */,
+				8814C1B4282E3C5400EF7E6B /* NotoSansKR-Black.otf in Resources */,
 				880BCA1027E879C800C5235A /* LaunchScreen.storyboard in Resources */,
+				8814C1B5282E3C5400EF7E6B /* NotoSansKR-Medium.otf in Resources */,
+				8814C1B2282E3C5400EF7E6B /* NotoSansKR-Thin.otf in Resources */,
+				8814C1B0282E3C5400EF7E6B /* NotoSansKR-Light.otf in Resources */,
 				8875CA2427F970DE000C581A /* credentials.plist in Resources */,
 				880BCA0D27E879C800C5235A /* Assets.xcassets in Resources */,
+				8814C1B1282E3C5400EF7E6B /* NotoSansKR-Bold.otf in Resources */,
+				8814C1B3282E3C5400EF7E6B /* OFL.txt in Resources */,
 				881B660F27F96BC70064A74F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +490,7 @@
 				883A412F27EDA4970002B909 /* PosterTableViewCell.swift in Sources */,
 				88F4EF7D281AD10600453FB4 /* BackJoonInfoViewController.swift in Sources */,
 				88F489C5281D4EFD00F93775 /* PRVC.swift in Sources */,
+				8814C1B8282E3C9A00EF7E6B /* FontNames.swift in Sources */,
 				88B280C328250DF6002D3618 /* ApiService + member extension.swift in Sources */,
 				88F4EF7F281AD12B00453FB4 /* BackJoonInfoView.swift in Sources */,
 				883A413C27EDC5E60002B909 /* PosterDetailCommentCell.swift in Sources */,

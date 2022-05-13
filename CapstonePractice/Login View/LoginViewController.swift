@@ -47,23 +47,23 @@ final class LoginViewController: UIViewController {
         
         mainView.registerButton.addTarget(self, action: #selector(goolgeLogintTapped), for: .touchUpInside)
     
-        mainView.idTextField
-            .rx.value
-            .subscribe { text in
-                print(text!)
-            }.disposed(by: disposeBag)
-        
-        mainView.idTextField
-            .rx.controlEvent([.editingDidEnd])
-            .bind { text in
-                print(text, " from end")
-            }.disposed(by: disposeBag)
-                
-        mainView.passWordTextField
-            .rx.value
-            .subscribe { text in
-                print("pass \(text)")
-            }.disposed(by: disposeBag)
+//        mainView.idTextField
+//            .rx.value
+//            .subscribe { text in
+//                print(text!)
+//            }.disposed(by: disposeBag)
+//        
+//        mainView.idTextField
+//            .rx.controlEvent([.editingDidEnd])
+//            .bind { text in
+//                print(text, " from end")
+//            }.disposed(by: disposeBag)
+//                
+//        mainView.passWordTextField
+//            .rx.value
+//            .subscribe { text in
+//                print("pass \(text)")
+//            }.disposed(by: disposeBag)
     }
     
     

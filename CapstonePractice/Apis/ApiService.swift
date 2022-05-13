@@ -56,15 +56,7 @@ class ApiService {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-            
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            
-            let str = String(decoding: data, as: UTF8.self)
-    
-//            print(str)
             let sodeul = try? JSONDecoder().decode(UserData.self, from: data)
-//            print(sodeul)
-//            print("token is " , sodeul?.data.token)
             completion(sodeul?.data.token ?? "asd")
         }
         task.resume()
@@ -116,17 +108,9 @@ extension ApiService {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            
-            let str = String(decoding: data, as: UTF8.self)
-        
-            
             let sodeul = try? JSONDecoder().decode(Boards.self, from: data)
             let d = sodeul!.data
             completion(d)
-//            print(sodeul?.data)
-            
-            
 
         }
         
@@ -161,7 +145,7 @@ extension ApiService {
     
     
     // 이거 problemId int? string?
-    static func writePost(title: String, content: String, problemId: Int) {
+    static func writePost(title: String, content: String) {
         
         let url = URL(string: "http://15.164.165.132/api/board")!
         var request = URLRequest(url: url)
@@ -173,7 +157,7 @@ extension ApiService {
         let json: [String: Any] = [
             "title": title,
             "content": content,
-            "problemId": problemId
+            "problemId": ""
         ]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)

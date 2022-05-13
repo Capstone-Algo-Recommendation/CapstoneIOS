@@ -13,15 +13,11 @@ import SnapKit
 
 final class LoginView: UIView {
     
+    let backGroundImage = UIImageView()
+    let discrpitionLabel = UILabel()
     let logoLabel = UILabel()
     
-    
-    let idHelpLabel = UILabel()
-    let idTextField = UITextField()
-    
-    let passwordHelpLabel = UILabel()
-    let passWordTextField = UITextField()
-    
+    let logoImageView = UIImageView()
     
     let startButton = UIButton()
     let registerButton = GIDSignInButton()
@@ -39,42 +35,37 @@ final class LoginView: UIView {
     
     private func setUp() {
         backgroundColor = .white
-        addSubview(logoLabel)
         
-        addSubview(idTextField)
-        addSubview(passWordTextField)
+        addSubview(backGroundImage)
+        
+        backGroundImage.image = UIImage(named: "aa")
+        addSubview(logoImageView)
+        
+        backGroundImage.addSubview(logoLabel)
+        backGroundImage.addSubview(discrpitionLabel)
+        
         
         addSubview(startButton)
         addSubview(registerButton)
         
-        addSubview(idHelpLabel)
-        addSubview(passwordHelpLabel)
+        logoImageView.image = UIImage(named: "boj")
         
-        idHelpLabel.text = "아이디"
-        passwordHelpLabel.text = "비밀번호"
+    
         
+        logoLabel.textColor = .white
+        discrpitionLabel.textColor = .white
+        discrpitionLabel.numberOfLines = 0
+        discrpitionLabel.text = "지금 풀어야 할 문제를 추천 받으세요! \n인공지능이 문제를 당신에게 맞는 최적의 문제를 추천해줍니다"
+        discrpitionLabel.font = UIFont(name: FontNames.medium, size: 19)
+        discrpitionLabel.textAlignment = .center
         
-        
+    
         logoLabel.textAlignment = .center
-        logoLabel.font = .systemFont(ofSize: 25)
-        logoLabel.text = "백준 추천 App"
-        
-        idTextField.placeholder = "  아이디를 입력해주세요"
-        passWordTextField.placeholder = "  비밀번호를 입력해주세요"
-        
+        logoLabel.font = UIFont(name: FontNames.bold, size: 25)
+        logoLabel.text = "고플리의 백준 추천"
+
         startButton.setTitle("시작하기", for: .normal)
-//        registerButton.setTitle("회원 가입", for: .normal)
-        
-        idTextField.layer.borderColor = UIColor.lightGray.cgColor
-        idTextField.layer.borderWidth = 1
-        
-        passWordTextField.layer.borderColor = UIColor.lightGray.cgColor
-        passWordTextField.layer.borderWidth = 1
-//        idTextField.font = .systemFont(ofSize: 14)
-        
-        idTextField.font = .systemFont(ofSize: 14)
-        passWordTextField.font = .systemFont(ofSize: 14)
-        
+    
         
         startButton.backgroundColor = .systemOrange
         registerButton.backgroundColor = .lightGray
@@ -84,48 +75,38 @@ final class LoginView: UIView {
     
     private func setUpConstraints() {
         
-        logoLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(20)
+        backGroundImage.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        discrpitionLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide).offset(120)
             make.centerX.equalToSuperview()
-            make.height.equalTo(30)
-            make.width.equalTo(250)
+            make.height.equalTo(90)
+            make.width.equalTo(300)
 
         }
         
-        
-        idHelpLabel.snp.makeConstraints { make in
-            make.top.equalTo(logoLabel.snp.bottom).offset(30)
-            make.leading.equalToSuperview().offset(12)
-            make.height.equalTo(14)
-            make.trailing.equalToSuperview()
+        logoImageView.snp.makeConstraints { make in
+            make.bottom.equalTo(logoLabel.snp.top).offset(-30)
+            make.leading.equalToSuperview().offset(60)
+            make.trailing.equalToSuperview().offset(-60)
+            make.height.equalTo(100)
         }
         
-        idTextField.snp.makeConstraints { make in
-            make.top.equalTo(idHelpLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(12)
-            make.trailing.equalToSuperview().offset(-12)
+        logoLabel.snp.makeConstraints { make in
+//            make.bottom.equalTo(startButton.snp.top).offset(-20)
+            make.bottom.equalToSuperview().offset(-300)
+            make.centerX.equalToSuperview()
+            
             make.height.equalTo(40)
-        }
-        
-        passwordHelpLabel.snp.makeConstraints { make in
-            make.top.equalTo(idTextField.snp.bottom).offset(18)
-            make.leading.equalToSuperview().offset(12)
-            make.trailing.equalToSuperview().offset(-12)
-            make.height.equalTo(14)
-        }
-        
-        passWordTextField.snp.makeConstraints { make in
-            make.top.equalTo(passwordHelpLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(12)
-            make.trailing.equalToSuperview().offset(-12)
-            make.height.equalTo(40)
+            make.width.equalTo(250)
         }
         
         registerButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide).offset(-30)
-            make.height.equalTo(45)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalToSuperview().offset(50)
+            make.trailing.equalToSuperview().offset(-50)
         }
         
         startButton.snp.makeConstraints { make in
