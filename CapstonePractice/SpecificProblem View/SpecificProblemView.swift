@@ -15,9 +15,6 @@ final class SpecificProblemView: UIView, SetUpView {
     
     let rankImage = UIImageView()
     
-    
-    
-    
     let problemInfoLabel = UILabel()
     
     
@@ -78,15 +75,20 @@ final class SpecificProblemView: UIView, SetUpView {
         
         
         problemInfoLabel.text = "산술연산 문제입니다"
+        
+        
         problemInfoLabel.font = .systemFont(ofSize: 22)
+        problemInfoLabel.textColor = .white
         rankImage.image = UIImage(named: "gold3")
         
         
         problemLinkLabel.text = "문제"
+        problemLinkLabel.textColor = .white
         problemLinkLabel.textAlignment = .center
         problemLinkLabel.font = .systemFont(ofSize: 21)
         problemLinkButton.setTitle("문제 보기", for: .normal)
         problemQuestionLabel.text = "질문 게시판"
+        problemQuestionLabel.textColor = .white
         problemQuestionLabel.font = .systemFont(ofSize: 21)
         problemQuestionLabel.textAlignment = .center
         problemQuestionButton.setTitle("질문 게시판 보기", for: .normal)
@@ -99,6 +101,8 @@ final class SpecificProblemView: UIView, SetUpView {
         problemQuestionButton.setTitleColor(.black, for: .normal)
         problemQuestionButton.layer.cornerRadius = 20
         
+        
+        memoLabel.textColor = .white
         memoLabel.text = "메모"
         memoLabel.font = .systemFont(ofSize: 23)
         memoTextView.text = "메모를 입력해주세요."
@@ -108,6 +112,7 @@ final class SpecificProblemView: UIView, SetUpView {
         memoTextView.backgroundColor = UIColor(red: 226 / 255, green: 226 / 255, blue: 226 / 255, alpha: 1)
         
         fixLabel.text = "오답 노트"
+        fixLabel.textColor = .white
         fixLabel.font = .systemFont(ofSize: 23)
         fixTextView.text = "오답 노트를 입력해주세요."
         fixTextView.textColor = .gray
@@ -132,28 +137,79 @@ final class SpecificProblemView: UIView, SetUpView {
             make.size.equalTo(44)
         }
         
-//        rankImage.snp.makeConstraints { make in
-//            make.leading.equalToSuperview().offset(15)
-//            make.top.equalTo(safeAreaLayoutGuide).offset(15)
-//            make.width.equalTo(45)
-//            make.height.equalTo(45)
-//        }
-//
-//        problemInfoLabel.snp.makeConstraints { make in
-//            make.leading.equalTo(rankImage.snp.trailing).offset(10)
-//            make.centerY.equalTo(rankImage)
-//            make.height.equalTo(40)
-//            make.trailing.equalToSuperview().offset(-15)
-//        }
+        rankImage.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(15)
+            make.top.equalTo(problemTitle.snp.bottom).offset(15)
+            make.width.equalTo(45)
+            make.height.equalTo(45)
+        }
         
+
+        problemInfoLabel.snp.makeConstraints { make in
+            make.leading.equalTo(rankImage.snp.trailing).offset(30)
+            make.centerY.equalTo(rankImage)
+            make.height.equalTo(40)
+            make.trailing.equalToSuperview().offset(-15)
+        }
+
         
 //        problemLinkLabel.snp.makeConstraints { make in
-//            make.top.equalTo(rankImage.snp.bottom).offset(15)
+//            make.top.equalTo(rankImage.snp.bottom).offset(20)
 //            make.leading.equalToSuperview().offset(15)
 //            make.height.equalTo(40)
 //            make.width.equalTo(100)
 //        }
+        
+        
+        
+        memoLabel.snp.makeConstraints { make in
+            make.top.equalTo(rankImage.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(25)
+        }
+
+        memoTextView.snp.makeConstraints { make in
+            make.top.equalTo(memoLabel.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview().offset(-15)
+            make.height.equalTo(200)
+        }
+
+
+        fixLabel.snp.makeConstraints { make in
+            make.top.equalTo(memoTextView.snp.bottom).offset(15)
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(25)
+        }
+
+        fixTextView.snp.makeConstraints { make in
+            make.top.equalTo(fixLabel.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview().offset(-15)
+            make.height.equalTo(200)
+        }
+        
+        
+        problemLinkButton.snp.makeConstraints { make in
+//            make.leading.equalTo(problemLinkLabel.snp.trailing).offset(15)
+            make.top.equalTo(fixTextView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(150)
+            make.height.equalTo(40)
+        }
+        
+//        problemQuestionButton.snp.makeConstraints { make in
+//            make.leading.equalTo(problemQuestionLabel.snp.trailing).offset(15)
+//            make.top.equalTo(problemLinkButton.snp.bottom)
+//            make.width.equalTo(150)
+//            make.height.equalTo(40)
+//        }
 //
+
+        
+        
 //        problemQuestionLabel.snp.makeConstraints { make in
 //            make.top.equalTo(problemLinkLabel.snp.bottom).offset(10)
 //            make.leading.equalToSuperview().offset(15)
@@ -161,52 +217,10 @@ final class SpecificProblemView: UIView, SetUpView {
 //            make.width.equalTo(100)
 //        }
 //
-//        problemLinkButton.snp.makeConstraints { make in
-//            make.leading.equalTo(problemLinkLabel.snp.trailing).offset(15)
-//            make.centerY.equalTo(problemLinkLabel)
-//            make.width.equalTo(150)
-//            make.height.equalTo(40)
-//        }
-//
-//        problemQuestionButton.snp.makeConstraints { make in
-//            make.leading.equalTo(problemQuestionLabel.snp.trailing).offset(15)
-//            make.centerY.equalTo(problemQuestionLabel)
-//            make.width.equalTo(150)
-//            make.height.equalTo(40)
-//        }
-//
-//        memoLabel.snp.makeConstraints { make in
-//            make.top.equalTo(problemQuestionButton.snp.bottom).offset(30)
-//            make.leading.equalToSuperview().offset(15)
-//            make.trailing.equalToSuperview()
-//            make.height.equalTo(25)
-//        }
-//
-//        memoTextView.snp.makeConstraints { make in
-//            make.top.equalTo(memoLabel.snp.bottom).offset(10)
-//            make.leading.equalToSuperview().offset(15)
-//            make.trailing.equalToSuperview().offset(-15)
-//            make.height.equalTo(200)
-//        }
-//
-//
-//        fixLabel.snp.makeConstraints { make in
-//            make.top.equalTo(memoTextView.snp.bottom).offset(15)
-//            make.leading.equalToSuperview().offset(15)
-//            make.trailing.equalToSuperview()
-//            make.height.equalTo(25)
-//        }
-//
-//        fixTextView.snp.makeConstraints { make in
-//            make.top.equalTo(fixLabel.snp.bottom).offset(10)
-//            make.leading.equalToSuperview().offset(15)
-//            make.trailing.equalToSuperview().offset(-15)
-//            make.height.equalTo(200)
-//        }
-//
-        
+
+
+
+
         
     }
-    
-    
 }

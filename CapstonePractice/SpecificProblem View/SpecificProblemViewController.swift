@@ -40,9 +40,11 @@ class SpecificProblemViewController: UIViewController {
         mainView.problemLinkButton
             .rx.tap
             .bind {
+                print("aaa")
                 let vc = BackJoonProblemViewController()
                 vc.questionNumber = self.problemInfo?.problemID
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.present(vc, animated: true, completion: nil)
+
             }.disposed(by: disposeBag)
         
         
