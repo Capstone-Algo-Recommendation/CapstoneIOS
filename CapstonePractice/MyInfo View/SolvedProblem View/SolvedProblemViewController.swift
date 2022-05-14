@@ -97,7 +97,8 @@ extension SolvedProblemViewController: UITableViewDelegate, UITableViewDataSourc
         }
         
         cell.titleLabel.text = filterdItems[indexPath.row].titleKo
-        cell.numberLabel.text = "문제 번호: \(filterdItems[indexPath.row])"
+        cell.numberLabel.text = "문제 번호: \(filterdItems[indexPath.row].problemID)"
+        
         cell.keyLabel.text = filterdItems[indexPath.row].tags[0].key
         
         

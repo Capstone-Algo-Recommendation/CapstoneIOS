@@ -26,5 +26,5 @@ final class BackJoonInfoViewController: UIViewController {
             self.dismiss(animated: true)
         }
     }
-    
+
 }
