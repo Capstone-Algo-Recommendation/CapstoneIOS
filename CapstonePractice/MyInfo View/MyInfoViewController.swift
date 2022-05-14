@@ -34,7 +34,6 @@ class MyInfoViewController: UIViewController {
         items
         .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyInfoTableViewCell.identifier) as? MyInfoTableViewCell else { return UITableViewCell()
-                
             }
             cell.menuTitle.text = element
             
@@ -43,15 +42,15 @@ class MyInfoViewController: UIViewController {
             }else if row == 2 {
                 cell.menuImage.image = UIImage(named: "cancel")
             }
-            
-            
             return cell
         }.disposed(by: disposeBag)
         
         mainView.tableView
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
-
+        
+        
+        
     }
     
 }
@@ -60,6 +59,7 @@ class MyInfoViewController: UIViewController {
 extension MyInfoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.row == 1 || indexPath.row == 2{
             self.navigationController?.pushViewController(SolvedProblemViewController(), animated: true)
         }else {

@@ -98,15 +98,21 @@ extension SolvedProblemViewController: UITableViewDelegate, UITableViewDataSourc
         
         cell.titleLabel.text = filterdItems[indexPath.row].titleKo
         cell.numberLabel.text = "문제 번호: \(filterdItems[indexPath.row].problemID)"
-        
         cell.keyLabel.text = filterdItems[indexPath.row].tags[0].key
-        
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = SpecificProblemViewController()
+        vc.problemTitle = filterdItems[indexPath.row].titleKo
+        vc.problemInfo = filterdItems[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
 }
 
