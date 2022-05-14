@@ -17,9 +17,6 @@ class SolvedProblemViewController: UIViewController {
     var items: [Item] = []
     var filterdItems: [Item] = []
     
-    //    var items = Observable.just([Item(problemID: 3, titleKo: "2", isSolvable: true, isPartial: true, acceptedUserCount: 2, level: 2, votedUserCount: 2, isLevelLocked: true, averageTries: 2.2, official: true, tags: [])])
-    //    var itemss = Observable<[Item]>.empty()
-    
     override func loadView() {
         self.view = mainView
     }
@@ -36,22 +33,6 @@ class SolvedProblemViewController: UIViewController {
             self.items = problems.items
             self.filterdItems = problems.items
             self.mainView.tableView.reloadData()
-            
-            
-//            self.itemss.bind(to: self.mainView.tableView.rx.items)
-            
-//            self.itemss
-//                    .bind(to: self.mainView.tableView.rx.items)
-
-//            { (tableView, row, element) in
-//                    guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier) as? ProblemTableViewCell else { return UITableViewCell()
-//                    }
-//
-//                    cell.titleLabel.text = element.titleKo
-//                    cell.numberLabel.text = "문제 번호: \(element.problemID)"
-//                    cell.keyLabel.text = element.tags[0].key
-//                    return cell
-//                    }.disposed(by: disposeBag)
         }
         
     }
@@ -68,20 +49,7 @@ class SolvedProblemViewController: UIViewController {
         mainView.tableView.delegate = self
         
         
-//        mainView.tableView
-//            .rx.setDelegate(self)
-//            .disposed(by: disposeBag)
-//
-//        mainView.tableView.rx.modelSelected(Item.self)
-//            .subscribe { item in
-//
-//
-//                let vc = SpecificProblemViewController()
-//                vc.problemTitle = "\(item.element!.problemID). \(item.element!.titleKo)"
-//                vc.problemInfo = item.element
-//                self.navigationController?.pushViewController(vc, animated: true)
-//
-//            }.disposed(by: disposeBag)
+        
     }
 }
 
@@ -111,7 +79,9 @@ extension SolvedProblemViewController: UITableViewDelegate, UITableViewDataSourc
         let vc = SpecificProblemViewController()
         vc.problemTitle = filterdItems[indexPath.row].titleKo
         vc.problemInfo = filterdItems[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        self.present(vc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
         
     }
 }

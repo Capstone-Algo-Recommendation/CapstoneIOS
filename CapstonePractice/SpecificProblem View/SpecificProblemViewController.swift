@@ -24,6 +24,18 @@ class SpecificProblemViewController: UIViewController {
         super.viewDidLoad()
         title = problemTitle
         mainView.problemInfoLabel.text = problemInfo?.tags[0].key
+        mainView.problemTitle.text = problemInfo?.titleKo
+        
+//        problemInfo?.titleKo
+//        problemInfo?.problemID
+//        problemInfo?.tags[0].key
+//        problemInfo?.level
+        
+        mainView.closeButton
+            .rx.tap
+            .bind { _ in
+                self.dismiss(animated: true, completion: nil)
+            }.disposed(by: disposeBag)
         
         mainView.problemLinkButton
             .rx.tap
