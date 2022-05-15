@@ -10,22 +10,32 @@ import Alamofire
 
 class ApiService {
     
-    static func getFailedProblems(completion:@escaping (SolvedProblems)->Void) {
+    static func getFailedProblems(completion:@escaping (SolvedProblems, SolvedProblems)->Void) {
         
         let triedUrl = "https://solved.ac/api/v3/search/problem?query=tried_by:qjxjzjq2"
         let solvedUrl = "https://solved.ac/api/v3/search/problem?query=solved_by:qjxjzjq2"
         
-        let triedData: SolvedProblems?
-        let solvedData: SolvedProblems?
+        var triedData: SolvedProblems?
+        var solvedData: SolvedProblems?
         
         AF.request(triedUrl, method: .get).responseData { response in
             switch response.result {
             case .success(let value):
                 let decoder = JSONDecoder()
-                let data = try! decoder.decode(SolvedProblems.self, from: value)
+                triedData = try! decoder.decode(SolvedProblems.self, from: value)
                 
-                
-                completion(data)
+                AF.request(solvedUrl, method: .get).responseData { response in
+                    switch response.result {
+                    case .success(let value):
+                        let decoder = JSONDecoder()
+                        solvedData = try! decoder.decode(SolvedProblems.self, from: value)
+            
+                        completion(triedData!, solvedData!)
+                    case .failure(let error):
+                        print("what kind of error", error)
+                    }
+                }
+//                completion(data)
             case .failure(let error):
                 print("what kind of error", error)
             }

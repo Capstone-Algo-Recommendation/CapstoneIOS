@@ -241,6 +241,14 @@
 			path = ../../../Downloads/Noto_Sans_KR;
 			sourceTree = "<group>";
 		};
+		8814C1B92830C80B00EF7E6B /* WrongProblem View */ = {
+			isa = PBXGroup;
+			children = (
+				88C8360327F1D96C002211CA /* WrongProblemViewController.swift */,
+			);
+			path = "WrongProblem View";
+			sourceTree = "<group>";
+		};
 		8824E7AD27EEDDB400125C8C /* WritePoster View */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,7 +299,7 @@
 				883A412727EDA0A20002B909 /* MyInfoViewController.swift */,
 				8824E7B027EEE68700125C8C /* MyInfoView.swift */,
 				8824E7B927EEE9BA00125C8C /* SolvedProblem View */,
-				88C8360327F1D96C002211CA /* WrongProblemViewController.swift */,
+				8814C1B92830C80B00EF7E6B /* WrongProblem View */,
 				88F4EF7E281AD12B00453FB4 /* BackJoonInfoView.swift */,
 			);
 			path = "MyInfo View";

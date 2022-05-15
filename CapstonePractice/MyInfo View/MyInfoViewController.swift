@@ -60,8 +60,10 @@ extension MyInfoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 1 || indexPath.row == 2{
+        if indexPath.row == 1 {
             self.navigationController?.pushViewController(SolvedProblemViewController(), animated: true)
+        }else if indexPath.row == 2 {
+            self.navigationController?.pushViewController(WrongProblemViewController(), animated: true)
         }else {
             let vc = BackJoonInfoViewController()
             vc.modalPresentationStyle = .overFullScreen
