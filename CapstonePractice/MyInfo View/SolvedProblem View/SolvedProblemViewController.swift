@@ -28,7 +28,7 @@ class SolvedProblemViewController: UIViewController {
     
     private func loadData() {
         
-        ApiService.getUserTriedByProblems { problems in
+        ApiService.getSolvedProblems { problems in
             
             self.items = problems.items
             self.filterdItems = problems.items
@@ -43,13 +43,10 @@ class SolvedProblemViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         title = "성공한 문제"
         
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterProblems))
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
-        
-        
-        
+
     }
 }
 
@@ -81,7 +78,6 @@ extension SolvedProblemViewController: UITableViewDelegate, UITableViewDataSourc
         vc.problemInfo = filterdItems[indexPath.row]
         
         self.present(vc, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
         
     }
 }
@@ -99,23 +95,6 @@ extension SolvedProblemViewController {
             return false
         }
         mainView.tableView.reloadData()
-        
-
-//        let filterdItem = itemss.map {
-//            $0.filter { ite in
-//                ite.tags[0].key == keyword
-//            }
-//        }
-//
-//        filterdItem.bind(to: self.mainView.tableView.rx.items){ (tableView, row, element) in
-//                guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier) as? ProblemTableViewCell else { return UITableViewCell()
-//                }
-//
-//                cell.titleLabel.text = element.titleKo
-//                cell.numberLabel.text = "문제 번호: \(element.problemID)"
-//                cell.keyLabel.text = element.tags[0].key
-//                return cell
-//            }.disposed(by: self.disposeBag)
     }
 
     

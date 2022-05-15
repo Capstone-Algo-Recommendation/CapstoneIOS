@@ -10,10 +10,33 @@ import Alamofire
 
 class ApiService {
     
-    static func getUserTriedByProblems(completion:@escaping (SolvedProblems)->Void) {
+    static func getFailedProblems(completion:@escaping (SolvedProblems)->Void) {
         
-        let url = "https://solved.ac/api/v3/search/problem?query=tried_by:qjxjzjq2"
+        let triedUrl = "https://solved.ac/api/v3/search/problem?query=tried_by:qjxjzjq2"
+        let solvedUrl = "https://solved.ac/api/v3/search/problem?query=solved_by:qjxjzjq2"
         
+        let triedData: SolvedProblems?
+        let solvedData: SolvedProblems?
+        
+        AF.request(triedUrl, method: .get).responseData { response in
+            switch response.result {
+            case .success(let value):
+                let decoder = JSONDecoder()
+                let data = try! decoder.decode(SolvedProblems.self, from: value)
+                
+                
+                completion(data)
+            case .failure(let error):
+                print("what kind of error", error)
+            }
+        }
+        
+    }
+    
+    static func getSolvedProblems(completion:@escaping (SolvedProblems)->Void) {
+        
+        let url = "https://solved.ac/api/v3/search/problem?query=solved_by:qjxjzjq2"
+    
         AF.request(url, method: .get).responseData { response in
             switch response.result {
             case .success(let value):
