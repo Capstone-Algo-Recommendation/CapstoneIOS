@@ -27,20 +27,17 @@ class WrongProblemViewController: UIViewController {
     private func loadData() {
         
         var solvedTitles: [String] = []
-        
         ApiService.getFailedProblems { tried, solved in
             
             for it in solved.items {
                 solvedTitles.append(it.titleKo)
             }
-            
-            
+        
             self.filterdItems = tried.items.filter { item in
                 !solvedTitles.contains(item.titleKo)
             }
             
-            
-            
+            self.items = self.filterdItems
             self.mainView.tableView.reloadData()
          
         }
@@ -57,13 +54,13 @@ class WrongProblemViewController: UIViewController {
         mainView.tableView.delegate = self
         
         loadData()
-
     }
     
     
 }
 
 extension WrongProblemViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         filterdItems.count
     }
@@ -111,8 +108,8 @@ extension WrongProblemViewController {
 
     
     @objc func filterProblems() {
+        print("h")
         let alertVC = UIAlertController(title: "보고 싶은 알고리즘을 선택해주세요", message: "", preferredStyle: .alert)
-        
         
         let allButton = UIAlertAction(title: "전체", style: .default, handler: { _ in
             self.filterdItems = self.items
