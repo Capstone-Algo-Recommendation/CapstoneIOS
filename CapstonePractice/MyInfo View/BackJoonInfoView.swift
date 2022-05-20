@@ -10,11 +10,18 @@ import SnapKit
 
 final class BackJoonInfoView: UIView, SetUpView {
 
+    let titleLabel = UILabel()
     let backJoonIdInfo = UILabel()
     let backJoonIdTextField = UITextField()
     let nickNameInfo = UILabel()
     let nickNameTextField = UITextField()
+    
     let containerView = UIView()
+    let passButton = UIButton()
+    
+    let infoLabel = UILabel()
+    
+    
     let confirmButton = UIButton()
     
     override init(frame: CGRect) {
@@ -29,17 +36,38 @@ final class BackJoonInfoView: UIView, SetUpView {
     
     func setUp() {
         addSubview(containerView)
+
+        addSubview(infoLabel)
+        addSubview(titleLabel)
+        
+        infoLabel.text = "백준 아이디를 입력하지 않고 지나가면 서비스를 제대로 이용할 수 었어요 ㅠ,ㅠ"
+        infoLabel.font = UIFont(name: FontNames.medium, size: 18)
+        infoLabel.textColor = .systemRed
+        infoLabel.numberOfLines = 0
+        
+        titleLabel.text = "회원가입"
+        titleLabel.textColor = .white
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont(name: FontNames.medium, size: 24)
+
         containerView.layer.cornerRadius = 20
         
         containerView.addSubview(backJoonIdInfo)
         containerView.addSubview(backJoonIdTextField)
         containerView.addSubview(nickNameInfo)
         containerView.addSubview(nickNameTextField)
-        containerView.addSubview(confirmButton)
         
+        backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        addSubview(confirmButton)
+        confirmButton.backgroundColor = .orange
+        addSubview(passButton)
+        passButton.backgroundColor = .gray
+        
+        passButton.setTitle("건너뛰기", for: .normal)
+        passButton.setTitleColor(.white, for: .normal)
         
         containerView.backgroundColor = .systemMint
-        backgroundColor = UIColor.black.withAlphaComponent(0.3)
+//        backgroundColor = .white
         
         backJoonIdInfo.text = "백준 아이디를 입력해 주세요"
         backJoonIdInfo.textColor = .gray
@@ -55,18 +83,35 @@ final class BackJoonInfoView: UIView, SetUpView {
         nickNameTextField.font = .systemFont(ofSize: 20)
         
         confirmButton.setTitle("확인", for: .normal)
-        confirmButton.setTitleColor(.blue, for: .normal)
+        confirmButton.setTitleColor(.white, for: .normal)
+        confirmButton.layer.cornerRadius = 20
+        passButton.layer.cornerRadius = 20
         
     }
     
     
     func keyBoardHiddenConstraints() {
         
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(60)
+        }
+        
         containerView.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.centerY).offset(-200)
-            make.centerX.equalTo(self.snp.centerX)
+            make.top.equalTo(titleLabel.snp.bottom).offset(50)
+            
             make.height.equalTo(200)
-            make.width.equalTo(300)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        
+        infoLabel.snp.makeConstraints { make in
+            make.top.equalTo(containerView.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(100)
         }
         
         backJoonIdInfo.snp.makeConstraints { make in
@@ -98,9 +143,16 @@ final class BackJoonInfoView: UIView, SetUpView {
         }
         
         confirmButton.snp.makeConstraints { make in
-            make.top.equalTo(nickNameTextField.snp.bottom).offset(8)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-60)
             make.centerX.equalToSuperview()
-            make.width.equalTo(40)
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(50)
+        }
+        
+        passButton.snp.makeConstraints { make in
+            make.top.equalTo(confirmButton.snp.bottom).offset(8)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
             make.height.equalTo(50)
         }
         

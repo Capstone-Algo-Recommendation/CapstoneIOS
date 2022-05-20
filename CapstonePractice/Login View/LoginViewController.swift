@@ -31,8 +31,9 @@ final class LoginViewController: UIViewController {
             .bind {
                 guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
 //                let vc = MainTabBarController()
+                let vc = RegisterViewController()
+//                let vc = UINavigationController(rootViewController: SeachViewController())
                 
-                let vc = UINavigationController(rootViewController: SeachViewController())
                 windowScene.windows.first?.rootViewController = vc
                 windowScene.windows.first?.makeKeyAndVisible()
                 
