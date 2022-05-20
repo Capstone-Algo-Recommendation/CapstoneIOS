@@ -48,9 +48,7 @@ class MyInfoViewController: UIViewController {
         mainView.tableView
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
-        
-        
-        
+
     }
     
 }

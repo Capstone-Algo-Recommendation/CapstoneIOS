@@ -54,6 +54,8 @@
 		883A414427EDC9D30002B909 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 883A414327EDC9D30002B909 /* RxDataSources */; };
 		883A96B7282B7584003AD20F /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A96B6282B7584003AD20F /* APIData.swift */; };
 		883A96B9282B82FA003AD20F /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A96B8282B82FA003AD20F /* Enums.swift */; };
+		8852632E28374D7200974F12 /* ApiService + MyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852632D28374D7200974F12 /* ApiService + MyInfo.swift */; };
+		885263302837599400974F12 /* APIservice + Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852632F2837599400974F12 /* APIservice + Board.swift */; };
 		887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */; };
 		887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085F127E8AAF400B5BC82 /* RegisterView.swift */; };
 		8875CA2427F970DE000C581A /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8875CA2327F970DE000C581A /* credentials.plist */; };
@@ -116,6 +118,8 @@
 		883A413B27EDC5E60002B909 /* PosterDetailCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterDetailCommentCell.swift; sourceTree = "<group>"; };
 		883A96B6282B7584003AD20F /* APIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
 		883A96B8282B82FA003AD20F /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		8852632D28374D7200974F12 /* ApiService + MyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiService + MyInfo.swift"; sourceTree = "<group>"; };
+		8852632F2837599400974F12 /* APIservice + Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIservice + Board.swift"; sourceTree = "<group>"; };
 		887085EE27E8AAC800B5BC82 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		887085F127E8AAF400B5BC82 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		8875CA2327F970DE000C581A /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = credentials.plist; path = ../../../Downloads/credentials.plist; sourceTree = "<group>"; };
@@ -332,6 +336,8 @@
 				8824E7B227EEE70100125C8C /* ApiService.swift */,
 				88B280C228250DF6002D3618 /* ApiService + member extension.swift */,
 				883A96B6282B7584003AD20F /* APIData.swift */,
+				8852632D28374D7200974F12 /* ApiService + MyInfo.swift */,
+				8852632F2837599400974F12 /* APIservice + Board.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -488,6 +494,7 @@
 				8824E7AA27EED94500125C8C /* WritePostViewController.swift in Sources */,
 				883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */,
 				8824E7C227EF021500125C8C /* BackJoonProblemViewController.swift in Sources */,
+				8852632E28374D7200974F12 /* ApiService + MyInfo.swift in Sources */,
 				88B776C927F47DF60068C1FD /* ProblemCollectionViewCell.swift in Sources */,
 				88C8360227F1CA6B002211CA /* SpecificProblemView.swift in Sources */,
 				8824E7C027EEFC4100125C8C /* MyInfoTableViewCell.swift in Sources */,
@@ -503,6 +510,7 @@
 				88F4EF7F281AD12B00453FB4 /* BackJoonInfoView.swift in Sources */,
 				883A413C27EDC5E60002B909 /* PosterDetailCommentCell.swift in Sources */,
 				88C8360427F1D96C002211CA /* WrongProblemViewController.swift in Sources */,
+				885263302837599400974F12 /* APIservice + Board.swift in Sources */,
 				887085F227E8AAF400B5BC82 /* RegisterView.swift in Sources */,
 				883A96B9282B82FA003AD20F /* Enums.swift in Sources */,
 				887085EF27E8AAC800B5BC82 /* RegisterViewController.swift in Sources */,

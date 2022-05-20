@@ -57,7 +57,15 @@ extension WritePostViewController {
     
     @objc func postButtonClicked() {
         print("need to post")
-//        mainView.textView.endEditing(true)
+
+        if let text = mainView.textView.text {
+            ApiService.writePost(title: text, content: text)
+            
+            print("worked")
+        }else {
+            print("someThing wrong")
+        }
+        
         
         
     }

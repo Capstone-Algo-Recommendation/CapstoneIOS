@@ -39,7 +39,6 @@ class WrongProblemViewController: UIViewController {
             
             self.items = self.filterdItems
             self.mainView.tableView.reloadData()
-         
         }
     }
     
@@ -47,7 +46,7 @@ class WrongProblemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
-        title = "성공한 문제"
+        title = "실패한 문제"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterProblems))
         mainView.tableView.dataSource = self
