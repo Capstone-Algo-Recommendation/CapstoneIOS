@@ -143,7 +143,7 @@ extension ApiService {
     
     
     // postid int?
-    static func writeComment(postId: Int, content: String) {
+    static func writeComment(postId: Int, content: String, completion: @escaping ()->Void ) {
         let url = URL(string: "http://15.164.165.132/api/board/\(postId)/comment")!
         var request = URLRequest(url: url)
 
@@ -168,6 +168,7 @@ extension ApiService {
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
                 print(responseJSON)
+                completion()
             }
         }
         task.resume()

@@ -63,14 +63,20 @@ class PosterDetailViewController: UIViewController {
         mainView.sendButton.rx.tap.bind { _ in
             
             // TODO: Send button  보내기
-            print("hl")
-            
+            if let commentText = self.mainView.commentTextView.text, commentText.count > 0 {
+                ApiService.writeComment(postId: self.boardNum!, content: commentText) {
+                    ApiService.getSpecificPost(postid: self.boardNum!) { a in
+                        
+                        self.info = a
+                        
+                        DispatchQueue.main.async {
+                            self.mainView.tableView.reloadData()
+                        }
+                    }
+                }
+            }
         }.disposed(by: disposeBag)
-        
-        
-        
-        
-        
+
     }
     
     @objc func keyBoardWillShow(_ sender: Notification) {
@@ -109,7 +115,7 @@ extension PosterDetailViewController: UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
                 
             }
-//            cell.authorLabel.text = info?.data.author
+
             cell.posterTitleLabel.text = info?.data.title
             cell.posterContentLabel.text = info?.data.content
             
