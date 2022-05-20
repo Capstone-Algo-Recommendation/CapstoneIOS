@@ -16,10 +16,28 @@ class PosterDetailViewController: UIViewController {
     let mainView = PosterDetailView()
     let viewModel = PosterDetailViewModel()
     
+    var boardNum: Int?
+    var sections: [SectionOfCustomData] = []
+    
     let disposeBag = DisposeBag()
+    var info: SpsecificPostData?
     
     override func loadView() {
         self.view = mainView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        ApiService.getSpecificPost(postid: boardNum!) { a in
+            print("good", a )
+            self.info = a
+            
+            DispatchQueue.main.async {
+                self.mainView.tableView.reloadData()
+            }
+        
+        }
     }
     
     
@@ -28,57 +46,14 @@ class PosterDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.isHidden = true
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
         addTargets()
 
         
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfCustomData>(
-          configureCell: { dataSource, tableView, indexPath, item in
-              
-              if indexPath.section == 0 {
-                  guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterDetailMainCell.identifier, for: indexPath) as? PosterDetailMainCell else { return UITableViewCell() }
-                  
-                
-                  
-                return cell
-              }else {
-                  guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterDetailCommentCell.identeifier, for: indexPath) as? PosterDetailCommentCell else { return UITableViewCell() }
-                  
-                  
-                  cell.contentLablel.text = item.content
-                  
-                  return cell
-              }
-          })
+      
         
-        let sections = [
-          SectionOfCustomData(header: "First section", items: [Poster(title: "as", content: "AS", writtenDate: "AS", like: "AS")]),
-          SectionOfCustomData(
-            header: "Second section",
-            items: [
-                Poster(title: "As", content: "와우 굉장히 유익한 글입니다.", writtenDate: "G", like: "v"),
-                Poster(title: "As", content: "따봉 박고 시작 하자 얘드라", writtenDate: "G", like: "v"),
-                Poster(title: "As", content: "ㅋㅋ 개꿀 좋다리 , ㅇㅈ? ㅋㅋㅋㅋㅋ ", writtenDate: "G", like: "v"),
-                Poster(title: "As", content: "이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. 이건 좋습니다 반복. ", writtenDate: "G", like: "v"),
-                Poster(title: "As", content: "굉장히 좋다리", writtenDate: "G", like: "v"),
-                Poster(title: "As", content: "나 누구게", writtenDate: "G", like: "v"),
-                Poster(title: "As", content: "커피", writtenDate: "G", like: "v"),
-                Poster(title: "As", content: "좋은 글 ㅇㅈ ", writtenDate: "G", like: "v"),
-                Poster(title: "As", content: "나 집가고 싶니? 나 집가고 싶니? 나 집가고 싶니? 나 집가고 싶니? 나 집가고 싶니? 나 집가고 싶니? 나 집가고 싶니? 나 집가고 싶니? 나 집가고 싶니? 나 집가고 싶니? 나 집가고 싶니? ", writtenDate: "G", like: "v"),
-                
-            ]
-          )
-        ]
-        
-        mainView.tableView
-            .rx.itemSelected.bind { _ in
-                print("hh")
-                self.view.endEditing(true)
-            }.disposed(by: disposeBag)
 
-        Observable.just(sections)
-            .bind(to: mainView.tableView.rx.items(dataSource: dataSource))
-          .disposed(by: disposeBag)
-     
     }
     
     private func addTargets() {
@@ -105,12 +80,7 @@ class PosterDetailViewController: UIViewController {
             
             keyboardHeight = keyboardRect.height
         }
-        
-//        if viewModel.open {
-//            mainView.setUpKeyBoardConstraints(keyboardHeight: keyboardHeight)
-//        }else {
-//            mainView.setUpNormalConstraints()
-//        }
+
         mainView.keyBoardShowConstraints(keyBoardHeight: keyboardHeight)
     }
     
@@ -119,7 +89,48 @@ class PosterDetailViewController: UIViewController {
     }
 }
 
-extension PosterDetailViewController: UITableViewDelegate {
+extension PosterDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }else {
+            return info?.data.comments?.count ?? 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterDetailMainCell.identifier, for: indexPath) as? PosterDetailMainCell else {
+                return UITableViewCell()
+                
+            }
+//            cell.authorLabel.text = info?.data.author
+            cell.posterTitleLabel.text = info?.data.title
+            cell.posterContentLabel.text = info?.data.content
+            
+            return cell
+            
+        }else{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterDetailCommentCell.identeifier, for: indexPath) as? PosterDetailCommentCell else {
+                return UITableViewCell()
+                
+            }
+            
+            cell.contentLablel.text = info?.data.comments?[indexPath.row].content
+            
+            return cell
+        }
+    }
+    
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }

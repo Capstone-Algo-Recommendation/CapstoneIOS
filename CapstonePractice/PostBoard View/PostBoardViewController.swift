@@ -98,6 +98,7 @@ extension PostBoardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = PosterDetailViewController()
+        vc.boardNum = viewModel.it[indexPath.row].id
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

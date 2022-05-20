@@ -52,3 +52,100 @@ struct Datum: Codable {
     let id: Int
     let title, content: String
 }
+
+
+
+
+
+// spsec
+
+//struct SpsecificPostData: Codable {
+//    let success: Bool
+//    let code: Int
+//    let msg: String
+//    let data: DataClass2
+//}
+//
+//// MARK: - DataClass
+//struct DataClass2: Codable {
+//    let id, problemID: Int
+//    let title, content, author: String
+//    let comments: [String]
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id
+//        case problemID = "problemId"
+//        case title, content, author, comments
+//    }
+//}
+//
+
+
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let spsecificPostData = try? newJSONDecoder().decode(SpsecificPostData.self, from: jsonData)
+
+import Foundation
+
+// MARK: - SpsecificPostData
+struct SpsecificPostData: Codable {
+    let success: Bool
+    let code: Int
+    let msg: String
+    let data: DataClass2
+}
+
+// MARK: - DataClass
+struct DataClass2: Codable {
+    let id: Int
+    let problemID: JSONNull?
+    let title, content: String
+    let author: JSONNull?
+    let comments: [Comment]?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case problemID = "problemId"
+        case title, content, author, comments
+    }
+}
+
+// MARK: - Comment
+struct Comment: Codable {
+    let commentID: Int
+    let author: JSONNull?
+    let content: String
+
+    enum CodingKeys: String, CodingKey {
+        case commentID = "commentId"
+        case author, content
+    }
+}
+
+// MARK: - Encode/decode helpers
+
+class JSONNull: Codable, Hashable {
+
+    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
+        return true
+    }
+
+    public var hashValue: Int {
+        return 0
+    }
+
+    public init() {}
+
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if !container.decodeNil() {
+            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encodeNil()
+    }
+}
