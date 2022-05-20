@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class RegisterView: UIView {
+class RegisterView2: UIView {
     
     let registerLabel = UILabel()
     

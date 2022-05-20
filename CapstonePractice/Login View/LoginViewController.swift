@@ -30,7 +30,9 @@ final class LoginViewController: UIViewController {
             .rx.tap
             .bind {
                 guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                let vc = MainTabBarController()
+//                let vc = MainTabBarController()
+                
+                let vc = UINavigationController(rootViewController: SeachViewController())
                 windowScene.windows.first?.rootViewController = vc
                 windowScene.windows.first?.makeKeyAndVisible()
                 
@@ -92,13 +94,16 @@ final class LoginViewController: UIViewController {
                     DispatchQueue.main.async {
                         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
                         let vc = MainTabBarController()
+                        
+                        ApiService.getMyInfo()
+                        
+                        
+                        
                         windowScene.windows.first?.rootViewController = vc
                         windowScene.windows.first?.makeKeyAndVisible()
                     }
-                    
                 }
 
-//                ApiService.getPostBoard()
             }
             
             

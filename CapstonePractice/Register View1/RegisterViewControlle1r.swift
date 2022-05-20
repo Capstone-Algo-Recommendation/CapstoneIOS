@@ -9,9 +9,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RegisterViewController: UIViewController {
+class RegisterViewController2: UIViewController {
     
-    let mainView = RegisterView()
+    let mainView = RegisterView2()
     let disposBag = DisposeBag()
     
     override func loadView() {

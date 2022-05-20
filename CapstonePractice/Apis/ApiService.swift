@@ -58,6 +58,31 @@ class ApiService {
             }
         }
     }
+    
+    static func getMyInfo() {
+        
+        let url = URL(string: "http://15.164.165.132/api/member/me")!
+        
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "GET"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)
+        request.headers = ["X-AUTH-TOKEN": a!]
+    
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            
+            let str = String(decoding: data, as: UTF8.self)
+            print(str)
+        }
+        task.resume()
+    }
 
     
     static func login(access_token: String, refresh_token: String, completion: @escaping (String) -> Void ) {
@@ -91,6 +116,7 @@ class ApiService {
             }
             let sodeul = try? JSONDecoder().decode(UserData.self, from: data)
             completion(sodeul?.data.token ?? "asd")
+            
         }
         task.resume()
     }
