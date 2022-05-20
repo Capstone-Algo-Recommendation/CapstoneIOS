@@ -50,6 +50,7 @@ class PosterDetailViewController: UIViewController {
         mainView.tableView.dataSource = self
         addTargets()
 
+        print("G")
         
       
         
