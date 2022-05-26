@@ -10,8 +10,9 @@ import Foundation
 
 extension ApiService {
     
-    static func getPostBoard(completion : @escaping ([Datum]) -> Void) {
+    static func getPostBoard(pageNum: Int, completion : @escaping ([Datum]) -> Void) {
         
+//        let url = URL(string: "http://15.164.165.132/api/board?page=\(pageNum)")!
         let url = URL(string: "http://15.164.165.132/api/board?page=0")!
         var request = URLRequest(url: url)
 

@@ -23,6 +23,8 @@ class PostBoardViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         
+    
+        
         viewModel.loadPosts {
             DispatchQueue.main.async {
                 self.mainView.tableView.reloadData()
