@@ -14,15 +14,18 @@ class MainTabBarController: UITabBarController {
         
         let mainVC = UINavigationController(rootViewController: MainViewController())
         let posterVC = UINavigationController(rootViewController: PostBoardViewController())
+        let searchVC = UINavigationController(rootViewController: SeachViewController())
         let myInfoVC = UINavigationController(rootViewController: MyInfoViewController())
+        
         
         view.backgroundColor = .white
         
         mainVC.tabBarItem.title = "홈"
         posterVC.tabBarItem.title = "게시판"
+        searchVC.tabBarItem.title = "문제 검색"
         myInfoVC.tabBarItem.title = "내 정보"
         
-        viewControllers = [mainVC, posterVC, myInfoVC]
+        viewControllers = [mainVC, posterVC, searchVC ,myInfoVC]
         
         self.tabBar.tintColor = .orange
         self.tabBar.unselectedItemTintColor = .white

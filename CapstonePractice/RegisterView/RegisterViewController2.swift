@@ -35,7 +35,11 @@ class RegisterViewController: UIViewController {
         
         mainView.passButton.rx
             .tap.bind { _ in
-                print("paass")
+                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                let vc = MainTabBarController()
+                windowScene.windows.first?.rootViewController = vc
+                windowScene.windows.first?.makeKeyAndVisible()
+                
             }.disposed(by: disposeBag)
     }
     

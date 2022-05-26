@@ -27,6 +27,7 @@ class MainViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 1
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
 //        cv.isScrollEnabled = false
 
@@ -42,6 +43,7 @@ class MainViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 2
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
 //        cv.isScrollEnabled = false
 
@@ -57,6 +59,7 @@ class MainViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 3
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
 //        cv.isScrollEnabled = false
 
@@ -72,6 +75,7 @@ class MainViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 4
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
 //        cv.isScrollEnabled = false
 
@@ -87,6 +91,7 @@ class MainViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 5
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
 //        cv.isScrollEnabled = false
 
@@ -121,13 +126,7 @@ class MainViewController: UIViewController {
         
     
         navigationController?.navigationBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
-        
-
         tabBarController?.tabBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
-        
-        //        navigationController?.navigationBar.isTranslucent = false
-        //        tabBarController?.tabBar.isTranslucent = false
-
     }
     
 
@@ -222,8 +221,84 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
+        
+        let tempView = UIView()
+        tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        
+        let tempLabel = UILabel()
+        tempLabel.text = "추천 문제가 없습니다"
+        tempLabel.textColor = .white
+        tempLabel.font = UIFont(name: FontNames.medium, size: 20)
+        tempLabel.textAlignment = .center
+        
+        tempView.addSubview(tempLabel)
+        
+        
+       
+        
+        if collectionView.tag == 1{
+            let val = 0
+            if val == 0 {
+                collectionView.backgroundView = tempView
+                tempLabel.snp.makeConstraints { make in
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview()
+                    make.width.equalTo(200)
+                    make.height.equalTo(50)
+                }
+            }
+            return val
+        } else if collectionView.tag == 2 {
+            let val = 10
+            if val == 0 {
+                collectionView.backgroundView = tempView
+                tempLabel.snp.makeConstraints { make in
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview()
+                    make.width.equalTo(200)
+                    make.height.equalTo(50)
+                }
+            }
+            return val
+        } else if collectionView.tag == 3 {
+            let val = 5
+            if val == 0 {
+                collectionView.backgroundView = tempView
+                tempLabel.snp.makeConstraints { make in
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview()
+                    make.width.equalTo(200)
+                    make.height.equalTo(50)
+                }
+            }
+            return val
+        } else if collectionView.tag == 4 {
+            let val = 3
+            if val == 0 {
+                collectionView.backgroundView = tempView
+                tempLabel.snp.makeConstraints { make in
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview()
+                    make.width.equalTo(200)
+                    make.height.equalTo(50)
+                }
+            }
+            return val
+        } else {
+            let val = 0
+            if val == 0 {
+                collectionView.backgroundView = tempView
+                tempLabel.snp.makeConstraints { make in
+                    make.centerX.equalToSuperview()
+                    make.centerY.equalToSuperview()
+                    make.width.equalTo(200)
+                    make.height.equalTo(50)
+                }
+            }
+            return val
+        }
     }
     
     

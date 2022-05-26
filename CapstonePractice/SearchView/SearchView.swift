@@ -38,6 +38,8 @@ class SearchView: UIView {
         tableView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
 //        tableView.backgroundColor = .white
         tableView.register(ProblemTableViewCell.self, forCellReuseIdentifier: ProblemTableViewCell.identifier)
+        seachBar.searchTextField.textColor = .white
+        seachBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         
     }
     
