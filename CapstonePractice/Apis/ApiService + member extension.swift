@@ -10,10 +10,10 @@ import Foundation
 extension ApiService {
     
     
-    static func meInit(bojId: String, name: String) {
+    static func meInit(bojId: String, name: String, completiom: @escaping ()->Void) {
        
         let problemUrl = "https://www.acmicpc.net/problem/"
-        let url = URL(string: "http://15.164.165.132/api/member/me/init")!
+        let url = URL(string: "http://3.39.233.19:8080/api/member/me/init")!
         var problemDatas: [ProblemTOSend] = []
         
         
@@ -57,6 +57,11 @@ extension ApiService {
                     if let responseJSON = responseJSON as? [String: Any] {
         
                         print(responseJSON)
+                        if let msg = responseJSON["msg"] as? String {
+                            if msg == "성공" {
+                                completiom()
+                            }
+                        }
 
                     }
                 }

@@ -12,7 +12,7 @@ extension ApiService {
     
     static func sendIdInfo(bojId: String, name: String) {
         
-        let url = URL(string: "http://15.164.165.132/api/member/me/init")!
+        let url = URL(string: "http://3.39.233.19:8080/api/member/me/init")!
         var request = URLRequest(url: url)
 
         request.httpMethod = "POST"

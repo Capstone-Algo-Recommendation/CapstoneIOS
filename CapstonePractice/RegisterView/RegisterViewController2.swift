@@ -25,7 +25,15 @@ class RegisterViewController: UIViewController {
         mainView.confirmButton.rx
             .tap.bind { _ in
                 if let bck = self.mainView.backJoonIdTextField.text, let name = self.mainView.nickNameTextField.text {
-                    ApiService.meInit(bojId: bck, name: name)
+                    
+                    ApiService.meInit(bojId: bck, name: name) {
+                        DispatchQueue.main.async {
+                            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                            let vc = MainTabBarController()
+                            windowScene.windows.first?.rootViewController = vc
+                            windowScene.windows.first?.makeKeyAndVisible()
+                        }
+                    }
                 }else {
                     print("not good")
                 }

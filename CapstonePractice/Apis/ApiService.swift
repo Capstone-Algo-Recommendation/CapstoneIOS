@@ -60,8 +60,8 @@ class ApiService {
     }
     
     static func getMyInfo() {
-        
-        let url = URL(string: "http://15.164.165.132/api/member/me")!
+        print("checking")
+        let url = URL(string: "http://3.39.233.19:8080/api/member/me")!
         
         var request = URLRequest(url: url)
 
@@ -69,6 +69,7 @@ class ApiService {
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)
+        
         request.headers = ["X-AUTH-TOKEN": a!]
     
 
@@ -87,7 +88,7 @@ class ApiService {
     
     static func login(access_token: String, refresh_token: String, completion: @escaping (String) -> Void ) {
         
-        let url = URL(string: "http://15.164.165.132/sign/login/google/test")!
+        let url = URL(string: "http://3.39.233.19:8080/sign/login/google/test")!
                 
         
         let json: [String: Any] = [

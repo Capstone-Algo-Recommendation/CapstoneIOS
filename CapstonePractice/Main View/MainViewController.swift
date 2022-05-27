@@ -306,6 +306,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProblemCollectionViewCell.identifier, for: indexPath) as? ProblemCollectionViewCell else { return UICollectionViewCell() }
         
+        if collectionView.tag == 1 {
+            
+        } else if collectionView.tag == 2{
+            
+        } else if collectionView.tag == 3{
+            
+        } else if collectionView.tag == 4{
+            
+        } else {
+            
+        }
+        
         cell.backgroundColor = UIColor(red: 35/255, green: 45/255, blue: 57/255, alpha: 1)
         cell.problemTitle.text = "hello world"
         cell.problemTitle.textColor = .white
