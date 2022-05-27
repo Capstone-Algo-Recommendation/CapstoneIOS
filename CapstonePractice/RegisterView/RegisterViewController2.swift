@@ -41,6 +41,15 @@ class RegisterViewController: UIViewController {
                 windowScene.windows.first?.makeKeyAndVisible()
                 
             }.disposed(by: disposeBag)
+        
+        mainView.baseView.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: "someAction:")
+        mainView.baseView.addGestureRecognizer(gesture)
+    
+    }
+    
+    @objc func someAction(_ sender:UITapGestureRecognizer){
+        view.endEditing(true)
     }
     
 }

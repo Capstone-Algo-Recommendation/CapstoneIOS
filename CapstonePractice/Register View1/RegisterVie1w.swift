@@ -11,6 +11,7 @@ import SnapKit
 
 class RegisterView2: UIView {
     
+    
     let registerLabel = UILabel()
     
     let idHelpLabel = UILabel()
@@ -44,6 +45,7 @@ class RegisterView2: UIView {
     
     
     private func setUp() {
+        
         addSubview(registerLabel)
         addSubview(idHelpLabel)
         addSubview(idTextField)
@@ -111,6 +113,8 @@ class RegisterView2: UIView {
     }
     
     private func setUpConstraints() {
+        
+       
         
         registerLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(20)

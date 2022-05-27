@@ -10,6 +10,7 @@ import SnapKit
 
 final class BackJoonInfoView: UIView, SetUpView {
 
+    let baseView = UIView()
     let titleLabel = UILabel()
     let backJoonIdInfo = UILabel()
     let backJoonIdTextField = UITextField()
@@ -35,10 +36,12 @@ final class BackJoonInfoView: UIView, SetUpView {
     }
     
     func setUp() {
-        addSubview(containerView)
+        addSubview(baseView)
+//        baseView.
+        baseView.addSubview(containerView)
 
-        addSubview(infoLabel)
-        addSubview(titleLabel)
+        baseView.addSubview(infoLabel)
+        baseView.addSubview(titleLabel)
         
         infoLabel.text = "백준 아이디를 입력하지 않고 지나가면 서비스를 제대로 이용할 수 었어요 ㅠ,ㅠ"
         infoLabel.font = UIFont(name: FontNames.medium, size: 18)
@@ -58,9 +61,9 @@ final class BackJoonInfoView: UIView, SetUpView {
         containerView.addSubview(nickNameTextField)
         
         backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
-        addSubview(confirmButton)
+        baseView.addSubview(confirmButton)
         confirmButton.backgroundColor = .orange
-        addSubview(passButton)
+        baseView.addSubview(passButton)
         passButton.backgroundColor = .gray
         
         passButton.setTitle("건너뛰기", for: .normal)
@@ -91,6 +94,9 @@ final class BackJoonInfoView: UIView, SetUpView {
     
     
     func keyBoardHiddenConstraints() {
+        baseView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)

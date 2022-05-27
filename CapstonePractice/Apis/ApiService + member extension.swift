@@ -35,7 +35,7 @@ extension ApiService {
             
             let encoder = JSONEncoder()
             
-            let a  = BojInfo(bojId: "Sdf", name: "ASDf", problems: problemDatas)
+            let a  = BojInfo(bojId: bojId, name: name, problems: problemDatas)
             if let problemJson = try? encoder.encode(a) {
                 var request = URLRequest(url: url)
                 
