@@ -7,6 +7,30 @@
 
 import Foundation
 
+
+
+// MARK: - RecommendData
+struct RecommendData: Codable {
+    let success: Bool
+    let code: Int
+    let msg: String
+    let data: [RecommendDatum]
+}
+
+// MARK: - Datum
+struct RecommendDatum: Codable {
+    let id: Int
+    let name: String
+    let url: String
+    let level: Int
+    let categories: [String]
+}
+
+
+
+
+
+
 // MARK: - SolvedProblems
 struct SolvedProblems: Codable {
     let count: Int

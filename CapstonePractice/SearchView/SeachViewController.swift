@@ -32,7 +32,12 @@ extension SeachViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         // 검색 정보 활용하면 될듯
-        print(searchBar.text)
+        
+        if let searchText = searchBar.text {
+            ApiService.searchProblem(query: searchText) { _ in
+                print("G")
+            }
+        }
         
     }
 }

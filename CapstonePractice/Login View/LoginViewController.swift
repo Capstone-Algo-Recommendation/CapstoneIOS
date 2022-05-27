@@ -26,6 +26,15 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        ApiService.searchProblem(query: "ASdf") { _ in
+            print("hel")
+        }
+        
+//        ApiService.getRecommendation { re in
+//            print(re)
+//        }
+        
         mainView.startButton
             .rx.tap
             .bind {
@@ -96,7 +105,15 @@ final class LoginViewController: UIViewController {
                         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
                         let vc = MainTabBarController()
                         
-                        ApiService.getMyInfo()
+                        
+                        ApiService.getMyInfo {
+                        
+                            DispatchQueue.main.async {
+                                print("hello worldf")
+                            }
+                        }
+                        
+                        // completion 추가해서 등급에 따라 화면 분기하기.
                         
                         
                         

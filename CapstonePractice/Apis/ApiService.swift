@@ -59,7 +59,7 @@ class ApiService {
         }
     }
     
-    static func getMyInfo() {
+    static func getMyInfo(completion: @escaping () -> Void) {
         print("checking")
         let url = URL(string: "http://3.39.233.19:8080/api/member/me")!
         
@@ -81,6 +81,8 @@ class ApiService {
             
             let str = String(decoding: data, as: UTF8.self)
             print(str)
+            // 이 completion 사용자 랭크에 인자로 넘겨 줘야 함. 
+            completion()
         }
         task.resume()
     }

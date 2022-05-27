@@ -36,6 +36,8 @@
 		8824E7BE27EEEA3000125C8C /* ProblemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7BD27EEEA3000125C8C /* ProblemTableViewCell.swift */; };
 		8824E7C027EEFC4100125C8C /* MyInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7BF27EEFC4100125C8C /* MyInfoTableViewCell.swift */; };
 		8824E7C227EF021500125C8C /* BackJoonProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824E7C127EF021500125C8C /* BackJoonProblemViewController.swift */; };
+		8837D8B528406EB5002D3A78 /* ApiService + Recommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8837D8B428406EB5002D3A78 /* ApiService + Recommend.swift */; };
+		8837D8B7284070E1002D3A78 /* Api + ProblemSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8837D8B6284070E1002D3A78 /* Api + ProblemSearch.swift */; };
 		883A412027ED9FB60002B909 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A411F27ED9FB60002B909 /* MainTabBarController.swift */; };
 		883A412227EDA0020002B909 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412127EDA0020002B909 /* MainViewController.swift */; };
 		883A412527EDA0480002B909 /* PostBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883A412427EDA0480002B909 /* PostBoardViewController.swift */; };
@@ -107,6 +109,8 @@
 		8824E7BD27EEEA3000125C8C /* ProblemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTableViewCell.swift; sourceTree = "<group>"; };
 		8824E7BF27EEFC4100125C8C /* MyInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoTableViewCell.swift; sourceTree = "<group>"; };
 		8824E7C127EF021500125C8C /* BackJoonProblemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackJoonProblemViewController.swift; sourceTree = "<group>"; };
+		8837D8B428406EB5002D3A78 /* ApiService + Recommend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiService + Recommend.swift"; sourceTree = "<group>"; };
+		8837D8B6284070E1002D3A78 /* Api + ProblemSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Api + ProblemSearch.swift"; sourceTree = "<group>"; };
 		883A411F27ED9FB60002B909 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		883A412127EDA0020002B909 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		883A412427EDA0480002B909 /* PostBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBoardViewController.swift; sourceTree = "<group>"; };
@@ -366,6 +370,8 @@
 				883A96B6282B7584003AD20F /* APIData.swift */,
 				8852632D28374D7200974F12 /* ApiService + MyInfo.swift */,
 				8852632F2837599400974F12 /* APIservice + Board.swift */,
+				8837D8B428406EB5002D3A78 /* ApiService + Recommend.swift */,
+				8837D8B6284070E1002D3A78 /* Api + ProblemSearch.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -543,6 +549,7 @@
 				887085F227E8AAF400B5BC82 /* RegisterVie1w.swift in Sources */,
 				883A96B9282B82FA003AD20F /* Enums.swift in Sources */,
 				887085EF27E8AAC800B5BC82 /* RegisterViewControlle1r.swift in Sources */,
+				8837D8B7284070E1002D3A78 /* Api + ProblemSearch.swift in Sources */,
 				8824E7AC27EEDAE900125C8C /* WritePosterView.swift in Sources */,
 				8824E7BE27EEEA3000125C8C /* ProblemTableViewCell.swift in Sources */,
 				8852633228376B3300974F12 /* RegisterViewController2.swift in Sources */,
@@ -564,6 +571,7 @@
 				88C835FF27F1CA3D002211CA /* SpecificProblemViewController.swift in Sources */,
 				8852633528376BA700974F12 /* RegisterView.swift in Sources */,
 				883A412D27EDA2980002B909 /* UIView + Protocols.swift in Sources */,
+				8837D8B528406EB5002D3A78 /* ApiService + Recommend.swift in Sources */,
 				883A412B27EDA24B0002B909 /* PosterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
