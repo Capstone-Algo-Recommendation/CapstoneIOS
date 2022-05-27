@@ -13,6 +13,7 @@ import SnapKit
 class SearchView: UIView {
     
     let seachBar = UISearchBar()
+    let levelButton = UIButton()
     let tableView = UITableView()
     let vv = UIView()
     
@@ -30,9 +31,14 @@ class SearchView: UIView {
     
     func setUp() {
         addSubview(seachBar)
+        addSubview(levelButton)
         
 //        addSubview(vv)
         addSubview(tableView)
+        
+        levelButton.setTitle("난의도를 설정해주세요", for: .normal)
+        levelButton.titleLabel?.textAlignment = .center
+        levelButton.setTitleColor(.white, for: .normal)
 
         backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         tableView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
@@ -51,11 +57,18 @@ class SearchView: UIView {
             make.top.equalTo(safeAreaLayoutGuide)
         }
         
+        levelButton.snp.makeConstraints { make in
+            make.top.equalTo(seachBar.snp.bottom).offset(5)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(50)
+            make.width.equalTo(200)
+        }
+        
         
         tableView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.top.equalTo(seachBar.snp.bottom)
+            make.top.equalTo(levelButton.snp.bottom).offset(5)
             make.bottom.equalToSuperview()
         }
     }

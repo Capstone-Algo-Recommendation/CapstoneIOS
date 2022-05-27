@@ -26,10 +26,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        ApiService.searchProblem(query: "ASdf") { _ in
-            print("hel")
-        }
+    
         
 //        ApiService.getRecommendation { re in
 //            print(re)
