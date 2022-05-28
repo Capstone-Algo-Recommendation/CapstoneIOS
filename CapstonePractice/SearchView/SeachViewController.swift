@@ -130,12 +130,10 @@ extension SeachViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = SpecificProblemViewController()
-//        vc.problemTitle = filterdItems[indexPath.row].titleKo
-//        vc.problemInfo = filterdItems[indexPath.row]
-        vc.problemTitle = "ttt"
-        
+        vc.problemType = searched[indexPath.row].categories[0]
+        vc.problemTitle = searched[indexPath.row].name
+        vc.problemNumbeer = searched[indexPath.row].id
+
         self.present(vc, animated: true, completion: nil)
     }
-    
-    
 }
