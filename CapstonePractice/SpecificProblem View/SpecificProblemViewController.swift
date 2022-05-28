@@ -22,12 +22,20 @@ class SpecificProblemViewController: UIViewController {
         self.view = mainView
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("gg")
+        UserDefaults.standard.set(mainView.memoTextView.text, forKey: problemTitle! + "\(problemNumbeer!)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = problemTitle
         mainView.problemInfoLabel.text = problemType
         mainView.problemTitle.text = problemTitle
-        
+        if let savedMemo = UserDefaults.standard.string(forKey: problemTitle! + "\(problemNumbeer!)") {
+            mainView.memoTextView.text = savedMemo
+        }
         
         mainView.closeButton
             .rx.tap
@@ -73,20 +81,22 @@ class SpecificProblemViewController: UIViewController {
                 }
             }.disposed(by: disposeBag)
         
-        mainView.fixTextView
-            .rx.didEndEditing
-            .bind {
-                if self.mainView.fixTextView.text.isEmpty {
-                    self.mainView.fixTextView.text = "오답 노트를 입력해주세요."
-                    self.mainView.fixTextView.textColor = UIColor.gray
-                }
-            }.disposed(by: disposeBag)
-        
+//        mainView.fixTextView
+//            .rx.didEndEditing
+//            .bind {
+//                if self.mainView.fixTextView.text.isEmpty {
+//                    self.mainView.fixTextView.text = "오답 노트를 입력해주세요."
+//                    self.mainView.fixTextView.textColor = UIColor.gray
+//                }
+//            }.disposed(by: disposeBag)
+//
         
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(problemStatusButtonClicked))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: ProblemSolvedStatus.notTried.rawValue, style: .plain, target: self, action: #selector(problemStatusButtonClicked))
+        
+        
         
     }
     

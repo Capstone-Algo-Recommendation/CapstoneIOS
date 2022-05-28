@@ -79,9 +79,9 @@ final class SpecificProblemView: UIView, SetUpView {
         
         problemInfoLabel.font = .systemFont(ofSize: 22)
         problemInfoLabel.textColor = .white
-        rankImage.image = UIImage(named: "gold3")
+//        rankImage.image = UIImage(named: "gold3")
         
-        
+        problemInfoLabel.textAlignment = .center
         problemLinkLabel.text = "문제"
         problemLinkLabel.textColor = .white
         problemLinkLabel.textAlignment = .center
@@ -146,20 +146,16 @@ final class SpecificProblemView: UIView, SetUpView {
         
 
         problemInfoLabel.snp.makeConstraints { make in
-            make.leading.equalTo(rankImage.snp.trailing).offset(30)
+//            make.leading.equalTo(rankImage.snp.trailing).offset(30)
+            make.centerX.equalToSuperview()
             make.centerY.equalTo(rankImage)
             make.height.equalTo(40)
-            make.trailing.equalToSuperview().offset(-15)
+            make.width.equalTo(300)
+//            make.trailing.equalToSuperview().offset(-15)
         }
 
         
-//        problemLinkLabel.snp.makeConstraints { make in
-//            make.top.equalTo(rankImage.snp.bottom).offset(20)
-//            make.leading.equalToSuperview().offset(15)
-//            make.height.equalTo(40)
-//            make.width.equalTo(100)
-//        }
-        
+
         
         
         memoLabel.snp.makeConstraints { make in
@@ -173,28 +169,30 @@ final class SpecificProblemView: UIView, SetUpView {
             make.top.equalTo(memoLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(15)
             make.trailing.equalToSuperview().offset(-15)
-            make.height.equalTo(200)
+            make.height.equalTo(450)
+            
+            
         }
 
 
-        fixLabel.snp.makeConstraints { make in
-            make.top.equalTo(memoTextView.snp.bottom).offset(15)
-            make.leading.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview()
-            make.height.equalTo(25)
-        }
-
-        fixTextView.snp.makeConstraints { make in
-            make.top.equalTo(fixLabel.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().offset(-15)
-            make.height.equalTo(200)
-        }
-        
+//        fixLabel.snp.makeConstraints { make in
+//            make.top.equalTo(memoTextView.snp.bottom).offset(15)
+//            make.leading.equalToSuperview().offset(15)
+//            make.trailing.equalToSuperview()
+//            make.height.equalTo(25)
+//        }
+//
+//        fixTextView.snp.makeConstraints { make in
+//            make.top.equalTo(fixLabel.snp.bottom).offset(10)
+//            make.leading.equalToSuperview().offset(15)
+//            make.trailing.equalToSuperview().offset(-15)
+//            make.height.equalTo(200)
+//        }
+//
         
         problemLinkButton.snp.makeConstraints { make in
 //            make.leading.equalTo(problemLinkLabel.snp.trailing).offset(15)
-            make.top.equalTo(fixTextView.snp.bottom).offset(20)
+            make.top.equalTo(memoTextView.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.width.equalTo(150)
             make.height.equalTo(40)
