@@ -37,6 +37,14 @@ struct SolvedProblems: Codable {
     let items: [Item]
 }
 
+//struct RecommendDatum: Codable {
+//    let id: Int
+//    let name: String
+//    let url: String
+//    let level: Int
+//    let categories: [String]
+//}
+
 // MARK: - Item
 struct Item: Codable {
     let problemID: Int

@@ -32,7 +32,7 @@ extension ApiService {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-            let str = String(decoding: data, as: UTF8.self)
+//            let str = String(decoding: data, as: UTF8.self)
             if let sodeul = try? JSONDecoder().decode(RecommendData.self, from: data) {
                     completion(sodeul)
             }else {

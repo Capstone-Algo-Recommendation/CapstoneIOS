@@ -26,11 +26,6 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-        
-//        ApiService.getRecommendation { re in
-//            print(re)
-//        }
         
         mainView.startButton
             .rx.tap

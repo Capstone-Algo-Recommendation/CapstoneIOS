@@ -76,7 +76,8 @@ extension SolvedProblemViewController: UITableViewDelegate, UITableViewDataSourc
         let vc = SpecificProblemViewController()
         vc.problemTitle = filterdItems[indexPath.row].titleKo
         vc.problemInfo = filterdItems[indexPath.row]
-        
+        vc.problemType = filterdItems[indexPath.row].tags[0].key
+        vc.problemNumbeer = filterdItems[indexPath.row].problemID
         self.present(vc, animated: true, completion: nil)
         
     }

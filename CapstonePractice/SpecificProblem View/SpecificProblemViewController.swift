@@ -13,6 +13,8 @@ class SpecificProblemViewController: UIViewController {
     
     var problemTitle: String?
     let mainView = SpecificProblemView()
+    var problemNumbeer: Int?
+    var problemType: String?
     var problemInfo: Item?
     let disposeBag = DisposeBag()
     
@@ -23,13 +25,9 @@ class SpecificProblemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = problemTitle
-        mainView.problemInfoLabel.text = problemInfo?.tags[0].key
-        mainView.problemTitle.text = problemInfo?.titleKo
+        mainView.problemInfoLabel.text = problemType
+        mainView.problemTitle.text = problemTitle
         
-//        problemInfo?.titleKo
-//        problemInfo?.problemID
-//        problemInfo?.tags[0].key
-//        problemInfo?.level
         
         mainView.closeButton
             .rx.tap
@@ -42,7 +40,7 @@ class SpecificProblemViewController: UIViewController {
             .bind {
                 print("aaa")
                 let vc = BackJoonProblemViewController()
-                vc.questionNumber = self.problemInfo?.problemID
+                vc.questionNumber = self.problemNumbeer
                 self.present(vc, animated: true, completion: nil)
 
             }.disposed(by: disposeBag)

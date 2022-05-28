@@ -100,7 +100,7 @@ class MainViewController: UIViewController {
     
     
     let topRecommendView = UIView()
-    
+    var tm: [RecommendDatum] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -127,7 +127,66 @@ class MainViewController: UIViewController {
     
         navigationController?.navigationBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         tabBarController?.tabBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+        
+        ApiService.getRecommendation { data in
+            print(data)
+            
+            var counter = 0
+            self.tm = []
+            for problem in data.data {
+                
+                if counter < 3 {
+                    self.tm.append(problem)
+                    counter += 1
+                } else {
+                    if problem.categories[0] == "dp" {
+                        self.recommendDP.append(problem)
+                    } else if problem.categories[0] == "graphs" {
+                        self.recommendGraph.append(problem)
+                    } else if problem.categories[0] == "data_structures" {
+                        self.recommendDS.append(problem)
+                    } else if problem.categories[0] == "bruteforcing" {
+                        self.recommendImplementation.append(problem)
+                    } else {
+                        self.recommendEtc.append(problem)
+                    }
+                }
+            }
+    
+            DispatchQueue.main.async {
+                
+                for index in 0..<3 {
+                    if index == 0 {
+                        self.firstProblem.problemTitleLabel.text = self.tm[index].name
+                        self.firstProblem.problemNumLabel.text = "\(self.tm[index].id)"
+                        self.firstProblem.problemTypeLabel.text = self.tm[index].categories[0]
+                    } else if index == 1 {
+                        self.secondProblem.problemTitleLabel.text = self.tm[index].name
+                        self.secondProblem.problemNumLabel.text = "\(self.tm[index].id)"
+                        self.secondProblem.problemTypeLabel.text = self.tm[index].categories[0]
+                        
+                    } else {
+                        self.thirdProblem.problemTitleLabel.text = self.tm[index].name
+                        self.thirdProblem.problemNumLabel.text = "\(self.tm[index].id)"
+                        self.thirdProblem.problemTypeLabel.text = self.tm[index].categories[0]
+                        
+                    }
+                }
+                
+                self.dpColletionView.reloadData()
+                self.dsColletionView.reloadData()
+                self.graphColletionView.reloadData()
+                self.greedyColletionView.reloadData()
+                self.implementationColletionView.reloadData()
+            }
+        }
     }
+    
+    var recommendDP: [RecommendDatum] = []
+    var recommendDS: [RecommendDatum] = []
+    var recommendGraph: [RecommendDatum] = []
+    var recommendImplementation: [RecommendDatum] = []
+    var recommendEtc: [RecommendDatum] = []
     
 
     override func viewDidLayoutSubviews() {
@@ -198,16 +257,16 @@ class MainViewController: UIViewController {
         greedyLabel.font = .boldSystemFont(ofSize: 23)
         
         // 바꿔야 할것들
-        firstProblem.problemTypeLabel.text = "dp"
-        firstProblem.problemTitleLabel.text = "피보나치 수열"
-        
-        
-        secondProblem.problemTitleLabel.text = "길찾기"
-        secondProblem.problemTypeLabel.text = "bfs"
-        
-        
-        thirdProblem.problemTitleLabel.text = "이렇게 저렇게 하는 거"
-        thirdProblem.problemTypeLabel.text = "data structure"
+//        firstProblem.problemTypeLabel.text = "dp"
+//        firstProblem.problemTitleLabel.text = "피보나치 수열"
+//
+//
+//        secondProblem.problemTitleLabel.text = "길찾기"
+//        secondProblem.problemTypeLabel.text = "bfs"
+//
+//
+//        thirdProblem.problemTitleLabel.text = "이렇게 저렇게 하는 거"
+//        thirdProblem.problemTypeLabel.text = "data structure"
         
     
         setUpConstraints()
@@ -218,29 +277,72 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.tag == 1 {
+
+            let vc = SpecificProblemViewController()
+            vc.problemTitle = recommendDP[indexPath.item].name
+            vc.problemType = recommendDP[indexPath.item].categories[0]
+            vc.problemNumbeer = recommendDP[indexPath.item].id
+            
+            self.present(vc, animated: true, completion: nil)
+            
+        } else if collectionView.tag == 2 {
+            
+            let vc = SpecificProblemViewController()
+            vc.problemTitle = recommendDS[indexPath.item].name
+            vc.problemType = recommendDS[indexPath.item].categories[0]
+            vc.problemNumbeer = recommendDS[indexPath.item].id
+            
+            self.present(vc, animated: true, completion: nil)
+            
+        } else if collectionView.tag == 3 {
+            let vc = SpecificProblemViewController()
+            vc.problemTitle = recommendGraph[indexPath.item].name
+            vc.problemType = recommendGraph[indexPath.item].categories[0]
+            vc.problemNumbeer = recommendGraph[indexPath.item].id
+            
+            self.present(vc, animated: true, completion: nil)
+        } else if collectionView.tag == 4 {
+            let vc = SpecificProblemViewController()
+            vc.problemTitle = recommendImplementation[indexPath.item].name
+            vc.problemType = recommendImplementation[indexPath.item].categories[0]
+            vc.problemNumbeer = recommendImplementation[indexPath.item].id
+            
+            self.present(vc, animated: true, completion: nil)
+        } else {
+   
+            let vc = SpecificProblemViewController()
+            vc.problemTitle = recommendEtc[indexPath.item].name
+            vc.problemType = recommendEtc[indexPath.item].categories[0]
+            vc.problemNumbeer = recommendEtc[indexPath.item].id
+            
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let tempView = UIView()
-        tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
-        
-        let tempLabel = UILabel()
-        tempLabel.text = "추천 문제가 없습니다"
-        tempLabel.textColor = .white
-        tempLabel.font = UIFont(name: FontNames.medium, size: 20)
-        tempLabel.textAlignment = .center
-        
-        tempView.addSubview(tempLabel)
-        
-        
        
-        
         if collectionView.tag == 1{
-            let val = 0
+            let tempView = UIView()
+            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+            
+            let tempLabel = UILabel()
+            tempLabel.text = "추천 문제가 없습니다"
+            tempLabel.textColor = .white
+            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
+            tempLabel.textAlignment = .center
+            
+            tempView.addSubview(tempLabel)
+            
+            let val = recommendDP.count
             if val == 0 {
+                tempView.isHidden = false
                 collectionView.backgroundView = tempView
                 tempLabel.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
@@ -248,11 +350,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
+            }else {
+                tempView.isHidden = true
             }
             return val
         } else if collectionView.tag == 2 {
-            let val = 10
+            
+            let tempView = UIView()
+            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+            
+            let tempLabel = UILabel()
+            tempLabel.text = "추천 문제가 없습니다"
+            tempLabel.textColor = .white
+            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
+            tempLabel.textAlignment = .center
+            
+            tempView.addSubview(tempLabel)
+            let val = recommendDS.count
             if val == 0 {
+                tempView.isHidden = false
                 collectionView.backgroundView = tempView
                 tempLabel.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
@@ -260,11 +376,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
+            }else {
+                tempView.isHidden = true
             }
             return val
         } else if collectionView.tag == 3 {
-            let val = 5
+            
+            let tempView = UIView()
+            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+            
+            let tempLabel = UILabel()
+            tempLabel.text = "추천 문제가 없습니다"
+            tempLabel.textColor = .white
+            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
+            tempLabel.textAlignment = .center
+            
+            tempView.addSubview(tempLabel)
+            let val = recommendGraph.count
             if val == 0 {
+                tempView.isHidden = false
                 collectionView.backgroundView = tempView
                 tempLabel.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
@@ -272,11 +402,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
+            }else {
+                tempView.isHidden = true
             }
             return val
         } else if collectionView.tag == 4 {
-            let val = 3
+            
+            let tempView = UIView()
+            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+            
+            let tempLabel = UILabel()
+            tempLabel.text = "추천 문제가 없습니다"
+            tempLabel.textColor = .white
+            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
+            tempLabel.textAlignment = .center
+            
+            tempView.addSubview(tempLabel)
+            let val = recommendImplementation.count
             if val == 0 {
+                tempLabel.isHidden = false
                 collectionView.backgroundView = tempView
                 tempLabel.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
@@ -284,11 +428,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
+            }else {
+                tempLabel.isHidden = true
             }
             return val
         } else {
-            let val = 0
+            
+            let tempView = UIView()
+            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+            
+            let tempLabel = UILabel()
+            tempLabel.text = "추천 문제가 없습니다"
+            tempLabel.textColor = .white
+            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
+            tempLabel.textAlignment = .center
+            
+            tempView.addSubview(tempLabel)
+            let val = recommendEtc.count
             if val == 0 {
+                tempLabel.isHidden = false
                 collectionView.backgroundView = tempView
                 tempLabel.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
@@ -296,6 +454,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
+            }else {
+                tempLabel.isHidden = true
             }
             return val
         }
@@ -307,19 +467,33 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProblemCollectionViewCell.identifier, for: indexPath) as? ProblemCollectionViewCell else { return UICollectionViewCell() }
         
         if collectionView.tag == 1 {
+            cell.problemTitle.text = recommendDP[indexPath.row].name
+            cell.problemNumber.text = "\(recommendDP[indexPath.row].id)"
+            
             
         } else if collectionView.tag == 2{
+            cell.problemTitle.text = recommendDS[indexPath.row].name
+            cell.problemNumber.text = "\(recommendDS[indexPath.row].id)"
+            
             
         } else if collectionView.tag == 3{
             
+            cell.problemTitle.text = recommendGraph[indexPath.row].name
+            cell.problemNumber.text = "\(recommendGraph[indexPath.row].id)"
+            
         } else if collectionView.tag == 4{
+            cell.problemTitle.text = recommendImplementation[indexPath.row].name
+            cell.problemNumber.text = "\(recommendImplementation[indexPath.row].id)"
+            
             
         } else {
+            cell.problemTitle.text = recommendEtc[indexPath.row].name
+            cell.problemNumber.text = "\(recommendEtc[indexPath.row].id)"
             
         }
         
         cell.backgroundColor = UIColor(red: 35/255, green: 45/255, blue: 57/255, alpha: 1)
-        cell.problemTitle.text = "hello world"
+//        cell.problemTitle.text = "hello world"
         cell.problemTitle.textColor = .white
         cell.problemNumber.textColor = .white
         
@@ -385,13 +559,13 @@ extension MainViewController {
         threePickLabel.font = .systemFont(ofSize: 25)
         
         
-        firstProblem.addTarget(self, action: #selector(topTapped), for: .touchUpInside)
+        firstProblem.addTarget(self, action: #selector(firstTapped), for: .touchUpInside)
         firstProblem.isUserInteractionEnabled = true
         
-        secondProblem.addTarget(self, action: #selector(topTapped), for: .touchUpInside)
+        secondProblem.addTarget(self, action: #selector(secondTapped), for: .touchUpInside)
         secondProblem.isUserInteractionEnabled = true
         
-        thirdProblem.addTarget(self, action: #selector(topTapped), for: .touchUpInside)
+        thirdProblem.addTarget(self, action: #selector(thirdTapped), for: .touchUpInside)
         thirdProblem.isUserInteractionEnabled = true
     }
     
@@ -423,10 +597,33 @@ extension MainViewController {
 // addTargets
 extension MainViewController {
     
-    @objc func topTapped() {
-        print("Heelo")
+    @objc func firstTapped() {
+        let vc = SpecificProblemViewController()
+        vc.problemTitle = tm[0].name
+        vc.problemType = tm[0].categories[0]
+        vc.problemNumbeer = tm[0].id
+        
+        self.present(vc, animated: true, completion: nil)
     }
     
+    @objc func secondTapped() {
+        let vc = SpecificProblemViewController()
+        vc.problemTitle = tm[1].name
+        vc.problemType = tm[1].categories[0]
+        vc.problemNumbeer = tm[1].id
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @objc func thirdTapped() {
+        let vc = SpecificProblemViewController()
+        vc.problemTitle = tm[2].name
+        vc.problemType = tm[2].categories[0]
+        vc.problemNumbeer = tm[2].id
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+
 }
 
 

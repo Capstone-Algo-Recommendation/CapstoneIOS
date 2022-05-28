@@ -70,6 +70,8 @@ class ApiService {
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)
         
+        print(a)
+        
         request.headers = ["X-AUTH-TOKEN": a!]
     
 
@@ -80,7 +82,7 @@ class ApiService {
             }
             
             let str = String(decoding: data, as: UTF8.self)
-            print(str)
+            print("cehckiog ",str)
             // 이 completion 사용자 랭크에 인자로 넘겨 줘야 함. 
             completion()
         }
@@ -90,7 +92,7 @@ class ApiService {
     
     static func login(access_token: String, refresh_token: String, completion: @escaping (String) -> Void ) {
         
-        let url = URL(string: "http://3.39.233.19:8080/sign/login/google/test")!
+        let url = URL(string: "http://3.39.233.19:8080/sign/login/google")!
                 
         
         let json: [String: Any] = [
@@ -153,3 +155,25 @@ struct A1: Codable{
 
 
 
+
+//
+//{
+//    "success":true,
+//    "code":0,
+//    "msg":"성공",
+//    "data":
+//    {
+//        "name":null,
+//        "email":"spsyoudong1@gmail.com",
+//        "bojId":"qxjzjq2",
+//        "problemList":
+//        [
+//        {
+//            "id":1003,"name":"피보나치 함수","url":"https://www.acmicpc.net/problem/1003","status":"COMPLETE","memo":null,"level":8,"categories":["dp"]
+//
+//        }
+//        ]
+//
+//    }
+//
+//}
