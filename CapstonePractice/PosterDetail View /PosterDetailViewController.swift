@@ -134,6 +134,8 @@ extension PosterDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             
             cell.contentLablel.text = info?.data.comments?[indexPath.row].content
+            cell.userIdLabel.text = info?.data.comments?[indexPath.row].author
+//            let a = info?.data.comments?[indexPath.row].author
             
             return cell
         }

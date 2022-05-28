@@ -127,7 +127,7 @@ struct DataClass2: Codable {
     let id: Int
     let problemID: JSONNull?
     let title, content: String
-    let author: JSONNull?
+    let author: String?
     let comments: [Comment]?
 
     enum CodingKeys: String, CodingKey {
@@ -140,7 +140,7 @@ struct DataClass2: Codable {
 // MARK: - Comment
 struct Comment: Codable {
     let commentID: Int
-    let author: JSONNull?
+    let author: String?
     let content: String
 
     enum CodingKeys: String, CodingKey {

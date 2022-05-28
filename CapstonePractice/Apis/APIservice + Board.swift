@@ -58,7 +58,7 @@ extension ApiService {
                 return
             }
             let str = String(decoding: data, as: UTF8.self)
-            print(str)
+            print("촏ㅊ", str)
             if let sodeul = try? JSONDecoder().decode(SpsecificPostData.self, from: data) {
                     completion(sodeul)
             }else {
