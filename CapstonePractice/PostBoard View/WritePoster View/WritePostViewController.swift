@@ -62,6 +62,7 @@ extension WritePostViewController {
             ApiService.writePost(title: text, content: text)
             
             print("worked")
+            self.dismiss(animated: true, completion: nil)
         }else {
             print("someThing wrong")
         }

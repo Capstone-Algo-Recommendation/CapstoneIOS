@@ -57,7 +57,7 @@ struct Boards: Codable {
 // MARK: - Datum
 struct Datum: Codable {
     let id: Int
-    let title, content: String
+    let title, content, writtenAt: String
 }
 
 

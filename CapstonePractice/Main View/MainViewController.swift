@@ -10,7 +10,38 @@ import SnapKit
 
 class MainViewController: UIViewController {
     
+    
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let acviIndicator = UIActivityIndicatorView()
+        acviIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        acviIndicator.center = self.view.center
+        acviIndicator.color = .red
+        acviIndicator.hidesWhenStopped = true
+        
+        acviIndicator.stopAnimating()
+        return acviIndicator
 
+    }()
+
+    
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+    }
+    
     var scrollView = UIScrollView()
     
     let threePickLabel = UILabel()
@@ -98,7 +129,7 @@ class MainViewController: UIViewController {
         return cv
     }()
     
-    
+    let tmpView = UIView()
     let topRecommendView = UIView()
     var tm: [RecommendDatum] = []
     override func viewDidLoad() {
@@ -107,6 +138,8 @@ class MainViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.green]
         
         title = "문제 풀어요~"
+        
+        
         
         dpColletionView.delegate = self
         dpColletionView.dataSource = self
@@ -123,14 +156,24 @@ class MainViewController: UIViewController {
         
         greedyColletionView.delegate = self
         greedyColletionView.dataSource = self
-        
+    
+            
+//        print("?????")
+//        self.tmpView.frame = self.view.frame
+//        self.tmpView.backgroundColor = .white
+//
+//        self.view.addSubview(self.tmpView)
+//        self.tmpView.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//
+//        }
     
         navigationController?.navigationBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         tabBarController?.tabBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
         
         ApiService.getRecommendation { data in
-            print(data)
             
+        
             var counter = 0
             self.tm = []
             for problem in data.data {
@@ -238,8 +281,8 @@ class MainViewController: UIViewController {
         dpLabel.text = "DP"
         dsLabel.text = "Data Structure"
         graphLabel.text = "Graph"
-        implemntationLabel.text = "Implementation"
-        greedyLabel.text = "Greedy"
+        implemntationLabel.text = "Bruteforcing"
+        greedyLabel.text = "ETC"
         
         
         dpLabel.textColor = .white
@@ -272,6 +315,22 @@ class MainViewController: UIViewController {
         setUpConstraints()
 
     }
+    
+    let tempView1 = UIView()
+    let tempLabel1 = UILabel()
+    
+    let tempView2 = UIView()
+    let tempLabel2 = UILabel()
+    
+    let tempView3 = UIView()
+    let tempLabel3 = UILabel()
+    
+    let tempView4 = UIView()
+    let tempLabel4 = UILabel()
+    
+    let tempView5 = UIView()
+    let tempLabel5 = UILabel()
+
     
 }
 
@@ -327,135 +386,161 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-       
+        tempView1.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        
+        tempLabel1.textColor = .white
+        tempLabel1.font = UIFont(name: FontNames.medium, size: 20)
+        tempLabel1.textAlignment = .center
+        tempView1.addSubview(tempLabel1)
+        tempLabel1.text = "추천 문제가 없습니다"
+        
+        tempView2.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        
+        tempLabel2.textColor = .white
+        tempLabel2.font = UIFont(name: FontNames.medium, size: 20)
+        tempLabel2.textAlignment = .center
+        tempView2.addSubview(tempLabel2)
+        tempLabel2.text = "추천 문제가 없습니다"
+        
+        
+        tempView3.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        
+        tempLabel3.textColor = .white
+        tempLabel3.font = UIFont(name: FontNames.medium, size: 20)
+        tempLabel3.textAlignment = .center
+        tempView3.addSubview(tempLabel3)
+        tempLabel3.text = "추천 문제가 없습니다"
+        
+        tempView4.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        
+        tempLabel4.textColor = .white
+        tempLabel4.font = UIFont(name: FontNames.medium, size: 20)
+        tempLabel4.textAlignment = .center
+        tempView4.addSubview(tempLabel4)
+        tempLabel4.text = "추천 문제가 없습니다"
+        
+        
+        tempView5.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        
+        tempLabel5.textColor = .white
+        tempLabel5.font = UIFont(name: FontNames.medium, size: 20)
+        tempLabel5.textAlignment = .center
+        tempView5.addSubview(tempLabel5)
+        tempLabel5.text = "추천 문제가 없습니다"
+        
+        
+        
         if collectionView.tag == 1{
-            let tempView = UIView()
-            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
-            
-            let tempLabel = UILabel()
-            tempLabel.text = "추천 문제가 없습니다"
-            tempLabel.textColor = .white
-            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
-            tempLabel.textAlignment = .center
-            
-            tempView.addSubview(tempLabel)
-            
+
+        
             let val = recommendDP.count
             if val == 0 {
-                tempView.isHidden = false
-                collectionView.backgroundView = tempView
-                tempLabel.snp.makeConstraints { make in
+                
+                tempView1.isHidden = false
+                collectionView.backgroundView = tempView1
+                tempLabel1.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
                     make.centerY.equalToSuperview()
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
             }else {
-                tempView.isHidden = true
+                tempView1.isHidden = true
             }
             return val
         } else if collectionView.tag == 2 {
+        
+            tempLabel2.textColor = .white
+            tempLabel2.font = UIFont(name: FontNames.medium, size: 20)
+            tempLabel2.textAlignment = .center
             
-            let tempView = UIView()
-            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
-            
-            let tempLabel = UILabel()
-            tempLabel.text = "추천 문제가 없습니다"
-            tempLabel.textColor = .white
-            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
-            tempLabel.textAlignment = .center
-            
-            tempView.addSubview(tempLabel)
+            tempView2.addSubview(tempLabel2)
             let val = recommendDS.count
             if val == 0 {
-                tempView.isHidden = false
-                collectionView.backgroundView = tempView
-                tempLabel.snp.makeConstraints { make in
+              
+                tempView2.isHidden = false
+                collectionView.backgroundView = tempView2
+                tempLabel2.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
                     make.centerY.equalToSuperview()
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
             }else {
-                tempView.isHidden = true
+                tempView2.isHidden = true
             }
             return val
         } else if collectionView.tag == 3 {
             
-            let tempView = UIView()
-            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+
+            tempLabel3.textColor = .white
+            tempLabel3.font = UIFont(name: FontNames.medium, size: 20)
+            tempLabel3.textAlignment = .center
             
-            let tempLabel = UILabel()
-            tempLabel.text = "추천 문제가 없습니다"
-            tempLabel.textColor = .white
-            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
-            tempLabel.textAlignment = .center
-            
-            tempView.addSubview(tempLabel)
+            tempView3.addSubview(tempLabel3)
             let val = recommendGraph.count
             if val == 0 {
-                tempView.isHidden = false
-                collectionView.backgroundView = tempView
-                tempLabel.snp.makeConstraints { make in
+   
+                tempView3.isHidden = false
+                collectionView.backgroundView = tempView3
+                tempLabel3.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
                     make.centerY.equalToSuperview()
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
             }else {
-                tempView.isHidden = true
+                tempView3.isHidden = true
+
             }
             return val
         } else if collectionView.tag == 4 {
             
-            let tempView = UIView()
-            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+
+            tempLabel4.textColor = .white
+            tempLabel4.font = UIFont(name: FontNames.medium, size: 20)
+            tempLabel4.textAlignment = .center
             
-            let tempLabel = UILabel()
-            tempLabel.text = "추천 문제가 없습니다"
-            tempLabel.textColor = .white
-            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
-            tempLabel.textAlignment = .center
-            
-            tempView.addSubview(tempLabel)
+            tempView4.addSubview(tempLabel4)
             let val = recommendImplementation.count
             if val == 0 {
-                tempLabel.isHidden = false
-                collectionView.backgroundView = tempView
-                tempLabel.snp.makeConstraints { make in
+        
+                tempLabel4.isHidden = false
+                collectionView.backgroundView = tempView4
+                tempLabel4.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
                     make.centerY.equalToSuperview()
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
             }else {
-                tempLabel.isHidden = true
+                tempLabel4.isHidden = true
+    
             }
             return val
         } else {
             
-            let tempView = UIView()
-            tempView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+    
             
-            let tempLabel = UILabel()
-            tempLabel.text = "추천 문제가 없습니다"
-            tempLabel.textColor = .white
-            tempLabel.font = UIFont(name: FontNames.medium, size: 20)
-            tempLabel.textAlignment = .center
+            tempLabel5.textColor = .white
+            tempLabel5.font = UIFont(name: FontNames.medium, size: 20)
+            tempLabel5.textAlignment = .center
             
-            tempView.addSubview(tempLabel)
+            tempView5.addSubview(tempLabel5)
             let val = recommendEtc.count
             if val == 0 {
-                tempLabel.isHidden = false
-                collectionView.backgroundView = tempView
-                tempLabel.snp.makeConstraints { make in
+            
+                tempLabel5.isHidden = false
+                collectionView.backgroundView = tempView5
+                tempLabel5.snp.makeConstraints { make in
                     make.centerX.equalToSuperview()
                     make.centerY.equalToSuperview()
                     make.width.equalTo(200)
                     make.height.equalTo(50)
                 }
             }else {
-                tempLabel.isHidden = true
+                tempLabel5.isHidden = true
+        
             }
             return val
         }

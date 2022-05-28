@@ -47,7 +47,7 @@ final class PosterDetailMainCell: UITableViewCell, SetUpView {
         
         authorLabel.text = "unknown author"
         authorLabel.font = .systemFont(ofSize: 15)
-        createdDateLabel.text = "2017/01/11"
+//        createdDateLabel.text = "2017/01/11"
         createdDateLabel.font = .systemFont(ofSize: 15)
         posterTitleLabel.text = "some title be here"
         posterTitleLabel.font = .boldSystemFont(ofSize: 22)

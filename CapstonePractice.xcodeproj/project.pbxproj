@@ -65,6 +65,7 @@
 		887085EF27E8AAC800B5BC82 /* RegisterViewControlle1r.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085EE27E8AAC800B5BC82 /* RegisterViewControlle1r.swift */; };
 		887085F227E8AAF400B5BC82 /* RegisterVie1w.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085F127E8AAF400B5BC82 /* RegisterVie1w.swift */; };
 		8875CA2427F970DE000C581A /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8875CA2327F970DE000C581A /* credentials.plist */; };
+		8889E79128420F3A0029830B /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8889E79028420F3A0029830B /* SpinnerViewController.swift */; };
 		88B280C328250DF6002D3618 /* ApiService + member extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B280C228250DF6002D3618 /* ApiService + member extension.swift */; };
 		88B6D588281D32EC005FDFFE /* ProbleCellLikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6D587281D32EC005FDFFE /* ProbleCellLikeView.swift */; };
 		88B776C727F47BA90068C1FD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B776C627F47BA90068C1FD /* MainView.swift */; };
@@ -135,6 +136,7 @@
 		887085EE27E8AAC800B5BC82 /* RegisterViewControlle1r.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControlle1r.swift; sourceTree = "<group>"; };
 		887085F127E8AAF400B5BC82 /* RegisterVie1w.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVie1w.swift; sourceTree = "<group>"; };
 		8875CA2327F970DE000C581A /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = credentials.plist; path = ../../../Downloads/credentials.plist; sourceTree = "<group>"; };
+		8889E79028420F3A0029830B /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		88B280C228250DF6002D3618 /* ApiService + member extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiService + member extension.swift"; sourceTree = "<group>"; };
 		88B6D587281D32EC005FDFFE /* ProbleCellLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProbleCellLikeView.swift; sourceTree = "<group>"; };
 		88B776C627F47BA90068C1FD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				8814C1B7282E3C9A00EF7E6B /* FontNames.swift */,
 				8852633328376B4E00974F12 /* RegisterView */,
 				885263382837705000974F12 /* SearchView */,
+				8889E79028420F3A0029830B /* SpinnerViewController.swift */,
 			);
 			path = CapstonePractice;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				8824E7B127EEE68700125C8C /* MyInfoView.swift in Sources */,
 				883A413A27EDBBA60002B909 /* PosterDetailViewModel.swift in Sources */,
 				883A412527EDA0480002B909 /* PostBoardViewController.swift in Sources */,
+				8889E79128420F3A0029830B /* SpinnerViewController.swift in Sources */,
 				8852633A2837706400974F12 /* SearchView.swift in Sources */,
 				883A412827EDA0A20002B909 /* MyInfoViewController.swift in Sources */,
 				880BCA2327E87AC300C5235A /* LoginView.swift in Sources */,

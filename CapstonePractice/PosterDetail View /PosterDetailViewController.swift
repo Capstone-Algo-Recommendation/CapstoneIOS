@@ -15,7 +15,7 @@ class PosterDetailViewController: UIViewController {
     
     let mainView = PosterDetailView()
     let viewModel = PosterDetailViewModel()
-    
+    var createdDate: String?
     var boardNum: Int?
     var sections: [SectionOfCustomData] = []
     
@@ -28,6 +28,7 @@ class PosterDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("refreshing")
     
         ApiService.getSpecificPost(postid: boardNum!) { a in
             print("good", a )
@@ -119,6 +120,10 @@ extension PosterDetailViewController: UITableViewDelegate, UITableViewDataSource
 
             cell.posterTitleLabel.text = info?.data.title
             cell.posterContentLabel.text = info?.data.content
+            
+            
+            let a = createdDate!.substring(from: 5, to: 9)
+            cell.createdDateLabel.text = a
             
             return cell
             

@@ -37,7 +37,8 @@ class PosterViewModel {
 
         ApiService.getPostBoard(pageNum: pageNumber) { datum in
             self.pageNumber += 1
-            self.it = self.it + datum
+//            self.it = self.it + datum
+            self.it = datum
             competion()
         }
     }

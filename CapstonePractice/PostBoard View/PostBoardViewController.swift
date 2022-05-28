@@ -40,33 +40,16 @@ class PostBoardViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped))
         
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped)),
+            
+            UIBarButtonItem(image: UIImage.init(systemName: "Human"), style: .plain, target: self, action: #selector(refresh))]
+        
         
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         
-        
-        
-//        viewModel.items
-//        .bind(to: mainView.tableView.rx.items) { (tableView, row, element) in
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterTableViewCell.identifier) as? PosterTableViewCell else { return UITableViewCell()
-//
-//            }
-//
-//            cell.titleLabel.text = element.title
-//            cell.contentLabel.text = element.content
-//            cell.dateIdLabel.text = element.writtenDate
-//
-//            return cell
-//        }
-//        .disposed(by: disposeBag)
-//
-////        viewModel.loadPosts()
-////        mainView.tableView.reloadData()
-//
-//        mainView.tableView
-//            .rx.setDelegate(self)
-//            .disposed(by: disposeBag)
-//    }
+
     
     }
 }
@@ -88,7 +71,14 @@ extension PostBoardViewController: UITableViewDelegate, UITableViewDataSource {
 
         cell.titleLabel.text = element.title
         cell.contentLabel.text = element.content
-//        cell.dateIdLabel.text = element.writtenDate
+        
+        
+        let a = element.writtenAt.substring(from: 5, to: 9)
+        
+        cell.dateIdLabel.text = a
+        
+
+
 
 
         return cell
@@ -100,6 +90,7 @@ extension PostBoardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = PosterDetailViewController()
+        vc.createdDate = viewModel.it[indexPath.row].writtenAt
         vc.boardNum = viewModel.it[indexPath.row].id
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -126,7 +117,30 @@ extension PostBoardViewController {
         present(alertVC, animated: true, completion: nil)
         
     }
+    
+    @objc func refresh() {
+        viewModel.loadPosts {
+            DispatchQueue.main.async {
+                self.mainView.tableView.reloadData()
+            }
+//            print(self.viewModel.it)
+        }
+    }
 }
 
 
+extension String {
+    func substring(from: Int, to: Int) -> String {
+        guard from < count, to >= 0, to - from >= 0 else {
+            return ""
+        }
+
+        // Index 값 획득
+        let startIndex = index(self.startIndex, offsetBy: from)
+        let endIndex = index(self.startIndex, offsetBy: to + 1) // '+1'이 있는 이유: endIndex는 문자열의 마지막 그 다음을 가리키기 때문
+
+        // 파싱
+        return String(self[startIndex ..< endIndex])
+    }
+}
 

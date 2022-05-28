@@ -28,7 +28,7 @@ class ProbleCellLikeView: UIControl, SetUpView {
         addSubview(problemNumLabel)
         addSubview(problemTypeLabel)
         addSubview(problemTitleLabel)
-        problemTypeLabel.font = UIFont(name: FontNames.light, size: 14)
+        problemTypeLabel.font = UIFont(name: FontNames.light, size: 12)
         
         problemTitleLabel.textColor = .white
         problemTypeLabel.textColor = .white
@@ -52,7 +52,7 @@ class ProbleCellLikeView: UIControl, SetUpView {
         }
         
         problemTypeLabel.snp.makeConstraints { make in
-            make.width.equalTo(45)
+            make.width.equalTo(70)
             make.centerY.equalToSuperview()
             make.height.equalTo(40)
             make.trailing.equalToSuperview().offset(-12)

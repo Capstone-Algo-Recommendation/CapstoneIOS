@@ -44,9 +44,9 @@ final class PosterDetailCommentCell: UITableViewCell, SetUpView {
         createdLabel.font = .systemFont(ofSize: 15)
         contentLablel.font = .systemFont(ofSize: 17)
         
-        userIdLabel.text = "Yundong"
-        createdLabel.text = "2017/01/12"
-        contentLablel.text = "안녕하세요"
+//        userIdLabel.text = "Yundong"
+//        createdLabel.text = "2017/01/12"
+//        contentLablel.text = "안녕하세요"
         contentLablel.numberOfLines = 0
         
         createdLabel.textColor = .gray
