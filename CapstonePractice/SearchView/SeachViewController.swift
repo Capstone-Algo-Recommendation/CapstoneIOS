@@ -11,10 +11,14 @@ import UIKit
 class SeachViewController: UIViewController {
     
     let mainView = SearchView()
-    var pickerView = UIPickerView()
+    
+    let pickerCategoryList = ["DP", "자료구조", "그래프", "구현", "Greedy"]
     let pickerList = ["1", "2" ,"3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"
                       ,"23", "24", "25", "26", "27", "28", "29", "30"
     ]
+    
+    var selectedCategory = ""
+    var selectedLevel = ""
     
     override func loadView() {
         self.view = mainView
@@ -23,6 +27,8 @@ class SeachViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "문제 검색 "
+        
+        
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         mainView.seachBar.delegate = self
@@ -30,6 +36,56 @@ class SeachViewController: UIViewController {
         mainView.tableView.keyboardDismissMode = .onDrag
         
         mainView.levelButton.addTarget(self, action: #selector(levelButtonTouched), for: .touchUpInside)
+        mainView.categotySelectionButton.addTarget(self, action: #selector(categotyButtonClciked), for: .touchUpInside)
+        mainView.searchButton.addTarget(self, action: #selector(searchButtonClicked), for: .touchUpInside)
+        
+        mainView.pickerView.delegate = self
+        mainView.pickerView.dataSource = self
+        
+    }
+    
+    @objc func searchButtonClicked() {
+        var searchText = ""
+        
+        if selectedCategory == "DP" {
+            searchText = "dp"
+        } else if selectedCategory == "자료구조" {
+
+            searchText = "data_structues"
+        } else if selectedCategory == "Greedy" {
+
+            searchText = "Greedy"
+        } else if selectedCategory == "그래프" {
+
+            searchText = "graphs"
+        }  else if selectedCategory == "구현" {
+
+            searchText = "implementation"
+        }
+        ApiService.searchProblem(category: searchText, level: selectedLevel) { searchedData in
+            self.searched = searchedData.data
+
+            DispatchQueue.main.async {
+                self.mainView.tableView.reloadData()
+                }
+        }
+    }
+    
+    @objc func categotyButtonClciked() {
+
+        let alertVC = UIAlertController(title: "문제의 난의도를 선택해주세요", message: "1~30까지 있습니다\n\n\n\n\n\n\n\n\n", preferredStyle: .actionSheet)
+        
+        
+        let pickerView = UIPickerView(frame: CGRect(x: 55, y: 45, width: 250, height: 150))
+        
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        alertVC.view.addSubview(pickerView)
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alertVC.addAction(cancelButton)
+        present(alertVC, animated: true, completion: nil)
         
     }
     
@@ -82,16 +138,26 @@ extension SeachViewController: UISearchBarDelegate {
         }
         
     }
+    
 }
 
 
 extension SeachViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
+//    didsele
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        mainView.levelButton.setTitle(pickerList[row] + "단계", for: .normal)
+
+        if component == 0 {
+            selectedCategory = pickerCategoryList[row]
+        }else {
+            selectedLevel = pickerList[row]
+        }
+        
+        mainView.selectedKeyWordsLabel.text = "검색어: \(selectedCategory)" + "   단게: \(selectedLevel)"
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        2
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -100,11 +166,21 @@ extension SeachViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.pickerList.count
+        if component == 0 {
+            return self.pickerCategoryList.count
+        }else {
+            return self.pickerList.count
+        }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-           return pickerList[row]
+        if component == 0 {
+            return pickerCategoryList[row]
+        }else {
+            return pickerList[row]
+        }
+           
    }
     
 }
