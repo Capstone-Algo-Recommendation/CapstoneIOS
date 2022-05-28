@@ -10,8 +10,9 @@ import Foundation
 
 
 extension ApiService {
-    static func searchProblem(category: String, level: String, completion: @escaping (RecommendData)-> Void) {
-        print("asg")
+    static func searchProblem(category: String, level: String, completion: @escaping (SearchProblemData)-> Void) {
+
+        
         let url = URL(string: "http://3.39.233.19:8080/api/problem/filter?level=\(level)&category=\(category)&page=1")!
         var request = URLRequest(url: url)
         
@@ -30,14 +31,13 @@ extension ApiService {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-            let str = String(decoding: data, as: UTF8.self)
-            print(str)
-//            completion()
-//            if let sodeul = try? JSONDecoder().decode(RecommendData.self, from: data) {
-//                    completion(sodeul)
-//            }else {
-//                print("Bad")
-//            }
+//            let str = String(decoding: data, as: UTF8.self)
+//            print(str)
+            if let sodeul = try? JSONDecoder().decode(SearchProblemData.self, from: data) {
+                    completion(sodeul)
+            }else {
+                print("Bad")
+            }
         }
         task.resume()
     }

@@ -95,6 +95,25 @@ struct Datum: Codable {
 
 import Foundation
 
+
+
+struct SearchProblemData: Codable {
+    let success: Bool
+    let code: Int
+    let msg: String
+    let data: [searchedDatum]
+}
+
+// MARK: - Datum
+struct searchedDatum: Codable {
+    let id: Int
+    let name: String
+    let url: String
+    let level: Int
+    let categories: [String]
+}
+
+
 // MARK: - SpsecificPostData
 struct SpsecificPostData: Codable {
     let success: Bool

@@ -49,6 +49,7 @@ class SeachViewController: UIViewController {
         present(alertVC, animated: true, completion: nil)
         
     }
+    var searched: [searchedDatum] = []
 }
 
 extension SeachViewController: UISearchBarDelegate {
@@ -61,12 +62,20 @@ extension SeachViewController: UISearchBarDelegate {
         if let searchText = searchBar.text, let level = mainView.levelButton.titleLabel?.text {
             print(searchText)
             if level.count > 2 {
-                ApiService.searchProblem(category: searchText, level: "5") { _ in
-                    print("default level")
+                ApiService.searchProblem(category: searchText, level: "5") { searchedData in
+                    self.searched = searchedData.data
+                    
+                    DispatchQueue.main.async {
+                        self.mainView.tableView.reloadData()
+                        }
                 }
             }else {
-                ApiService.searchProblem(category: searchText, level: level) { _ in
-                    print("Good level")
+                ApiService.searchProblem(category: searchText, level: level) { searchedData in
+                    self.searched = searchedData.data
+                    
+                    DispatchQueue.main.async {
+                        self.mainView.tableView.reloadData()
+                        }
                 }
             }
             
@@ -102,16 +111,16 @@ extension SeachViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
 extension SeachViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        searched.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProblemTableViewCell.identifier, for: indexPath) as? ProblemTableViewCell else {
             return UITableViewCell()
         }
-        cell.keyLabel.text = "dp"
-        cell.titleLabel.text = "SADf"
-        cell.numberLabel.text = "2515"
+        cell.keyLabel.text = searched[indexPath.row].categories[0]
+        cell.titleLabel.text = searched[indexPath.row].name
+        cell.numberLabel.text = "\(searched[indexPath.row].id)"
         return cell
     }
     
