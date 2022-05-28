@@ -244,31 +244,31 @@ class MainViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
-        
         threePickLabel.frame = CGRect(x: 20, y: 30, width: view.frame.width, height: 20)
         topRecommendView.frame = CGRect(x: 20, y: 55, width: view.frame.width, height: 200)
         
-//        scrollView.bringSubviewToFront(dpLabel)
-//        dpLabel.text = " hhhhhhh"
-        dpLabel.frame = CGRect(x: 20, y: 270, width: 200, height: 30)
+        
+        categoryInfoLabel.frame = CGRect(x: 20, y: 245, width: view.frame.width, height: 40)
+
+        dpLabel.frame = CGRect(x: 20, y: 300, width: 200, height: 30)
     
-        dpColletionView.frame = CGRect(x: 20, y: 310, width: view.frame.width - 40, height: 220)
+        dpColletionView.frame = CGRect(x: 20, y: 340, width: view.frame.width - 40, height: 220)
         
         
         
         
-        dsLabel.frame = CGRect(x: 20, y: 575, width: 200, height: 30)
-        dsColletionView.frame = CGRect(x: 20, y: 615, width: view.frame.width - 40, height: 220)
+        dsLabel.frame = CGRect(x: 20, y: 605, width: 200, height: 30)
+        dsColletionView.frame = CGRect(x: 20, y: 645, width: view.frame.width - 40, height: 220)
         
-        graphLabel.frame = CGRect(x: 20, y: 895, width: 200, height: 30)
-        graphColletionView.frame = CGRect(x: 20, y: 935, width: view.frame.width - 40, height: 220)
+        graphLabel.frame = CGRect(x: 20, y: 925, width: 200, height: 30)
+        graphColletionView.frame = CGRect(x: 20, y: 965, width: view.frame.width - 40, height: 220)
         
-        implemntationLabel.frame = CGRect(x: 20, y: 1200, width: 200, height: 30)
-        implementationColletionView.frame = CGRect(x: 20, y: 1240, width: view.frame.width - 40, height: 220)
+        implemntationLabel.frame = CGRect(x: 20, y: 1230, width: 200, height: 30)
+        implementationColletionView.frame = CGRect(x: 20, y: 1270, width: view.frame.width - 40, height: 220)
         
         
-        greedyLabel.frame = CGRect(x: 20, y: 1495, width: 200, height: 30)
-        greedyColletionView.frame = CGRect(x: 20, y: 1535, width: view.frame.width - 40, height: 220)
+        greedyLabel.frame = CGRect(x: 20, y: 1615, width: 200, height: 30)
+        greedyColletionView.frame = CGRect(x: 20, y: 1565, width: view.frame.width - 40, height: 220)
         
     
         
@@ -278,6 +278,7 @@ class MainViewController: UIViewController {
         secondProblem.problemNumLabel.text = "2"
         thirdProblem.problemNumLabel.text = "3"
         
+        categoryInfoLabel.text = "유형별 문제 추천"
         dpLabel.text = "DP"
         dsLabel.text = "Data Structure"
         graphLabel.text = "Graph"
@@ -285,6 +286,7 @@ class MainViewController: UIViewController {
         greedyLabel.text = "ETC"
         
         
+        categoryInfoLabel.textColor = .white
         dpLabel.textColor = .white
         dsLabel.textColor = .white
         graphLabel.textColor = .white
@@ -315,6 +317,8 @@ class MainViewController: UIViewController {
         setUpConstraints()
 
     }
+    
+    let categoryInfoLabel = UILabel()
     
     let tempView1 = UIView()
     let tempLabel1 = UILabel()
@@ -619,11 +623,14 @@ extension MainViewController {
         greedyColletionView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
         
         
+        
+        
         view.addSubview(scrollView)
         topRecommendView.addSubview(firstProblem)
         topRecommendView.addSubview(secondProblem)
         topRecommendView.addSubview(thirdProblem)
         
+        scrollView.addSubview(categoryInfoLabel)
         scrollView.addSubview(topRecommendView)
         scrollView.addSubview(dpColletionView)
         scrollView.addSubview(dsColletionView)
@@ -655,7 +662,7 @@ extension MainViewController {
     }
     
     private func setUpConstraints() {
-        scrollView.contentSize = CGSize(width: view.frame.width - 20, height: 1780)
+        scrollView.contentSize = CGSize(width: view.frame.width - 20, height: 1840)
         
         firstProblem.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
