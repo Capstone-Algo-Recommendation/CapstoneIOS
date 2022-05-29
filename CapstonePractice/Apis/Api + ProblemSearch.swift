@@ -10,10 +10,10 @@ import Foundation
 
 
 extension ApiService {
-    static func searchProblem(category: String, level: String, completion: @escaping (SearchProblemData)-> Void) {
+    static func searchProblem(pageNum: Int, category: String, level: String, completion: @escaping (SearchProblemData)-> Void) {
 
         
-        let url = URL(string: "http://3.39.233.19:8080/api/problem/filter?level=\(level)&category=\(category)&page=1")!
+        let url = URL(string: "http://3.39.233.19:8080/api/problem/filter?level=\(level)&category=\(category)&page=\(pageNum)")!
         var request = URLRequest(url: url)
         
         let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)

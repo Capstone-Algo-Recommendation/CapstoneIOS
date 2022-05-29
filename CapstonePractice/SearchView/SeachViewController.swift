@@ -27,7 +27,7 @@ class SeachViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "문제 검색 "
-    
+        
         
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
@@ -62,13 +62,31 @@ class SeachViewController: UIViewController {
 
             searchText = "implementation"
         }
-        ApiService.searchProblem(category: searchText, level: selectedLevel) { searchedData in
+        ApiService.searchProblem(pageNum:0, category: searchText, level: selectedLevel) { searchedData in
             self.searched = searchedData.data
 
             DispatchQueue.main.async {
                 self.mainView.tableView.reloadData()
                 }
         }
+        
+        
+        //
+//        ApiService.searchProblem(pageNum: 0, category: searchText, level: selectedLevel) { searchedData in
+//            self.searched = searchedData.data
+//
+//            ApiService.searchProblem(pageNum: 1, category: searchText, level: self.selectedLevel) { searchedDat in
+//                self.searched = self.searched + searchedDat.data
+//
+//                ApiService.searchProblem(pageNum: 2, category: searchText, level: self.selectedLevel) { searchedDa in
+//                    self.searched = self.searched + searchedDa.data
+//
+//                    DispatchQueue.main.async {
+//                        self.mainView.tableView.reloadData()
+//                        }
+//                }
+//            }
+//        }
     }
     
     @objc func categotyButtonClciked() {
@@ -118,7 +136,7 @@ extension SeachViewController: UISearchBarDelegate {
         if let searchText = searchBar.text, let level = mainView.levelButton.titleLabel?.text {
             print(searchText)
             if level.count > 2 {
-                ApiService.searchProblem(category: searchText, level: "5") { searchedData in
+                ApiService.searchProblem(pageNum:0, category: searchText, level: "5") { searchedData in
                     self.searched = searchedData.data
                     
                     DispatchQueue.main.async {
@@ -126,7 +144,7 @@ extension SeachViewController: UISearchBarDelegate {
                         }
                 }
             }else {
-                ApiService.searchProblem(category: searchText, level: level) { searchedData in
+                ApiService.searchProblem(pageNum:0, category: searchText, level: level) { searchedData in
                     self.searched = searchedData.data
                     
                     DispatchQueue.main.async {

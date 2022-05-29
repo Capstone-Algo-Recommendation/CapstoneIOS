@@ -11,9 +11,8 @@ import Foundation
 extension ApiService {
     
     static func getPostBoard(pageNum: Int, completion : @escaping ([Datum]) -> Void) {
-        
-//        let url = URL(string: "http://15.164.165.132/api/board?page=\(pageNum)")!
-        let url = URL(string: "http://3.39.233.19:8080/api/board?page=0")!
+    
+        let url = URL(string: "http://3.39.233.19:8080/api/board?page=\(pageNum)")!
         var request = URLRequest(url: url)
 
         request.httpMethod = "GET"

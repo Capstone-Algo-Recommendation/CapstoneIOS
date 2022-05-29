@@ -32,14 +32,18 @@ class PosterViewModel {
     
     var it: [Datum] = []
     
-    var pageNumber = 0
+    var pageNumber = 3
+    
     func loadPosts(competion: @escaping ()-> Void) {
-
-        ApiService.getPostBoard(pageNum: pageNumber) { datum in
-            self.pageNumber += 1
-//            self.it = self.it + datum
+        ApiService.getPostBoard(pageNum: 0) { datum in
             self.it = datum
-            competion()
+            ApiService.getPostBoard(pageNum: 1) { dat in
+                self.it = self.it + dat
+                ApiService.getPostBoard(pageNum: 2) { da in
+                    self.it = self.it + da
+                    competion()
+                }
+            }
         }
     }
 }
