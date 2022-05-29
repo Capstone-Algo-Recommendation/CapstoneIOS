@@ -41,41 +41,14 @@ final class LoginViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         
-//        mainView.registerButton
-//            .rx.tap
-//            .bind {
-//                let vc = RegisterViewController()
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }.dispoxsed(by: disposeBag)
-        
+
         
         mainView.registerButton.addTarget(self, action: #selector(goolgeLogintTapped), for: .touchUpInside)
-    
-//        mainView.idTextField
-//            .rx.value
-//            .subscribe { text in
-//                print(text!)
-//            }.disposed(by: disposeBag)
-//        
-//        mainView.idTextField
-//            .rx.controlEvent([.editingDidEnd])
-//            .bind { text in
-//                print(text, " from end")
-//            }.disposed(by: disposeBag)
-//                
-//        mainView.passWordTextField
-//            .rx.value
-//            .subscribe { text in
-//                print("pass \(text)")
-//            }.disposed(by: disposeBag)
     }
     
     
     
     @objc func goolgeLogintTapped() {
-        
-//        guard let url = URL(string: "http://15.164.165.132/social/login"), UIApplication.shared.canOpenURL(url) else { return }
-//        UIApplication.shared.open(url, options: [:], completionHandler: nil)
 
         
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
@@ -86,32 +59,35 @@ final class LoginViewController: UIViewController {
                 guard error == nil else { return }
                 guard let authentication = authentication else { return }
                 
-                ApiService.login(access_token: authentication.accessToken, refresh_token: authentication.refreshToken) { token in
-                    print("success: ", token)
-                    
-                    
+                ApiService.login(access_token: authentication.accessToken, refresh_token: authentication.refreshToken) { token, role in
                     
                     UserDefaults.standard.set(token, forKey: StaticMembers.userToken)
                     
-                    DispatchQueue.main.async {
-                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                        let vc = MainTabBarController()
-                        
-                        
-                        ApiService.getMyInfo {
-                        
-                            DispatchQueue.main.async {
-                                print("hello worldf")
+                    if role == "ROLE_MEMBER" {
+                        DispatchQueue.main.async {
+                            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                            let vc = MainTabBarController()
+                            
+                            
+                            ApiService.getMyInfo {
+                            
+                                DispatchQueue.main.async {
+                                    print("hello worldf")
+                                }
                             }
+                            
+                            windowScene.windows.first?.rootViewController = vc
+                            windowScene.windows.first?.makeKeyAndVisible()
                         }
-                        
-                        // completion 추가해서 등급에 따라 화면 분기하기.
-                        
-                        
+                    } else {
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+
+                        let vc = RegisterViewController()
                         
                         windowScene.windows.first?.rootViewController = vc
                         windowScene.windows.first?.makeKeyAndVisible()
                     }
+                     
                 }
 
             }

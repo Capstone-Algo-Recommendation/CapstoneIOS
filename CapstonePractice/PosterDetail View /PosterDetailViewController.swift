@@ -34,6 +34,7 @@ class PosterDetailViewController: UIViewController {
             print("good", a )
             self.info = a
             
+            self.commentCount = 1
             DispatchQueue.main.async {
                 self.mainView.tableView.reloadData()
             }
@@ -42,7 +43,7 @@ class PosterDetailViewController: UIViewController {
     }
     
     
-    
+    var commentCount = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,12 +51,6 @@ class PosterDetailViewController: UIViewController {
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         addTargets()
-
-        print("G")
-        
-      
-        
-
     }
     
     private func addTargets() {
@@ -66,6 +61,7 @@ class PosterDetailViewController: UIViewController {
             
             // TODO: Send button  보내기
             if let commentText = self.mainView.commentTextView.text, commentText.count > 0 {
+                self.commentCount = 1
                 ApiService.writeComment(postId: self.boardNum!, content: commentText) {
                     ApiService.getSpecificPost(postid: self.boardNum!) { a in
                         
@@ -118,6 +114,10 @@ extension PosterDetailViewController: UITableViewDelegate, UITableViewDataSource
                 
             }
 
+            if let name = UserDefaults.standard.string(forKey: "UserName") {
+                cell.authorLabel.text = "익명 " + name
+            }
+            
             cell.posterTitleLabel.text = info?.data.title
             cell.posterContentLabel.text = info?.data.content
             
@@ -133,10 +133,12 @@ extension PosterDetailViewController: UITableViewDelegate, UITableViewDataSource
                 
             }
             
-            cell.contentLablel.text = info?.data.comments?[indexPath.row].content
-            cell.userIdLabel.text = info?.data.comments?[indexPath.row].author
-//            let a = info?.data.comments?[indexPath.row].author
+//            cell.backgroundColor = .lightGray
             
+            cell.contentLablel.text = info?.data.comments?[indexPath.row].content
+            cell.userIdLabel.text = "익명 \(self.commentCount)"
+            self.commentCount += 1
+
             return cell
         }
     }

@@ -30,7 +30,7 @@ struct UserData: Codable {
 // MARK: - DataClass
 struct DataClass: Codable {
     let id: Int
-    let token, refreshToken: String
+    let token, refreshToken, role:  String
 }
 
 

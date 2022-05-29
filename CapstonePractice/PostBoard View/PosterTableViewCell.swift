@@ -52,6 +52,8 @@ class PosterTableViewCell: UITableViewCell, SetUpView {
         likeLabel.textColor = .gray
         
         likeLabel.textAlignment = .right
+        likeLabel.isHidden = true
+        
         
         
     }

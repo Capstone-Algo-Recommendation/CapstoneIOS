@@ -62,6 +62,7 @@
 		8852633528376BA700974F12 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852633428376BA700974F12 /* RegisterView.swift */; };
 		885263372837704300974F12 /* SeachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885263362837704300974F12 /* SeachViewController.swift */; };
 		8852633A2837706400974F12 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885263392837706400974F12 /* SearchView.swift */; };
+		886D45D32843560100F206DC /* UserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D45D22843560100F206DC /* UserSingleton.swift */; };
 		887085EF27E8AAC800B5BC82 /* RegisterViewControlle1r.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085EE27E8AAC800B5BC82 /* RegisterViewControlle1r.swift */; };
 		887085F227E8AAF400B5BC82 /* RegisterVie1w.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887085F127E8AAF400B5BC82 /* RegisterVie1w.swift */; };
 		8875CA2427F970DE000C581A /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8875CA2327F970DE000C581A /* credentials.plist */; };
@@ -133,6 +134,7 @@
 		8852633428376BA700974F12 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		885263362837704300974F12 /* SeachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachViewController.swift; sourceTree = "<group>"; };
 		885263392837706400974F12 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		886D45D22843560100F206DC /* UserSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSingleton.swift; sourceTree = "<group>"; };
 		887085EE27E8AAC800B5BC82 /* RegisterViewControlle1r.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControlle1r.swift; sourceTree = "<group>"; };
 		887085F127E8AAF400B5BC82 /* RegisterVie1w.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVie1w.swift; sourceTree = "<group>"; };
 		8875CA2327F970DE000C581A /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = credentials.plist; path = ../../../Downloads/credentials.plist; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				8852633328376B4E00974F12 /* RegisterView */,
 				885263382837705000974F12 /* SearchView */,
 				8889E79028420F3A0029830B /* SpinnerViewController.swift */,
+				886D45D22843560100F206DC /* UserSingleton.swift */,
 			);
 			path = CapstonePractice;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				883A413827EDB62D0002B909 /* PosterDetailMainCell.swift in Sources */,
 				883A413627EDB4BB0002B909 /* PosterDetailView.swift in Sources */,
 				8824E7B327EEE70100125C8C /* ApiService.swift in Sources */,
+				886D45D32843560100F206DC /* UserSingleton.swift in Sources */,
 				8824E7B127EEE68700125C8C /* MyInfoView.swift in Sources */,
 				883A413A27EDBBA60002B909 /* PosterDetailViewModel.swift in Sources */,
 				883A412527EDA0480002B909 /* PostBoardViewController.swift in Sources */,

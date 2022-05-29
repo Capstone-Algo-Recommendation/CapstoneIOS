@@ -51,7 +51,7 @@ class SeachViewController: UIViewController {
             searchText = "dp"
         } else if selectedCategory == "자료구조" {
 
-            searchText = "data_structues"
+            searchText = "data_structures"
         } else if selectedCategory == "Greedy" {
 
             searchText = "Greedy"

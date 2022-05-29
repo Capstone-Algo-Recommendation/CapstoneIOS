@@ -11,52 +11,56 @@ import Alamofire
 class ApiService {
     
     static func getFailedProblems(completion:@escaping (SolvedProblems, SolvedProblems)->Void) {
-        
-        let triedUrl = "https://solved.ac/api/v3/search/problem?query=tried_by:qjxjzjq2"
-        let solvedUrl = "https://solved.ac/api/v3/search/problem?query=solved_by:qjxjzjq2"
-        
-        var triedData: SolvedProblems?
-        var solvedData: SolvedProblems?
-        
-        AF.request(triedUrl, method: .get).responseData { response in
-            switch response.result {
-            case .success(let value):
-                let decoder = JSONDecoder()
-                triedData = try! decoder.decode(SolvedProblems.self, from: value)
-                
-                AF.request(solvedUrl, method: .get).responseData { response in
-                    switch response.result {
-                    case .success(let value):
-                        let decoder = JSONDecoder()
-                        solvedData = try! decoder.decode(SolvedProblems.self, from: value)
+        if let a = UserDefaults.standard.string(forKey: "bck") {
+            let triedUrl = "https://solved.ac/api/v3/search/problem?query=tried_by:\(a)"
+            let solvedUrl = "https://solved.ac/api/v3/search/problem?query=solved_by:\(a)"
             
-                        completion(triedData!, solvedData!)
-                    case .failure(let error):
-                        print("what kind of error", error)
+            var triedData: SolvedProblems?
+            var solvedData: SolvedProblems?
+            
+            AF.request(triedUrl, method: .get).responseData { response in
+                switch response.result {
+                case .success(let value):
+                    let decoder = JSONDecoder()
+                    triedData = try! decoder.decode(SolvedProblems.self, from: value)
+                    
+                    AF.request(solvedUrl, method: .get).responseData { response in
+                        switch response.result {
+                        case .success(let value):
+                            let decoder = JSONDecoder()
+                            solvedData = try! decoder.decode(SolvedProblems.self, from: value)
+                
+                            completion(triedData!, solvedData!)
+                        case .failure(let error):
+                            print("what kind of error", error)
+                        }
                     }
+    //                completion(data)
+                case .failure(let error):
+                    print("what kind of error", error)
                 }
-//                completion(data)
-            case .failure(let error):
-                print("what kind of error", error)
             }
         }
+        
         
     }
     
     static func getSolvedProblems(completion:@escaping (SolvedProblems)->Void) {
+        if let a = UserDefaults.standard.string(forKey: "bck") {
+            let url = "https://solved.ac/api/v3/search/problem?query=solved_by:\(a)"
         
-        let url = "https://solved.ac/api/v3/search/problem?query=solved_by:qjxjzjq2"
-    
-        AF.request(url, method: .get).responseData { response in
-            switch response.result {
-            case .success(let value):
-                let decoder = JSONDecoder()
-                let data = try! decoder.decode(SolvedProblems.self, from: value)
-                completion(data)
-            case .failure(let error):
-                print("what kind of error", error)
+            AF.request(url, method: .get).responseData { response in
+                switch response.result {
+                case .success(let value):
+                    let decoder = JSONDecoder()
+                    let data = try! decoder.decode(SolvedProblems.self, from: value)
+                    completion(data)
+                case .failure(let error):
+                    print("what kind of error", error)
+                }
             }
         }
+        
     }
     
     static func getMyInfo(completion: @escaping () -> Void) {
@@ -70,8 +74,6 @@ class ApiService {
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)
         
-        print(a)
-        
         request.headers = ["X-AUTH-TOKEN": a!]
     
 
@@ -81,8 +83,7 @@ class ApiService {
                 return
             }
             
-            let str = String(decoding: data, as: UTF8.self)
-            print("cehckiog ",str)
+            
             // 이 completion 사용자 랭크에 인자로 넘겨 줘야 함. 
             completion()
         }
@@ -90,7 +91,7 @@ class ApiService {
     }
 
     
-    static func login(access_token: String, refresh_token: String, completion: @escaping (String) -> Void ) {
+    static func login(access_token: String, refresh_token: String, completion: @escaping (String, String) -> Void ) {
         
         let url = URL(string: "http://3.39.233.19:8080/sign/login/google")!
                 
@@ -119,26 +120,31 @@ class ApiService {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
+            let str = String(decoding: data, as: UTF8.self)
+            print("cehckiog ",str)
             let sodeul = try? JSONDecoder().decode(UserData.self, from: data)
-            completion(sodeul?.data.token ?? "asd")
+            completion(sodeul?.data.token ?? "asd", sodeul?.data.role ?? "??")
             
         }
         task.resume()
     }
     
     static func getUserSolvedProblems(completion:@escaping (SolvedProblems)->Void) {
-        
-        let url = "https://solved.ac/api/v3/search/problem?query=solved_by:qjxjzjq2"
-        
-        AF.request(url, method: .get).responseData { response in
-            switch response.result {
-            case .success(let value):
-                let decoder = JSONDecoder()
-                let data = try! decoder.decode(SolvedProblems.self, from: value)
-                completion(data)
-            case .failure(let error):
-                print("what kind of error", error)
+        if let a = UserDefaults.standard.string(forKey: "bck") {
+            
+            let url = "https://solved.ac/api/v3/search/problem?query=solved_by:\(a)"
+            
+            AF.request(url, method: .get).responseData { response in
+                switch response.result {
+                case .success(let value):
+                    let decoder = JSONDecoder()
+                    let data = try! decoder.decode(SolvedProblems.self, from: value)
+                    completion(data)
+                case .failure(let error):
+                    print("what kind of error", error)
+                }
             }
+            
         }
         
         

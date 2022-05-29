@@ -52,7 +52,7 @@ class ProbleCellLikeView: UIControl, SetUpView {
         }
         
         problemTypeLabel.snp.makeConstraints { make in
-            make.width.equalTo(70)
+            make.width.equalTo(100)
             make.centerY.equalToSuperview()
             make.height.equalTo(40)
             make.trailing.equalToSuperview().offset(-12)

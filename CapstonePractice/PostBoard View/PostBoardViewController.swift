@@ -43,7 +43,7 @@ class PostBoardViewController: UIViewController {
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UIImage(named: "more"), style: .plain, target: self, action: #selector(moreButtonTapped)),
             
-            UIBarButtonItem(image: UIImage.init(systemName: "Human"), style: .plain, target: self, action: #selector(refresh))]
+            UIBarButtonItem(image: UIImage.init(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(refresh))]
         
         
         mainView.tableView.delegate = self

@@ -142,8 +142,6 @@ class MainViewController: UIViewController {
         
         title = "문제 풀어요~"
         
-        
-        
         dpColletionView.delegate = self
         dpColletionView.dataSource = self
         
@@ -167,11 +165,11 @@ class MainViewController: UIViewController {
 
         
         ApiService.getRecommendation { data in
-        
+
             var counter = 0
             self.tm = []
             for problem in data.data {
-                
+
                 if counter < 3 {
                     self.tm.append(problem)
                     counter += 1
@@ -189,9 +187,9 @@ class MainViewController: UIViewController {
                     }
                 }
             }
-    
+
             DispatchQueue.main.async {
-                
+
                 for index in 0..<3 {
                     if index == 0 {
                         self.firstProblem.problemTitleLabel.text = self.tm[index].name
@@ -201,22 +199,22 @@ class MainViewController: UIViewController {
                         self.secondProblem.problemTitleLabel.text = self.tm[index].name
                         self.secondProblem.problemNumLabel.text = "\(self.tm[index].id)"
                         self.secondProblem.problemTypeLabel.text = self.tm[index].categories[0]
-                        
+
                     } else {
                         self.thirdProblem.problemTitleLabel.text = self.tm[index].name
                         self.thirdProblem.problemNumLabel.text = "\(self.tm[index].id)"
                         self.thirdProblem.problemTypeLabel.text = self.tm[index].categories[0]
-                        
+
                     }
                 }
-                
+
                 self.dpColletionView.reloadData()
                 self.dsColletionView.reloadData()
                 self.graphColletionView.reloadData()
                 self.greedyColletionView.reloadData()
                 self.implementationColletionView.reloadData()
-                
-                
+
+
                 // 나중에 확인해 보자 이 코드
                 self.actvityContainer.isHidden = true
                 self.activityIndicator.stopAnimating()
@@ -233,6 +231,15 @@ class MainViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        if UserDefaults.standard.string(forKey: "UserName") == nil {
+            let userInfo = UserSingleton.shared
+            UserDefaults.standard.set("\(userInfo.number)", forKey: "UserName")
+            userInfo.number = userInfo.number + 1
+        }
+        
+        
+        
         
         setUp()
         
@@ -266,7 +273,7 @@ class MainViewController: UIViewController {
         implementationColletionView.frame = CGRect(x: 20, y: 1270, width: view.frame.width - 40, height: 220)
         
         
-        greedyLabel.frame = CGRect(x: 20, y: 1615, width: 200, height: 30)
+        greedyLabel.frame = CGRect(x: 20, y: 1525, width: 200, height: 30)
         greedyColletionView.frame = CGRect(x: 20, y: 1565, width: view.frame.width - 40, height: 220)
         
     

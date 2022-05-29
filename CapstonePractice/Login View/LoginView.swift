@@ -109,12 +109,12 @@ final class LoginView: UIView {
             make.trailing.equalToSuperview().offset(-50)
         }
         
-        startButton.snp.makeConstraints { make in
-            make.bottom.equalTo(registerButton.snp.top).offset(-15)
-            make.height.equalTo(45)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-        }
+//        startButton.snp.makeConstraints { make in
+//            make.bottom.equalTo(registerButton.snp.top).offset(-15)
+//            make.height.equalTo(45)
+//            make.leading.equalToSuperview().offset(16)
+//            make.trailing.equalToSuperview().offset(-16)
+//        }
     }
     
 }
