@@ -62,31 +62,31 @@ class SeachViewController: UIViewController {
 
             searchText = "implementation"
         }
-        ApiService.searchProblem(pageNum:0, category: searchText, level: selectedLevel) { searchedData in
-            self.searched = searchedData.data
-
-            DispatchQueue.main.async {
-                self.mainView.tableView.reloadData()
-                }
-        }
-        
-        
-        //
-//        ApiService.searchProblem(pageNum: 0, category: searchText, level: selectedLevel) { searchedData in
+//        ApiService.searchProblem(pageNum:0, category: searchText, level: selectedLevel) { searchedData in
 //            self.searched = searchedData.data
 //
-//            ApiService.searchProblem(pageNum: 1, category: searchText, level: self.selectedLevel) { searchedDat in
-//                self.searched = self.searched + searchedDat.data
-//
-//                ApiService.searchProblem(pageNum: 2, category: searchText, level: self.selectedLevel) { searchedDa in
-//                    self.searched = self.searched + searchedDa.data
-//
-//                    DispatchQueue.main.async {
-//                        self.mainView.tableView.reloadData()
-//                        }
+//            DispatchQueue.main.async {
+//                self.mainView.tableView.reloadData()
 //                }
-//            }
 //        }
+        
+        
+        
+        ApiService.searchProblem(pageNum: 0, category: searchText, level: selectedLevel) { searchedData in
+            self.searched = searchedData.data
+
+            ApiService.searchProblem(pageNum: 1, category: searchText, level: self.selectedLevel) { searchedDat in
+                self.searched = self.searched + searchedDat.data
+
+                ApiService.searchProblem(pageNum: 2, category: searchText, level: self.selectedLevel) { searchedDa in
+                    self.searched = self.searched + searchedDa.data
+
+                    DispatchQueue.main.async {
+                        self.mainView.tableView.reloadData()
+                        }
+                }
+            }
+        }
     }
     
     @objc func categotyButtonClciked() {
