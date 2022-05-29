@@ -46,7 +46,6 @@ class SpecificProblemViewController: UIViewController {
         mainView.problemLinkButton
             .rx.tap
             .bind {
-                print("aaa")
                 let vc = BackJoonProblemViewController()
                 vc.questionNumber = self.problemNumbeer
                 self.present(vc, animated: true, completion: nil)
