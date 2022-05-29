@@ -11,11 +11,14 @@ import SnapKit
 class MainViewController: UIViewController {
     
     
+    var actvityContainer = UIView()
+    
     lazy var activityIndicator: UIActivityIndicatorView = {
         let acviIndicator = UIActivityIndicatorView()
         acviIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         acviIndicator.center = self.view.center
-        acviIndicator.color = .red
+        acviIndicator.color = .black
+        
         acviIndicator.hidesWhenStopped = true
         
         acviIndicator.stopAnimating()
@@ -157,22 +160,13 @@ class MainViewController: UIViewController {
         greedyColletionView.delegate = self
         greedyColletionView.dataSource = self
     
-            
-//        print("?????")
-//        self.tmpView.frame = self.view.frame
-//        self.tmpView.backgroundColor = .white
-//
-//        self.view.addSubview(self.tmpView)
-//        self.tmpView.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//
-//        }
-    
+
         navigationController?.navigationBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         tabBarController?.tabBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
         
+
+        
         ApiService.getRecommendation { data in
-            
         
             var counter = 0
             self.tm = []
@@ -221,6 +215,11 @@ class MainViewController: UIViewController {
                 self.graphColletionView.reloadData()
                 self.greedyColletionView.reloadData()
                 self.implementationColletionView.reloadData()
+                
+                
+                // 나중에 확인해 보자 이 코드
+                self.actvityContainer.isHidden = true
+                self.activityIndicator.stopAnimating()
             }
         }
     }
@@ -301,21 +300,7 @@ class MainViewController: UIViewController {
         implemntationLabel.font = .boldSystemFont(ofSize: 23)
         greedyLabel.font = .boldSystemFont(ofSize: 23)
         
-        // 바꿔야 할것들
-//        firstProblem.problemTypeLabel.text = "dp"
-//        firstProblem.problemTitleLabel.text = "피보나치 수열"
-//
-//
-//        secondProblem.problemTitleLabel.text = "길찾기"
-//        secondProblem.problemTypeLabel.text = "bfs"
-//
-//
-//        thirdProblem.problemTitleLabel.text = "이렇게 저렇게 하는 거"
-//        thirdProblem.problemTypeLabel.text = "data structure"
-        
-    
         setUpConstraints()
-
     }
     
     let categoryInfoLabel = UILabel()
@@ -659,6 +644,17 @@ extension MainViewController {
         
         thirdProblem.addTarget(self, action: #selector(thirdTapped), for: .touchUpInside)
         thirdProblem.isUserInteractionEnabled = true
+        
+        self.view.addSubview(actvityContainer)
+        actvityContainer.addSubview(activityIndicator)
+        
+        actvityContainer.backgroundColor = UIColor(red: 211/255, green: 211/255, blue: 211/255, alpha: 0.3)
+        actvityContainer.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        activityIndicator.startAnimating()
+        
+        
     }
     
     private func setUpConstraints() {
