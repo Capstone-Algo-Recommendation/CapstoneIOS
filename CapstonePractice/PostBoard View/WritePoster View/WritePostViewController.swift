@@ -59,7 +59,26 @@ extension WritePostViewController {
         print("need to post")
 
         if let text = mainView.textView.text {
-            ApiService.writePost(title: text, content: text)
+            
+            
+            
+            var content = ""
+            var title = ""
+            var ind = 0
+            
+            let lines = text.components(separatedBy: "\n")
+            
+            for line in lines {
+                if ind == 0 {
+                    title = line
+                    ind += 1
+                } else {
+                    content = content + line
+                }
+                
+            }
+       
+            ApiService.writePost(title: title, content: content)
             
             print("worked")
             self.dismiss(animated: true, completion: nil)

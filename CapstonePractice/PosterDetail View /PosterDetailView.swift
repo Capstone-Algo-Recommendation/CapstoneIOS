@@ -36,7 +36,8 @@ class PosterDetailView: UIView, SetUpView {
         
         commentSuperView.backgroundColor = .black
         
-        sendButton.backgroundColor = .yellow
+        sendButton.tintColor = .white
+        sendButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
         tableView.backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
         tableView.allowsSelection = false
         tableView.keyboardDismissMode = .onDrag

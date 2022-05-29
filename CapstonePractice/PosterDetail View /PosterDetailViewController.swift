@@ -69,6 +69,7 @@ class PosterDetailViewController: UIViewController {
                         
                         DispatchQueue.main.async {
                             self.mainView.tableView.reloadData()
+                            self.mainView.commentTextView.text = ""
                         }
                     }
                 }
