@@ -29,7 +29,6 @@ class PostBoardViewController: UIViewController {
             DispatchQueue.main.async {
                 self.mainView.tableView.reloadData()
             }
-//            print(self.viewModel.it)
         }
     }
 

@@ -63,7 +63,6 @@ class MainViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.tag = 1
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
-//        cv.isScrollEnabled = false
 
         return cv
     }()
@@ -79,7 +78,6 @@ class MainViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.tag = 2
         cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
-//        cv.isScrollEnabled = false
 
         return cv
     }()
@@ -237,10 +235,7 @@ class MainViewController: UIViewController {
             UserDefaults.standard.set("\(userInfo.number)", forKey: "UserName")
             userInfo.number = userInfo.number + 1
         }
-        
-        
-        
-        
+
         setUp()
         
         scrollView.snp.makeConstraints { make in
@@ -259,8 +254,6 @@ class MainViewController: UIViewController {
         dpLabel.frame = CGRect(x: 20, y: 300, width: 200, height: 30)
     
         dpColletionView.frame = CGRect(x: 20, y: 340, width: view.frame.width - 40, height: 220)
-        
-        
         
         
         dsLabel.frame = CGRect(x: 20, y: 605, width: 200, height: 30)
@@ -552,6 +545,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.problemNumber.text = "\(recommendDP[indexPath.row].id)"
             
             
+            
         } else if collectionView.tag == 2{
             cell.problemTitle.text = recommendDS[indexPath.row].name
             cell.problemNumber.text = "\(recommendDS[indexPath.row].id)"
@@ -570,7 +564,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             cell.problemTitle.text = recommendEtc[indexPath.row].name
             cell.problemNumber.text = "\(recommendEtc[indexPath.row].id)"
-            
+            cell.problemType.text = recommendEtc[indexPath.row].categories[0]
         }
         
         cell.backgroundColor = UIColor(red: 35/255, green: 45/255, blue: 57/255, alpha: 1)

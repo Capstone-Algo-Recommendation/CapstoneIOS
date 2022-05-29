@@ -13,6 +13,7 @@ final class ProblemCollectionViewCell: UICollectionViewCell, SetUpView {
     static let identifier = "ProblemCollectionViewCell"
     let problemNumber = UILabel()
     let problemTitle = UILabel()
+    let problemType = UILabel()
   
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,12 +36,16 @@ final class ProblemCollectionViewCell: UICollectionViewCell, SetUpView {
     func setUp() {
         contentView.addSubview(problemTitle)
         contentView.addSubview(problemNumber)
+        contentView.addSubview(problemType)
 
         problemNumber.text = "10001"
         problemNumber.font = .systemFont(ofSize: 14)
         problemTitle.text = "hello world tjiss "
+        problemType.numberOfLines = 0
         problemTitle.numberOfLines = 0
         problemTitle.textAlignment = .natural
+        problemType.textColor = .white
+        problemType.font = .systemFont(ofSize: 12)
         self.layer.cornerRadius = 10
     }
     
@@ -54,10 +59,17 @@ final class ProblemCollectionViewCell: UICollectionViewCell, SetUpView {
         }
         
         problemTitle.snp.makeConstraints { make in
-            make.top.equalTo(problemNumber.snp.bottom)
+            make.top.equalTo(problemNumber.snp.bottom).offset(-10)
             make.leading.equalToSuperview().offset(8)
             make.trailing.equalToSuperview().offset(-4)
             make.bottom.equalToSuperview().offset(-4)
+        }
+        
+        problemType.snp.makeConstraints { make in
+            make.top.equalTo(problemTitle.snp.bottom).offset(-20)
+            make.leading.equalToSuperview().offset(4)
+            make.trailing.equalToSuperview().offset(-4)
+            make.bottom.equalToSuperview().offset(-2)
         }
         
     }

@@ -64,9 +64,7 @@ extension MyInfoViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(WrongProblemViewController(), animated: true)
         }else {
             let vc = BackJoonInfoViewController()
-//            vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true)
-//            self.navigationController?.pushViewController()
         }
         
     }

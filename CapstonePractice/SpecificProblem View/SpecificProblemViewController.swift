@@ -54,6 +54,11 @@ class SpecificProblemViewController: UIViewController {
             }.disposed(by: disposeBag)
         
         
+        mainView.keyBoardHideButton.rx.tap.bind { _ in
+            self.mainView.endEditing(true)
+            self.view.endEditing(true)
+            self.mainView.memoTextView.resignFirstResponder()
+        }.disposed(by: disposeBag)
         mainView.memoTextView
             .rx.didBeginEditing
             .bind {

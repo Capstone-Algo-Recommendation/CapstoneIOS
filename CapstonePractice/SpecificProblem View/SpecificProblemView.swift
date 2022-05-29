@@ -12,6 +12,7 @@ final class SpecificProblemView: UIView, SetUpView {
     
     let problemTitle = UILabel()
     let closeButton = UIButton()
+    let keyBoardHideButton = UIButton()
     
     let rankImage = UIImageView()
     
@@ -50,6 +51,7 @@ final class SpecificProblemView: UIView, SetUpView {
         
         addSubview(rankImage)
         addSubview(problemInfoLabel)
+        addSubview(keyBoardHideButton)
         addSubview(problemLinkButton)
         addSubview(problemQuestionButton)
         
@@ -123,6 +125,13 @@ final class SpecificProblemView: UIView, SetUpView {
     }
     
     func keyBoardHiddenConstraints() {
+        
+        keyBoardHideButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
         
         problemTitle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)

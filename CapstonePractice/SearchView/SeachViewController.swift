@@ -62,15 +62,7 @@ class SeachViewController: UIViewController {
 
             searchText = "implementation"
         }
-//        ApiService.searchProblem(pageNum:0, category: searchText, level: selectedLevel) { searchedData in
-//            self.searched = searchedData.data
-//
-//            DispatchQueue.main.async {
-//                self.mainView.tableView.reloadData()
-//                }
-//        }
-        
-        
+
         
         ApiService.searchProblem(pageNum: 0, category: searchText, level: selectedLevel) { searchedData in
             self.searched = searchedData.data
@@ -172,7 +164,7 @@ extension SeachViewController: UIPickerViewDataSource, UIPickerViewDelegate {
             selectedLevel = pickerList[row]
         }
         
-        mainView.selectedKeyWordsLabel.text = "검색어: \(selectedCategory)" + "   단게: \(selectedLevel)"
+        mainView.selectedKeyWordsLabel.text = "검색어: \(selectedCategory)" + "   단계: \(selectedLevel)"
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         2
