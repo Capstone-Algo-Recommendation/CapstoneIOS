@@ -23,6 +23,9 @@ class SearchView: UIView {
     let selectedKeyWordsLabel = UILabel()
     let searchButton = UIButton()
 
+    
+    let seperatorView = UIView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
@@ -41,7 +44,11 @@ class SearchView: UIView {
         addSubview(searchButton)
         addSubview(selectedKeyWordsLabel)
         
-        selectedKeyWordsLabel.text = "검색 키워드를 입력해주세요"
+        addSubview(seperatorView)
+        seperatorView.backgroundColor = .lightGray
+        categotySelectionButton.layer.cornerRadius = 15
+        
+        selectedKeyWordsLabel.text = "검색 키워드"
         selectedKeyWordsLabel.textColor = .white
         
         searchButton.setTitle("검색", for: .normal)
@@ -83,12 +90,6 @@ class SearchView: UIView {
             make.top.equalTo(safeAreaLayoutGuide)
         }
         
-//        levelButton.snp.makeConstraints { make in
-//            make.top.equalTo(categotySelectionButton.snp.bottom).offset(5)
-//            make.centerX.equalToSuperview()
-//            make.height.equalTo(50)
-//            make.width.equalTo(200)
-//        }
         
         selectedKeyWordsLabel.snp.makeConstraints { make in
             make.top.equalTo(categotySelectionButton.snp.bottom).offset(5)
@@ -107,11 +108,18 @@ class SearchView: UIView {
         }
         
         
+        seperatorView.snp.makeConstraints { make in
+            make.top.equalTo(searchButton.snp.bottom).offset(10)
+            make.height.equalTo(1)
+            make.width.equalToSuperview().multipliedBy(0.9)
+            make.centerX.equalToSuperview()
+        }
+        
         
         tableView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.top.equalTo(selectedKeyWordsLabel.snp.bottom).offset(5)
+            make.top.equalTo(seperatorView.snp.bottom).offset(5)
             make.bottom.equalToSuperview()
         }
         
