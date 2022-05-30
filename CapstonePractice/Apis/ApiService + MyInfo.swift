@@ -102,10 +102,7 @@ extension ApiService {
                 return
             }
             let str = String(decoding: data, as: UTF8.self)
-            print(str, "from token")
-//            let sodeul = try? JSONDecoder().decode(Boards.self, from: data)
-//            let d = sodeul!.data
-//            completion(d)
+            print(str, "from server chckin")
 
         }
         task.resume()

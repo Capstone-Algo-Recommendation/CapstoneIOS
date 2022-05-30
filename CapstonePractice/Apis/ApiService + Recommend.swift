@@ -22,7 +22,7 @@ extension ApiService {
     
     
     
-    static func getRecommendation(completion: @escaping (RecommendData)-> Void) {
+    static func getRecommendation(completion: @escaping (RecommendData?, ColdData?)-> Void) {
         
         let url = URL(string: "http://3.39.233.19:8080/api/problem/recommendation")!
         var request = URLRequest(url: url)
@@ -43,18 +43,21 @@ extension ApiService {
                 return
             }
             let str = String(decoding: data, as: UTF8.self)
-//            print(str)
+            print(str)
             if let sodeul = try? JSONDecoder().decode(RecommendData.self, from: data) {
-                    completion(sodeul)
+                    completion(sodeul,nil)
             }else {
-                print("Bad")
+                if let a = try? JSONDecoder().decode(ColdData.self, from: data) {
+                    print("Asdf")
+                    completion(nil, a)
+                }else {
+                    print("bad2")
+                }
+                
             }
         }
         task.resume()
     }
-    
-   
-    
     
 }
 

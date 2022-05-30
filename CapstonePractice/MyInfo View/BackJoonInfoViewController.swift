@@ -24,9 +24,10 @@ final class BackJoonInfoViewController: UIViewController {
         
         mainView.confirmButton.rx.tap.bind { _ in
             ApiService.meInit(bojId: self.mainView.backJoonIdTextField.text!, name: self.mainView.nickNameTextField.text!) {
-                self.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
-            
             self.dismiss(animated: true)
         }.disposed(by: disposeBag)
     }

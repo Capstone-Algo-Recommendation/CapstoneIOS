@@ -46,6 +46,12 @@ class SolvedProblemViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(filterProblems))
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
+        
+//        getInfoFromServer
+        ApiService.getInfoFromServer(pageNum: 1) { _ in
+            print("asdfasdfa")
+        }
+        
 
     }
 }

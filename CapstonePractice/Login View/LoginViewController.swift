@@ -25,7 +25,7 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        ApiService.deleteUserApi()
         
         mainView.startButton
             .rx.tap
@@ -34,9 +34,10 @@ final class LoginViewController: UIViewController {
 //                let vc = MainTabBarController()
                 let vc = RegisterViewController()
 //                let vc = UINavigationController(rootViewController: SeachViewController())
-                
+
                 windowScene.windows.first?.rootViewController = vc
                 windowScene.windows.first?.makeKeyAndVisible()
+       
                 
         }.disposed(by: disposeBag)
         

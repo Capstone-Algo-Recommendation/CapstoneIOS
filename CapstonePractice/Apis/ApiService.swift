@@ -10,6 +10,12 @@ import Alamofire
 
 class ApiService {
     
+    
+    
+    
+    
+    
+    
     static func getFailedProblems(completion:@escaping (SolvedProblems, SolvedProblems)->Void) {
         if let a = UserDefaults.standard.string(forKey: "bck") {
             let triedUrl = "https://solved.ac/api/v3/search/problem?query=tried_by:\(a)"
@@ -146,9 +152,37 @@ class ApiService {
             }
             
         }
-        
-        
     }
+    
+    
+    static func deleteUserApi() {
+        
+        let url = URL(string: "http://3.39.233.19:8080/api/member/withdrawl")!
+                
+       
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)
+        request.headers = ["X-AUTH-TOKEN": a!]
+        
+    
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let str = String(decoding: data, as: UTF8.self)
+            print("deleted? ",str)
+
+        }
+        task.resume()
+    }
+    
+    
 }
 
 struct A1: Codable{
@@ -159,27 +193,3 @@ struct A1: Codable{
     var refresh_token_expires_in:Int
 }
 
-
-
-
-//
-//{
-//    "success":true,
-//    "code":0,
-//    "msg":"성공",
-//    "data":
-//    {
-//        "name":null,
-//        "email":"spsyoudong1@gmail.com",
-//        "bojId":"qxjzjq2",
-//        "problemList":
-//        [
-//        {
-//            "id":1003,"name":"피보나치 함수","url":"https://www.acmicpc.net/problem/1003","status":"COMPLETE","memo":null,"level":8,"categories":["dp"]
-//
-//        }
-//        ]
-//
-//    }
-//
-//}

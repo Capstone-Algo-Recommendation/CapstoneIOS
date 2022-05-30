@@ -25,7 +25,9 @@ class MyInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        UserDefaults.standard.set("bck", forKey: bck)
+        let a = UserDefaults.standard.string(forKey: "bck")
+        print(a)
         title = "내 정보"
         
         let items = Observable.just(["백준 정보","성공한 문제", "실패한 문제"])

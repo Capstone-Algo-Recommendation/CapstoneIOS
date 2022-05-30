@@ -29,7 +29,7 @@ extension ApiService {
             }
             
             for it in failed {
-                problemDatas.append(ProblemTOSend(id: it.problemID, name: it.titleKo, url: problemUrl + "\(it.problemID)", status: "COMPLETE"))
+                problemDatas.append(ProblemTOSend(id: it.problemID, name: it.titleKo, url: problemUrl + "\(it.problemID)", status: "FAILED"))
                 solvedTitles.append(it.titleKo)
             }
             
@@ -46,17 +46,23 @@ extension ApiService {
                 request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
                 request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
                 request.httpBody = problemJson
-                print(problemJson, " asdasdasd")
+//                print(problemJson, " asdasdasd")
                 
                 let task = URLSession.shared.dataTask(with: request) { data, response, error in
                     guard let data = data, error == nil else {
                         print(error?.localizedDescription ?? "No data")
                         return
                     }
+                    
+                    
+                    let str = String(decoding: data, as: UTF8.self)
+                    print("From ME INIT ",str)
+                    
+                    
                     let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
                     if let responseJSON = responseJSON as? [String: Any] {
         
-                        print(responseJSON)
+//                        print(responseJSON)
                         if let msg = responseJSON["msg"] as? String {
                             if msg == "성공" {
                                 completiom()

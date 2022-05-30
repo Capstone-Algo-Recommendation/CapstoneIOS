@@ -162,61 +162,129 @@ class MainViewController: UIViewController {
         
 
         
-        ApiService.getRecommendation { data in
+        ApiService.getRecommendation { data1, cold in
 
-            var counter = 0
-            self.tm = []
-            for problem in data.data {
+            
+            if let data = data1 {
+                var counter = 0
+                self.tm = []
+                for problem in data.data {
 
-                if counter < 3 {
-                    self.tm.append(problem)
-                    counter += 1
-                } else {
-                    if problem.categories[0] == "dp" {
-                        self.recommendDP.append(problem)
-                    } else if problem.categories[0] == "graphs" {
-                        self.recommendGraph.append(problem)
-                    } else if problem.categories[0] == "data_structures" {
-                        self.recommendDS.append(problem)
-                    } else if problem.categories[0] == "bruteforcing" {
-                        self.recommendImplementation.append(problem)
+                    if counter < 3 {
+                        self.tm.append(problem)
+                        counter += 1
                     } else {
-                        self.recommendEtc.append(problem)
-                    }
-                }
-            }
-
-            DispatchQueue.main.async {
-
-                for index in 0..<3 {
-                    if index == 0 {
-                        self.firstProblem.problemTitleLabel.text = self.tm[index].name
-                        self.firstProblem.problemNumLabel.text = "\(self.tm[index].id)"
-                        self.firstProblem.problemTypeLabel.text = self.tm[index].categories[0]
-                    } else if index == 1 {
-                        self.secondProblem.problemTitleLabel.text = self.tm[index].name
-                        self.secondProblem.problemNumLabel.text = "\(self.tm[index].id)"
-                        self.secondProblem.problemTypeLabel.text = self.tm[index].categories[0]
-
-                    } else {
-                        self.thirdProblem.problemTitleLabel.text = self.tm[index].name
-                        self.thirdProblem.problemNumLabel.text = "\(self.tm[index].id)"
-                        self.thirdProblem.problemTypeLabel.text = self.tm[index].categories[0]
-
+                        if problem.categories[0] == "dp" {
+                            self.recommendDP.append(problem)
+                        } else if problem.categories[0] == "graphs" {
+                            self.recommendGraph.append(problem)
+                        } else if problem.categories[0] == "data_structures" {
+                            self.recommendDS.append(problem)
+                        } else if problem.categories[0] == "bruteforcing" {
+                            self.recommendImplementation.append(problem)
+                        } else {
+                            self.recommendEtc.append(problem)
+                        }
                     }
                 }
 
-                self.dpColletionView.reloadData()
-                self.dsColletionView.reloadData()
-                self.graphColletionView.reloadData()
-                self.greedyColletionView.reloadData()
-                self.implementationColletionView.reloadData()
+                DispatchQueue.main.async {
+
+                    for index in 0..<3 {
+                        if index == 0 {
+                            self.firstProblem.problemTitleLabel.text = self.tm[index].name
+                            self.firstProblem.problemNumLabel.text = "\(self.tm[index].id)"
+                            self.firstProblem.problemTypeLabel.text = self.tm[index].categories[0]
+                        } else if index == 1 {
+                            self.secondProblem.problemTitleLabel.text = self.tm[index].name
+                            self.secondProblem.problemNumLabel.text = "\(self.tm[index].id)"
+                            self.secondProblem.problemTypeLabel.text = self.tm[index].categories[0]
+
+                        } else {
+                            self.thirdProblem.problemTitleLabel.text = self.tm[index].name
+                            self.thirdProblem.problemNumLabel.text = "\(self.tm[index].id)"
+                            self.thirdProblem.problemTypeLabel.text = self.tm[index].categories[0]
+
+                        }
+                    }
+
+                    self.dpColletionView.reloadData()
+                    self.dsColletionView.reloadData()
+                    self.graphColletionView.reloadData()
+                    self.greedyColletionView.reloadData()
+                    self.implementationColletionView.reloadData()
 
 
-                // 나중에 확인해 보자 이 코드
-                self.actvityContainer.isHidden = true
-                self.activityIndicator.stopAnimating()
+                    // 나중에 확인해 보자 이 코드
+                    self.actvityContainer.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                }
+            } else {
+                if let data  = cold {
+                    var counter = 0
+                    self.tm = []
+                    for problem in data.data {
+
+                        if let problem = problem {
+                            if counter < 3 {
+                                self.tm.append(problem)
+                                counter += 1
+                            } else {
+                                if problem.categories[0] == "dp" {
+                                    self.recommendDP.append(problem)
+                                } else if problem.categories[0] == "graphs" {
+                                    self.recommendGraph.append(problem)
+                                } else if problem.categories[0] == "data_structures" {
+                                    self.recommendDS.append(problem)
+                                } else if problem.categories[0] == "bruteforcing" {
+                                    self.recommendImplementation.append(problem)
+                                } else {
+                                    self.recommendEtc.append(problem)
+                                }
+                            }
+                        }
+
+                        DispatchQueue.main.async {
+
+                            for index in 0..<3 {
+                                if index == 0 {
+                                    self.firstProblem.problemTitleLabel.text = self.tm[index].name
+                                    self.firstProblem.problemNumLabel.text = "\(self.tm[index].id)"
+                                    self.firstProblem.problemTypeLabel.text = self.tm[index].categories[0]
+                                } else if index == 1 {
+                                    self.secondProblem.problemTitleLabel.text = self.tm[index].name
+                                    self.secondProblem.problemNumLabel.text = "\(self.tm[index].id)"
+                                    self.secondProblem.problemTypeLabel.text = self.tm[index].categories[0]
+
+                                } else {
+                                    self.thirdProblem.problemTitleLabel.text = self.tm[index].name
+                                    self.thirdProblem.problemNumLabel.text = "\(self.tm[index].id)"
+                                    self.thirdProblem.problemTypeLabel.text = self.tm[index].categories[0]
+
+                                }
+                            }
+
+                            self.dpColletionView.reloadData()
+                            self.dsColletionView.reloadData()
+                            self.graphColletionView.reloadData()
+                            self.greedyColletionView.reloadData()
+                            self.implementationColletionView.reloadData()
+
+
+                            // 나중에 확인해 보자 이 코드
+                            self.actvityContainer.isHidden = true
+                            self.activityIndicator.stopAnimating()
+                        }
+                        }
+                        
+                        
+                }
+                
+                
+                
             }
+            
+
         }
     }
     

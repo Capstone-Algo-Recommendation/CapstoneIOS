@@ -6,6 +6,22 @@
 //
 
 import Foundation
+struct ColdData: Codable {
+    let success: Bool
+    let code: Int
+    let msg: String
+    let data: [RecommendDatum?]
+}
+
+// MARK: - Datum
+struct Datum8: Codable {
+    let id: Int
+    let name: String
+    let level: Int
+    let categories: [String]
+}
+
+
 
 
 
@@ -21,7 +37,6 @@ struct RecommendData: Codable {
 struct RecommendDatum: Codable {
     let id: Int
     let name: String
-    let url: String
     let level: Int
     let categories: [String]
 }
