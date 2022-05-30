@@ -46,12 +46,14 @@ final class SpecificProblemView: UIView, SetUpView {
         backgroundColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
         
         addSubview(problemTitle)
-        addSubview(closeButton)
+        
         
         
         addSubview(rankImage)
         addSubview(problemInfoLabel)
         addSubview(keyBoardHideButton)
+        addSubview(closeButton)
+        
         addSubview(problemLinkButton)
         addSubview(problemQuestionButton)
         
@@ -93,7 +95,7 @@ final class SpecificProblemView: UIView, SetUpView {
         problemQuestionLabel.textColor = .white
         problemQuestionLabel.font = .systemFont(ofSize: 21)
         problemQuestionLabel.textAlignment = .center
-        problemQuestionButton.setTitle("질문 게시판 보기", for: .normal)
+        problemQuestionButton.setTitle("문제 상태 설정", for: .normal)
         problemLinkButton.setTitleColor(.black, for: .normal)
         problemLinkButton.layer.cornerRadius = 20
         
@@ -206,28 +208,17 @@ final class SpecificProblemView: UIView, SetUpView {
             make.width.equalTo(150)
             make.height.equalTo(40)
         }
-        
-//        problemQuestionButton.snp.makeConstraints { make in
-//            make.leading.equalTo(problemQuestionLabel.snp.trailing).offset(15)
-//            make.top.equalTo(problemLinkButton.snp.bottom)
-//            make.width.equalTo(150)
-//            make.height.equalTo(40)
-//        }
-//
 
         
-        
-//        problemQuestionLabel.snp.makeConstraints { make in
-//            make.top.equalTo(problemLinkLabel.snp.bottom).offset(10)
-//            make.leading.equalToSuperview().offset(15)
-//            make.height.equalTo(40)
-//            make.width.equalTo(100)
-//        }
-//
-
-
-
-
+        problemQuestionButton.snp.makeConstraints { make in
+            make.top.equalTo(problemLinkButton.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(150)
+            make.height.equalTo(40)
+        }
         
     }
 }
+
+
+// 문제 상세페이지에서 성공한 문제 추가하는 버튼같은거 넣어주시면 좋을것같아요

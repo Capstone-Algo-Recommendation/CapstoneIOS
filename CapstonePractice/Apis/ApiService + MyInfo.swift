@@ -10,42 +10,106 @@ import Foundation
 
 extension ApiService {
     
-    static func sendIdInfo(bojId: String, name: String) {
-        
-        let url = URL(string: "http://3.39.233.19:8080/api/member/me/init")!
+    
+    
+    
+    
+    static func changeProblemStatus(problemNum: Int, status: String ,completion : @escaping (SpecificProblemData3) -> Void) {
+    
+        let url = URL(string: "http://3.39.233.19:8080/api/member/me/problemStatus")!
         var request = URLRequest(url: url)
 
-        request.httpMethod = "POST"
+        request.httpMethod = "PATCH"
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
         
-        
-//        “bojId” : 백준 아이디,
-//        “name” : 이름(닉네임),
-//        “problems”:[ 푼 문제 목록 ]
+        let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)
+        request.headers = ["X-AUTH-TOKEN": a!]
         
         
         let json: [String: Any] = [
-            "bojId": bojId,
-            "name": name,
-            "problems": ""
+            "problemId": problemNum,
+            "problemStatus": status
         ]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
         request.httpBody = jsonData
         
+        
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
                 return
             }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                print(responseJSON)
-            }
+            let str = String(decoding: data, as: UTF8.self)
+            print(str, "from token")
+            
+            
+//            let sodeul = try! JSONDecoder().decode(SpecificProblemData3.self, from: data)
+//            completion(sodeul)
+
         }
         task.resume()
     }
     
+    
+    
+    static func getSpecificProblemInfo(problemNum: Int, completion : @escaping (SpecificProblemData3) -> Void) {
+    
+        let url = URL(string: "http://3.39.233.19:8080/api/problem/\(problemNum)")!
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "GET"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)
+        request.headers = ["X-AUTH-TOKEN": a!]
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let str = String(decoding: data, as: UTF8.self)
+            print(str, "from token")
+            let sodeul = try! JSONDecoder().decode(SpecificProblemData3.self, from: data)
+            completion(sodeul)
+
+        }
+        task.resume()
+    }
+    
+    
+    
+    static func getInfoFromServer(pageNum: Int, completion : @escaping ([Datum]) -> Void) {
+    
+        let url = URL(string: "http://3.39.233.19:8080/api/member/me")!
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "GET"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)
+        request.headers = ["X-AUTH-TOKEN": a!]
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let str = String(decoding: data, as: UTF8.self)
+            print(str, "from token")
+//            let sodeul = try? JSONDecoder().decode(Boards.self, from: data)
+//            let d = sodeul!.data
+//            completion(d)
+
+        }
+        task.resume()
+    }
 }
+
+

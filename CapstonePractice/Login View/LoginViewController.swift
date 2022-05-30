@@ -80,12 +80,15 @@ final class LoginViewController: UIViewController {
                             windowScene.windows.first?.makeKeyAndVisible()
                         }
                     } else {
-                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                        DispatchQueue.main.async {
+                            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
 
-                        let vc = RegisterViewController()
+                            let vc = RegisterViewController()
+                            
+                            windowScene.windows.first?.rootViewController = vc
+                            windowScene.windows.first?.makeKeyAndVisible()
+                        }
                         
-                        windowScene.windows.first?.rootViewController = vc
-                        windowScene.windows.first?.makeKeyAndVisible()
                     }
                      
                 }

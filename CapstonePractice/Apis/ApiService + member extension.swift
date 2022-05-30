@@ -70,12 +70,6 @@ extension ApiService {
             else {
                 print("some error")
             }
-            
-            
-            
-            
     }
-
 }
-
 }

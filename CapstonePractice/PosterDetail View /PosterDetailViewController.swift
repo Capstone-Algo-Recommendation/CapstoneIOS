@@ -115,10 +115,9 @@ extension PosterDetailViewController: UITableViewDelegate, UITableViewDataSource
                 
             }
 
-            if let name = UserDefaults.standard.string(forKey: "UserName") {
-                cell.authorLabel.text = "익명 " + name
-            }
+
             
+            cell.authorLabel.text = info?.data.author
             cell.posterTitleLabel.text = info?.data.title
             cell.posterContentLabel.text = info?.data.content
             
@@ -134,10 +133,8 @@ extension PosterDetailViewController: UITableViewDelegate, UITableViewDataSource
                 
             }
             
-//            cell.backgroundColor = .lightGray
-            
             cell.contentLablel.text = info?.data.comments?[indexPath.row].content
-            cell.userIdLabel.text = "익명 \(self.commentCount)"
+            cell.userIdLabel.text = info?.data.comments?[indexPath.row].author
             self.commentCount += 1
 
             return cell

@@ -9,7 +9,23 @@ import Foundation
 
 
 
+// MARK: - SpecificProblemData
+struct SpecificProblemData3: Codable {
+    let success: Bool
+    let code: Int
+    let msg: String
+    let data: DataClass5
+}
 
+// MARK: - DataClass
+struct DataClass5: Codable {
+    let id: Int
+    let name: String
+    let url: String
+    var status: String?
+    let level: Int
+    let categories: [String]
+}
 
 
 

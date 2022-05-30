@@ -10,6 +10,34 @@ import Foundation
 
 extension ApiService {
     
+    
+    static func addSolvedProble(problemNum: Int) {
+
+        let url = URL(string: "http://3.39.233.19:8080/api/member/me/complete/\(problemNum)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+        
+        let a = UserDefaults.standard.string(forKey: StaticMembers.userToken)
+        request.headers = ["X-AUTH-TOKEN": a!]
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let str = String(decoding: data, as: UTF8.self)
+            print(str, "adding solved PRoblem")
+//            let sodeul = try? JSONDecoder().decode(Boards.self, from: data)
+//            let d = sodeul!.data
+//            completion(d)
+
+        }
+        task.resume()
+        
+    }
+    
     static func getPostBoard(pageNum: Int, completion : @escaping ([Datum]) -> Void) {
     
         let url = URL(string: "http://3.39.233.19:8080/api/board?page=\(pageNum)")!
