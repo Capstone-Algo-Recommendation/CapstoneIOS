@@ -128,10 +128,11 @@ class SpecificProblemViewController: UIViewController {
                     }
                 })
                 
+                
                 let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
                 
                 alertVC.addAction(successButton)
-                alertVC.addAction(tryingButton)
+//                alertVC.addAction(tryingButton)
                 alertVC.addAction(failedButton)
                 alertVC.addAction(cancelButton)
                 

@@ -10,6 +10,43 @@ import Foundation
 
 
 
+struct FinalData: Codable {
+    let success: Bool
+    let code: Int
+    let msg: String
+    let data: DataClass9
+}
+
+// MARK: - DataClass
+struct DataClass9: Codable {
+    let name, email, bojID: String
+    let problemList: [ProblemList]
+
+    enum CodingKeys: String, CodingKey {
+        case name, email
+        case bojID = "bojId"
+        case problemList
+    }
+}
+
+// MARK: - ProblemList
+struct ProblemList: Codable {
+    let id: Int
+    let name: String
+    let url: String
+    let status: String
+    let level: Int
+    let categories: [String]
+}
+
+
+
+
+
+
+
+
+
 
 // MARK: - SpecificProblemData
 struct SpecificProblemData3: Codable {

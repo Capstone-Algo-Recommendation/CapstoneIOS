@@ -14,8 +14,8 @@ class SolvedProblemViewController: UIViewController {
     let mainView = SolvedProblemView()
 
     let disposeBag = DisposeBag()
-    var items: [Item] = []
-    var filterdItems: [Item] = []
+    var items: [ProblemList] = []
+    var filterdItems: [ProblemList] = []
     
     override func loadView() {
         self.view = mainView
@@ -28,11 +28,21 @@ class SolvedProblemViewController: UIViewController {
     
     private func loadData() {
         
-        ApiService.getSolvedProblems { problems in
+
+        ApiService.getInfoFromServer(pageNum: 1) { problems in
             
-            self.items = problems.items
-            self.filterdItems = problems.items
-            self.mainView.tableView.reloadData()
+            for problem in problems {
+                if problem.status == "COMPLETE" {
+                    self.items.append(problem)
+                    self.filterdItems.append(problem)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.mainView.tableView.reloadData()
+            }
+            
+            
         }
         
     }
@@ -48,9 +58,7 @@ class SolvedProblemViewController: UIViewController {
         mainView.tableView.delegate = self
         
 //        getInfoFromServer
-        ApiService.getInfoFromServer(pageNum: 1) { _ in
-            print("asdfasdfa")
-        }
+  
         
 
     }
@@ -67,9 +75,9 @@ extension SolvedProblemViewController: UITableViewDelegate, UITableViewDataSourc
             return UITableViewCell()
         }
         
-        cell.titleLabel.text = filterdItems[indexPath.row].titleKo
-        cell.numberLabel.text = "문제 번호: \(filterdItems[indexPath.row].problemID)"
-        cell.keyLabel.text = filterdItems[indexPath.row].tags[0].key
+        cell.titleLabel.text = filterdItems[indexPath.row].name
+        cell.numberLabel.text = "문제 번호: \(filterdItems[indexPath.row].id)"
+        cell.keyLabel.text = filterdItems[indexPath.row].categories[0]
         return cell
     }
     
@@ -80,10 +88,10 @@ extension SolvedProblemViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc = SpecificProblemViewController()
-        vc.problemTitle = filterdItems[indexPath.row].titleKo
-        vc.problemInfo = filterdItems[indexPath.row]
-        vc.problemType = filterdItems[indexPath.row].tags[0].key
-        vc.problemNumbeer = filterdItems[indexPath.row].problemID
+        vc.problemTitle = filterdItems[indexPath.row].name
+//        vc.problemInfo = filterdItems[indexPath.row]
+        vc.problemType = filterdItems[indexPath.row].categories[0]
+        vc.problemNumbeer = filterdItems[indexPath.row].id
         self.present(vc, animated: true, completion: nil)
         
     }
@@ -94,8 +102,8 @@ extension SolvedProblemViewController {
     @objc func filter(keyword: String) {
         
         filterdItems = items.filter { it in
-            for tag in it.tags{
-                if tag.key == keyword{
+            for tag in it.categories{
+                if tag == keyword{
                     return true
                 }
             }

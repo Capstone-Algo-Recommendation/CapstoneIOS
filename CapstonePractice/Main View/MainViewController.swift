@@ -98,70 +98,10 @@ class MainViewController: UIViewController {
         return cv
     }()
     
-    let implemntationLabel = UILabel()
-    let implementationColletionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
-
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.tag = 4
-        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
-//        cv.isScrollEnabled = false
-
-        return cv
-    }()
-    
-    let greedyLabel = UILabel()
-    let greedyColletionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
-
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.tag = 5
-        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
-//        cv.isScrollEnabled = false
-
-        return cv
-    }()
-    
-    let tmpView = UIView()
-    let topRecommendView = UIView()
-    var tm: [RecommendDatum] = []
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.green]
-        
-        title = "문제 풀어요~"
-        
-        dpColletionView.delegate = self
-        dpColletionView.dataSource = self
-        
-        dsColletionView.delegate = self
-        dsColletionView.dataSource = self
-        
-        graphColletionView.delegate = self
-        graphColletionView.dataSource = self
-        
-        implementationColletionView.delegate = self
-        implementationColletionView.dataSource = self
-        
-        
-        greedyColletionView.delegate = self
-        greedyColletionView.dataSource = self
-    
-
-        navigationController?.navigationBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
-        tabBarController?.tabBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
-        
-
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.actvityContainer.isHidden = false
+        activityIndicator.startAnimating()
         ApiService.getRecommendation { data1, cold in
 
             
@@ -288,6 +228,73 @@ class MainViewController: UIViewController {
         }
     }
     
+    let implemntationLabel = UILabel()
+    let implementationColletionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 4
+        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
+//        cv.isScrollEnabled = false
+
+        return cv
+    }()
+    
+    let greedyLabel = UILabel()
+    let greedyColletionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.tag = 5
+        cv.register(ProblemCollectionViewCell.self, forCellWithReuseIdentifier: ProblemCollectionViewCell.identifier)
+//        cv.isScrollEnabled = false
+
+        return cv
+    }()
+    
+    let tmpView = UIView()
+    let topRecommendView = UIView()
+    var tm: [RecommendDatum] = []
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.green]
+        
+        title = "문제 풀어요~"
+        
+        dpColletionView.delegate = self
+        dpColletionView.dataSource = self
+        
+        dsColletionView.delegate = self
+        dsColletionView.dataSource = self
+        
+        graphColletionView.delegate = self
+        graphColletionView.dataSource = self
+        
+        implementationColletionView.delegate = self
+        implementationColletionView.dataSource = self
+        
+        
+        greedyColletionView.delegate = self
+        greedyColletionView.dataSource = self
+    
+
+        navigationController?.navigationBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255,alpha: 1)
+        tabBarController?.tabBar.barTintColor = UIColor(red: 12/255, green: 18/255, blue: 29/255, alpha: 1)
+        
+
+        
+
+    }
+    
     var recommendDP: [RecommendDatum] = []
     var recommendDS: [RecommendDatum] = []
     var recommendGraph: [RecommendDatum] = []
@@ -319,9 +326,8 @@ class MainViewController: UIViewController {
         
         categoryInfoLabel.frame = CGRect(x: 20, y: 245, width: view.frame.width, height: 40)
 
-        dpLabel.frame = CGRect(x: 20, y: 300, width: 200, height: 30)
-    
-        dpColletionView.frame = CGRect(x: 20, y: 340, width: view.frame.width - 40, height: 220)
+        dpLabel.frame = CGRect(x: 20, y: 1525, width: 200, height: 30)
+        dpColletionView.frame = CGRect(x: 20, y: 1565, width: view.frame.width - 40, height: 220)
         
         
         dsLabel.frame = CGRect(x: 20, y: 605, width: 200, height: 30)
@@ -334,11 +340,14 @@ class MainViewController: UIViewController {
         implementationColletionView.frame = CGRect(x: 20, y: 1270, width: view.frame.width - 40, height: 220)
         
         
-        greedyLabel.frame = CGRect(x: 20, y: 1525, width: 200, height: 30)
-        greedyColletionView.frame = CGRect(x: 20, y: 1565, width: view.frame.width - 40, height: 220)
+        greedyLabel.frame = CGRect(x: 20, y: 300, width: 200, height: 30)
+        greedyColletionView.frame = CGRect(x: 20, y: 340, width: view.frame.width - 40, height: 220)
         
-    
-        
+//        dpLabel.frame = CGRect(x: 20, y: 300, width: 200, height: 30)
+//        dpColletionView.frame = CGRect(x: 20, y: 340, width: view.frame.width - 40, height: 220)
+//        greedyLabel.frame = CGRect(x: 20, y: 1525, width: 200, height: 30)
+//        greedyColletionView.frame = CGRect(x: 20, y: 1565, width: view.frame.width - 40, height: 220)
+//
         
         // 고정
         firstProblem.problemNumLabel.text = "1"
@@ -721,7 +730,7 @@ extension MainViewController {
         actvityContainer.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        activityIndicator.startAnimating()
+        
         
         
     }

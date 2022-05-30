@@ -84,7 +84,7 @@ extension ApiService {
     
     
     
-    static func getInfoFromServer(pageNum: Int, completion : @escaping ([Datum]) -> Void) {
+    static func getInfoFromServer(pageNum: Int, completion : @escaping ([ProblemList]) -> Void) {
     
         let url = URL(string: "http://3.39.233.19:8080/api/member/me")!
         var request = URLRequest(url: url)
@@ -104,6 +104,9 @@ extension ApiService {
             let str = String(decoding: data, as: UTF8.self)
             print(str, "from server chckin")
 
+            
+            let sodeul = try! JSONDecoder().decode(FinalData.self, from: data)
+            completion(sodeul.data.problemList)
         }
         task.resume()
     }

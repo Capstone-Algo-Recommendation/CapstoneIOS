@@ -55,7 +55,7 @@ final class LoginView: UIView {
         logoLabel.textColor = .white
         discrpitionLabel.textColor = .white
         discrpitionLabel.numberOfLines = 0
-        discrpitionLabel.text = "지금 풀어야 할 문제를 추천 받으세요! \n인공지능이 문제를 당신에게 맞는 최적의 문제를 추천해줍니다"
+        discrpitionLabel.text = "지금 풀어야 할 문제를 추천 받으세요! \n인공지능이 당신에게 맞는 최적의 문제를 추천해줍니다"
         discrpitionLabel.font = UIFont(name: FontNames.medium, size: 19)
         discrpitionLabel.textAlignment = .center
         

@@ -65,7 +65,7 @@ extension MyInfoViewController: UITableViewDelegate {
         }else if indexPath.row == 2 {
             self.navigationController?.pushViewController(WrongProblemViewController(), animated: true)
         }else {
-            let vc = BackJoonInfoViewController()
+            let vc = RegisterViewController()
             self.present(vc, animated: true)
         }
         

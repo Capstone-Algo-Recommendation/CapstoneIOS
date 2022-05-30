@@ -26,14 +26,11 @@ class RegisterViewController: UIViewController {
             .tap.bind { _ in
                 if let bck = self.mainView.backJoonIdTextField.text, let name = self.mainView.nickNameTextField.text {
                     
-                    UserDefaults.standard.set(bck, forKey: "bck")
-                    
-//                    if bck.count == 0 {
-//                        UserDefaults.standard.set(" ", forKey: "bck")
-//                    }
-                    
+                    UserDefaults.standard.set(bck, forKey: "bckID")
+
+
                     print(bck, "what is. back joon id", name, "what is name?")
-                    
+
                     ApiService.meInit(bojId: bck, name: name) {
                         DispatchQueue.main.async {
                             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }

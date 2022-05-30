@@ -15,8 +15,8 @@ class WrongProblemViewController: UIViewController {
     let mainView = SolvedProblemView()
     
     let disposeBag = DisposeBag()
-    var items: [Item] = []
-    var filterdItems: [Item] = []
+    var items: [ProblemList] = []
+    var filterdItems: [ProblemList] = []
     
     override func loadView() {
         self.view = mainView
@@ -26,19 +26,18 @@ class WrongProblemViewController: UIViewController {
     
     private func loadData() {
         
-        var solvedTitles: [String] = []
-        ApiService.getFailedProblems { tried, solved in
+        ApiService.getInfoFromServer(pageNum: 1) { problems in
             
-            for it in solved.items {
-                solvedTitles.append(it.titleKo)
-            }
-        
-            self.filterdItems = tried.items.filter { item in
-                !solvedTitles.contains(item.titleKo)
+            for problem in problems {
+                if problem.status == "FAILED" {
+                    self.items.append(problem)
+                    self.filterdItems.append(problem)
+                }
             }
             
-            self.items = self.filterdItems
-            self.mainView.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.mainView.tableView.reloadData()
+            }
         }
     }
     
@@ -69,9 +68,9 @@ extension WrongProblemViewController: UITableViewDelegate, UITableViewDataSource
             return UITableViewCell()
         }
         
-        cell.titleLabel.text = filterdItems[indexPath.row].titleKo
-        cell.numberLabel.text = "문제 번호: \(filterdItems[indexPath.row].problemID)"
-        cell.keyLabel.text = filterdItems[indexPath.row].tags[0].key
+        cell.titleLabel.text = filterdItems[indexPath.row].name
+        cell.numberLabel.text = "문제 번호: \(filterdItems[indexPath.row].id)"
+        cell.keyLabel.text = filterdItems[indexPath.row].categories[0]
         return cell
     }
     
@@ -82,10 +81,11 @@ extension WrongProblemViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc = SpecificProblemViewController()
-        vc.problemTitle = filterdItems[indexPath.row].titleKo
-        vc.problemInfo = filterdItems[indexPath.row]
-        vc.problemType = filterdItems[indexPath.row].tags[0].key
-        vc.problemNumbeer = filterdItems[indexPath.row].problemID
+        vc.problemTitle = filterdItems[indexPath.row].name
+//        vc.problemInfo = filterdItems[indexPath.row]
+        vc.problemType = filterdItems[indexPath.row].categories[0]
+        vc.problemNumbeer = filterdItems[indexPath.row].id
+        self.present(vc, animated: true, completion: nil)
         
         self.present(vc, animated: true, completion: nil)
         
@@ -97,8 +97,8 @@ extension WrongProblemViewController {
     @objc func filter(keyword: String) {
         
         filterdItems = items.filter { it in
-            for tag in it.tags{
-                if tag.key == keyword{
+            for tag in it.categories{
+                if tag == keyword{
                     return true
                 }
             }

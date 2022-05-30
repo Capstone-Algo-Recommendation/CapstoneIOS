@@ -17,7 +17,8 @@ class ApiService {
     
     
     static func getFailedProblems(completion:@escaping (SolvedProblems, SolvedProblems)->Void) {
-        if let a = UserDefaults.standard.string(forKey: "bck") {
+        if let a = UserDefaults.standard.string(forKey: "bckID") {
+            print(a,"what is my name")
             let triedUrl = "https://solved.ac/api/v3/search/problem?query=tried_by:\(a)"
             let solvedUrl = "https://solved.ac/api/v3/search/problem?query=solved_by:\(a)"
             
