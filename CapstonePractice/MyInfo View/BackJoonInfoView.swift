@@ -43,7 +43,7 @@ final class BackJoonInfoView: UIView, SetUpView {
         baseView.addSubview(infoLabel)
         baseView.addSubview(titleLabel)
         
-        infoLabel.text = "백준 아이디를 입력하지 않고 지나가면 서비스를 제대로 이용할 수 었어요 ㅠ,ㅠ"
+        infoLabel.text = "백준 아이디를 입력하지 않거나 푼 문제가 15 문제 이하면 기초 문제가 추천됩니다."
         infoLabel.font = UIFont(name: FontNames.medium, size: 18)
         infoLabel.textColor = .systemRed
         infoLabel.numberOfLines = 0

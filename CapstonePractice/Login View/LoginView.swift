@@ -88,15 +88,14 @@ final class LoginView: UIView {
         }
         
         logoImageView.snp.makeConstraints { make in
-            make.bottom.equalTo(logoLabel.snp.top).offset(-30)
+            make.bottom.equalTo(logoLabel.snp.top).offset(-60)
             make.leading.equalToSuperview().offset(60)
             make.trailing.equalToSuperview().offset(-60)
             make.height.equalTo(100)
         }
         
         logoLabel.snp.makeConstraints { make in
-//            make.bottom.equalTo(startButton.snp.top).offset(-20)
-            make.bottom.equalToSuperview().offset(-300)
+            make.bottom.equalTo(registerButton.snp.top).offset(-20)
             make.centerX.equalToSuperview()
             
             make.height.equalTo(40)
@@ -108,13 +107,7 @@ final class LoginView: UIView {
             make.leading.equalToSuperview().offset(50)
             make.trailing.equalToSuperview().offset(-50)
         }
-        
-//        startButton.snp.makeConstraints { make in
-//            make.bottom.equalTo(registerButton.snp.top).offset(-15)
-//            make.height.equalTo(45)
-//            make.leading.equalToSuperview().offset(16)
-//            make.trailing.equalToSuperview().offset(-16)
-//        }
+
     }
     
 }

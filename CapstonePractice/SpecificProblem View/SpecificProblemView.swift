@@ -180,9 +180,8 @@ final class SpecificProblemView: UIView, SetUpView {
             make.top.equalTo(memoLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(15)
             make.trailing.equalToSuperview().offset(-15)
-            make.height.equalTo(450)
-            
-            
+            make.height.equalToSuperview().multipliedBy(0.45)
+        
         }
 
 
