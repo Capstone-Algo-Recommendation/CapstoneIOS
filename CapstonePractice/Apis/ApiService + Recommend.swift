@@ -23,7 +23,7 @@ extension ApiService {
     
     
     static func getRecommendation(completion: @escaping (RecommendData?, ColdData?)-> Void) {
-        
+        print("afd222")
         let url = URL(string: "http://3.39.233.19:8080/api/problem/recommendation")!
         var request = URLRequest(url: url)
         

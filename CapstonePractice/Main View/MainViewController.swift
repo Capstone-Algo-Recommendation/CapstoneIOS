@@ -102,8 +102,9 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         self.actvityContainer.isHidden = false
         activityIndicator.startAnimating()
+        print("afd")
         ApiService.getRecommendation { data1, cold in
-
+            
             
             if let data = data1 {
                 var counter = 0
